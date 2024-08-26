@@ -1,4 +1,4 @@
-import { SafeAreaView, FlatList, type ViewProps, ListRenderItem, Platform, StyleSheet } from 'react-native';
+import { SafeAreaView, FlatList, type ViewProps, ListRenderItem, StyleSheet } from 'react-native';
 
 import { useThemeColor } from '@/hooks/useThemeColor';
 import { ThemedView } from './ThemedView';
@@ -17,7 +17,6 @@ export function ThemedFlatList({ style, lightColor, darkColor, data, renderItem,
     <SafeAreaView style={[{ backgroundColor }, style]} {...otherProps}>
       <FlatList
         ItemSeparatorComponent={
-          Platform.OS !== 'android' &&
           (({ highlighted }) => (
             <ThemedView
               style={[styles.separator, highlighted && { marginLeft: 0 }]}

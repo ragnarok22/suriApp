@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as Cellular from 'expo-cellular';
-import { Button, Linking, StyleSheet } from 'react-native';
+import { Button, Linking, StyleSheet, useColorScheme } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
 import { ThemedText } from '@/components/themed/ThemedText';
@@ -9,10 +9,12 @@ import NavigationLayout from '@/components/layouts/NavigationLayout';
 import { ExternalLink } from '@/components/ExternalLink';
 import { Carrier } from '@/constants/definitions';
 import { getCarrierName } from '@/utils/mobile';
+import { info } from '@/utils/info';
 
-export default function TabTwoScreen() {
+export default function SettingsScreen() {
+  const colorScheme = useColorScheme() ?? 'light';
   const [carrier, setCarrier] = useState<Carrier>('telesur');
-  const version = '1.0.0';
+  const version = info().version;
 
   useEffect(() => {
     Cellular.getCarrierNameAsync().then((carrier) => {
@@ -27,7 +29,7 @@ export default function TabTwoScreen() {
       </ThemedView>
 
       <ThemedView style={styles.view}>
-        <ThemedText>
+        <ThemedText style={{ fontSize: 18, marginTop: 8 }}>
           Creador por <ExternalLink href="https://reinierhernandez.com" style={styles.link}>Reinier Hernández</ExternalLink>
         </ThemedText>
       </ThemedView>
@@ -37,10 +39,10 @@ export default function TabTwoScreen() {
         <Picker
           selectedValue={carrier}
           onValueChange={(itemValue) => setCarrier(itemValue)}
-          style={{ width: 150, color: 'white' }}
+          style={{ width: 150, color: colorScheme === 'dark' ? 'white' : 'black' }}
         >
           <Picker.Item label="Telesur" value="telesur" />
-          <Picker.Item label="Digicel" value="digicel" />
+          {/**<Picker.Item label="Digicel" value="digicel" />**/}
         </Picker>
       </ThemedView>
 
@@ -74,6 +76,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   contactButton: {
     marginTop: 'auto',
