@@ -6,3 +6,5 @@ export type Action = {
 }
 
 export type HomeActions = Action[]
+
+export type Carrier = "telesur" | "digicel"

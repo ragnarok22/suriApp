@@ -1,6 +1,6 @@
 import { Action, HomeActions } from "@/constants/definitions";
 import { ThemedFlatList } from "./themed/ThemedFlatList";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native";
 import { ThemedText } from "./themed/ThemedText";
 import { ThemedView } from "./themed/ThemedView";
 import { check_balance, check_mobile_data, reload_balance, reload_mobile_data, transfer_balance } from "@/utils/actions";
