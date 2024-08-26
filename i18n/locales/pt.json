@@ -1,0 +1,22 @@
+{
+  "home": {
+    "title": "Página Inicial",
+    "check_balance": "Consultar Saldo",
+    "check_balance_description": "Consulte o saldo da sua conta",
+    "reload_balance": "Recarregar Saldo",
+    "reload_balance_description": "Recarregue o seu saldo",
+    "transfer_balance": "Transferir Saldo",
+    "transfer_balance_description": "Transfira o seu saldo para outra conta",
+    "check_mobile_data": "Consultar Dados Móveis",
+    "check_mobile_data_description": "Consulte os seus dados móveis",
+    "reload_mobile_data": "Recarregar Dados Móveis",
+    "reload_mobile_data_description": "Recarregue os seus dados móveis",
+  },
+  "settings": {
+    "title": "Configurações",
+    "version": "Versão",
+    "created_by": "Criado por",
+    "provider": "Fornecedor",
+    "contact_developer": "Contatar o Desenvolvedor",
+  },
+}

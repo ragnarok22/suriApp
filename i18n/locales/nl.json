@@ -1,0 +1,22 @@
+{
+  "home": {
+    "title": "Naar huis",
+    "check_balance": "Controleer saldo",
+    "check_balance_description": "Controleer uw saldo",
+    "reload_balance": "Saldo herladen",
+    "reload_balance_description": "Herlaad je saldo",
+    "transfer_balance": "Saldo overmaken",
+    "transfer_balance_description": "Verplaats uw saldo naar een andere account",
+    "check_mobile_data": "Controleer mobiele data",
+    "check_mobile_data_description": "Controleer uw mobiele data",
+    "reload_mobile_data": "Mobiele data herladen",
+    "reload_mobile_data_description": "Herlaad uw mobiele data",
+  },
+  "settings": {
+    "title": "Instellingen",
+    "version": "Versie",
+    "created_by": "Gemaakt door",
+    "provider": "Provider",
+    "contact_developer": "Neem contact op met de ontwikkelaar",
+  },
+}

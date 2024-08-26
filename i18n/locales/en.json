@@ -1,8 +1,22 @@
 {
   "home": {
     "title": "Home",
+    "check_balance": "Check Balance",
+    "check_balance_description": "Check your balance",
+    "reload_balance": "Reload Balance",
+    "reload_balance_description": "Reload your balance",
+    "transfer_balance": "Transfer Balance",
+    "transfer_balance_description": "Transfer your balance to another account",
+    "check_mobile_data": "Check Mobile Data",
+    "check_mobile_data_description": "Check your mobile data",
+    "reload_mobile_data": "Reload Mobile Data",
+    "reload_mobile_data_description": "Reload your mobile data",
   },
   "settings": {
     "title": "Settings",
+    "version": "Version",
+    "created_by": "Created by",
+    "provider": "Provider",
+    "contact_developer": "Contact Developer",
   },
 }

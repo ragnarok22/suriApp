@@ -4,32 +4,34 @@ import { TouchableOpacity } from "react-native";
 import { ThemedText } from "./themed/ThemedText";
 import { ThemedView } from "./themed/ThemedView";
 import { check_balance, check_mobile_data, reload_balance, reload_mobile_data, transfer_balance } from "@/utils/actions";
+import i18next from '@/i18n'
+const { t } = i18next;
 
 const data: HomeActions = [{
   id: 'check_balance',
   icon: '💰',
-  title: 'Consultar saldo',
-  description: 'Consulta el saldo de tu cuenta'
+  title: t('home.check_balance'),
+  description: t('home.check_balance_description'),
 }, {
   id: 'reload_balance',
   icon: '💳',
-  title: 'Recargar saldo',
-  description: 'Recarga saldo a tu cuenta'
+  title: t('home.reload_balance'),
+  description: t('home.reload_balance_description'),
 }, {
   id: 'transfer_balance',
   icon: '💸',
-  title: 'Transferir saldo',
-  description: 'Transfiere saldo a otro usuario'
+  title: t('home.transfer_balance'),
+  description: t('home.transfer_balance_description'),
 }, {
   id: 'check_mobile_data',
   icon: '📱',
-  title: 'Consultar datos móviles',
-  description: 'Consulta el saldo de tus datos móviles'
+  title: t('home.check_mobile_data'),
+  description: t('home.check_mobile_data_description'),
 }, {
   id: 'reload_mobile_data',
   icon: '📶',
-  title: 'Recargar datos móviles',
-  description: 'Recarga saldo a tus datos móviles'
+  title: t('home.reload_mobile_data'),
+  description: t('home.reload_mobile_data_description'),
 }];
 
 type ItemProps = {

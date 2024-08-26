@@ -10,8 +10,10 @@ import { ExternalLink } from '@/components/ExternalLink';
 import { Carrier } from '@/constants/definitions';
 import { getCarrierName } from '@/utils/mobile';
 import { info } from '@/utils/info';
+import { useTranslation } from 'react-i18next';
 
 export default function SettingsScreen() {
+  const { t } = useTranslation();
   const colorScheme = useColorScheme() ?? 'light';
   const [carrier, setCarrier] = useState<Carrier>('telesur');
   const version = info().version;
@@ -25,17 +27,17 @@ export default function SettingsScreen() {
   return (
     <NavigationLayout title="Settings">
       <ThemedView style={styles.view}>
-        <ThemedText>Versión {version}</ThemedText>
+        <ThemedText>{t('settings.version')} {version}</ThemedText>
       </ThemedView>
 
       <ThemedView style={styles.view}>
         <ThemedText style={{ fontSize: 18, marginTop: 8 }}>
-          Creador por <ExternalLink href="https://reinierhernandez.com" style={styles.link}>Reinier Hernández</ExternalLink>
+          {t('settings.created_by')} <ExternalLink href="https://reinierhernandez.com" style={styles.link}>Reinier Hernández</ExternalLink>
         </ThemedText>
       </ThemedView>
 
       <ThemedView style={[styles.transparent, styles.provider]}>
-        <ThemedText>Proveedor:</ThemedText>
+        <ThemedText>{t('settings.provider')}:</ThemedText>
         <Picker
           selectedValue={carrier}
           onValueChange={(itemValue) => setCarrier(itemValue)}
@@ -48,7 +50,7 @@ export default function SettingsScreen() {
 
       <ThemedView style={styles.contactButton}>
         <Button
-          title="Contactar al desarrollador"
+          title={t('settings.contact_developer')}
           onPress={() => Linking.openURL('https://reinierhernandez.com')}
         />
       </ThemedView>
