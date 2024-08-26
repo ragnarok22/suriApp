@@ -1,24 +1,18 @@
-import { Image, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import ParallaxScrollView from '@/components/layouts/ParallaxScrollView';
-import { ThemedText } from '@/components/themed/ThemedText';
 import { ThemedView } from '@/components/themed/ThemedView';
 import MainActionList from '@/components/MainActionList';
+import ThemedLayout from '@/components/layouts/ThemedLayout';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
+    <ThemedLayout
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
+    >
       <ThemedView style={styles.titleContainer}>
         <MainActionList />
       </ThemedView>
-    </ParallaxScrollView>
+    </ThemedLayout>
   );
 }
 
@@ -31,12 +25,5 @@ const styles = StyleSheet.create({
   stepContainer: {
     gap: 8,
     marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
   },
 });
