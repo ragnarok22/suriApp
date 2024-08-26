@@ -15,7 +15,6 @@ const resources = {
 
 const initI18n = async () => {
   const language = Localization.getLocales()[0].languageTag;
-  console.log('language', language);
 
   i18n.use(initReactI18next).init({
     compatibilityJSON: 'v3',
