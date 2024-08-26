@@ -1,8 +1,9 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 
 import ParallaxScrollView from '@/components/layouts/ParallaxScrollView';
 import { ThemedText } from '@/components/themed/ThemedText';
 import { ThemedView } from '@/components/themed/ThemedView';
+import MainActionList from '@/components/MainActionList';
 
 export default function HomeScreen() {
   return (
@@ -15,7 +16,7 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText>Welcome!</ThemedText>
+        <MainActionList />
       </ThemedView>
     </ParallaxScrollView>
   );
