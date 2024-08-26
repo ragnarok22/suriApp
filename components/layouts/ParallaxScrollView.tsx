@@ -7,9 +7,10 @@ import Animated, {
   useScrollViewOffset,
 } from 'react-native-reanimated';
 
-import { ThemedView } from '@/components/ThemedView';
+import { ThemedView } from '@/components/themed/ThemedView';
 
 const HEADER_HEIGHT = 250;
+const MENU_RADIUS = 32;
 
 type Props = PropsWithChildren<{
   headerImage: ReactElement;
@@ -62,6 +63,7 @@ export default function ParallaxScrollView({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: '100%',
   },
   header: {
     height: 250,
@@ -72,5 +74,8 @@ const styles = StyleSheet.create({
     padding: 32,
     gap: 16,
     overflow: 'hidden',
+    borderTopLeftRadius: MENU_RADIUS,
+    borderTopRightRadius: MENU_RADIUS,
+    marginTop: -MENU_RADIUS,
   },
 });
