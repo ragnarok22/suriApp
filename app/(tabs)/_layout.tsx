@@ -1,5 +1,6 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
@@ -14,6 +15,7 @@ const TabTitle = ({ focused, color, text }: { focused: boolean, color: string, t
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const { t } = useTranslation();
 
   return (
     <Tabs
@@ -25,7 +27,7 @@ export default function TabLayout() {
         name="index"
         options={{
           title: ({ focused }: { focused: boolean }) => (
-            <TabTitle focused={focused} text='Home' color={Colors[colorScheme ?? 'light'].tint} />
+            <TabTitle focused={focused} text={t('home.title')} color={Colors[colorScheme ?? 'light'].tint} />
           ),
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
@@ -36,7 +38,7 @@ export default function TabLayout() {
         name="settings"
         options={{
           title: ({ focused }: { focused: boolean }) => (
-            <TabTitle focused={focused} text='Settings' color={Colors[colorScheme ?? 'light'].tint} />
+            <TabTitle focused={focused} text={t('settings.title')} color={Colors[colorScheme ?? 'light'].tint} />
           ),
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'settings' : 'settings-outline'} color={color} />
