@@ -45,6 +45,12 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="mobile"
+        options={{
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }

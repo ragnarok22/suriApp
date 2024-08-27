@@ -1,11 +1,12 @@
 import { useMemo, useState } from "react";
 import { TouchableOpacity } from "react-native";
+import { router } from "expo-router";
 
 import { Action, HomeActions } from "@/constants/definitions";
 import { ThemedFlatList } from "./themed/ThemedFlatList";
 import { ThemedText } from "./themed/ThemedText";
 import { ThemedView } from "./themed/ThemedView";
-import { check_balance, check_mobile_data, recharge_balance, recharge_mobile_data, transfer_balance } from "@/utils/actions";
+import { check_balance, check_mobile_data, recharge_balance, transfer_balance } from "@/utils/actions";
 import i18next from '@/i18n'
 import RechargeBalanceModal from "./RechargeBalanceModal";
 const { t } = i18next;
@@ -98,7 +99,7 @@ export default function MainActionList() {
         check_mobile_data();
         break;
       case 'recharge_mobile_data':
-        recharge_mobile_data();
+        router.push('/mobile');
         break;
     }
   }
