@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ragnarokreinier.suri"
     },
     "web": {
       "bundler": "metro",
@@ -32,6 +33,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "873a30c4-2cc8-41f8-854a-7418ea2d4c70"
+      }
     }
   }
 }
