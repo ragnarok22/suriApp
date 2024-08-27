@@ -1,11 +1,19 @@
+import * as Linking from 'expo-linking';
+import * as SMS from 'expo-sms';
 import { Carrier } from "@/constants/definitions";
 
-export function sendSms(phoneNumber: string, message: string) {
-  // Send SMS
+export async function sendSms(phoneNumber: string, message: string) {
+  const isAvailable = await SMS.isAvailableAsync();
+
+  if (isAvailable) {
+    return await SMS.sendSMSAsync([phoneNumber], message);
+  }
+
+  console.log('SMS is not available on this device');
 }
 
 export function makeCall(phoneNumber: string) {
-  // Make a call
+  Linking.openURL(`tel:${phoneNumber}`);
 }
 
 export function getCarrierName(carrierCode: string): Carrier {

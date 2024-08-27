@@ -5,12 +5,13 @@ import { ThemedView } from './ThemedView';
 
 export type ThemedFlatListProps = ViewProps & {
   data: any;
-  renderItem: ListRenderItem<any>;
+  onPress?: (item_id: string) => void;
+  renderItem: ListRenderItem<any> & { onPress?: () => void };
   lightColor?: string;
   darkColor?: string;
 };
 
-export function ThemedFlatList({ style, lightColor, darkColor, data, renderItem, ...otherProps }: ThemedFlatListProps) {
+export function ThemedFlatList({ style, lightColor, darkColor, data, renderItem, onPress, ...otherProps }: ThemedFlatListProps) {
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
   return (
@@ -24,7 +25,7 @@ export function ThemedFlatList({ style, lightColor, darkColor, data, renderItem,
           ))
         }
         data={data}
-        renderItem={renderItem}
+        renderItem={({item}) => renderItem({item, onPress})}
         keyExtractor={(item) => item.id}
       />
     </SafeAreaView>

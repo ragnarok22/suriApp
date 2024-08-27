@@ -1,16 +1,19 @@
 {
+  "accept": "Aceptar",
+  "cancel": "Cancelar",
   "home": {
     "title": "Inicio",
     "check_balance": "Consultar Saldo",
     "check_balance_description": "Consulta el saldo de tu cuenta",
-    "reload_balance": "Recargar Saldo",
-    "reload_balance_description": "Recarga tu saldo",
+    "recharge_balance": "Recargar Saldo",
+    "recharge_balance_description": "Recarga tu saldo",
+    "write_your_pincode": "Escribe to PIN aquí",
     "transfer_balance": "Transferir Saldo",
     "transfer_balance_description": "Transfiere tu saldo a otra cuenta",
     "check_mobile_data": "Consultar Datos Móviles",
     "check_mobile_data_description": "Consulta tus datos móviles",
-    "reload_mobile_data": "Recargar Datos Móviles",
-    "reload_mobile_data_description": "Recarga tus datos móviles",
+    "recharge_mobile_data": "Recargar Datos Móviles",
+    "recharge_mobile_data_description": "Recarga tus datos móviles",
   },
   "settings": {
     "title": "Ajustes",
