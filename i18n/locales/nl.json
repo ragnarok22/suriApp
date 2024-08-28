@@ -1,6 +1,9 @@
 {
   "accept": "Accepteren",
   "cancel": "Annuleren",
+  "hours": "Uren",
+  "day": "Dag",
+  "days": "Dagen",
   "home": {
     "title": "Naar huis",
     "check_balance": "Controleer saldo",

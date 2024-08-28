@@ -8,6 +8,7 @@ import { ThemedFlatList } from '@/components/themed/ThemedFlatList';
 import { sendSms } from '@/utils/mobile';
 import { useMemo } from 'react';
 import { Plan } from '@/constants/definitions';
+import { useTranslation } from 'react-i18next';
 
 type PlanItemProps = {
   item: Plan
@@ -39,33 +40,34 @@ const PlanItem = ({ item, onPress }: PlanItemProps) => {
 }
 
 export default function MobileScreen() {
+  const { t } = useTranslation();
   const dataPlans: Plan[] = useMemo(() => [{
     id: 1,
-    duration: '12h',
+    duration: '12' + t('hours'),
     data: '150MB',
     price: 23,
     code: 'NET 12',
   }, {
     id: 2,
-    duration: '1d',
+    duration: '1' + t('day'),
     data: '2560MB',
     price: 44,
     code: 'NET 1D',
   }, {
     id: 3,
-    duration: '3d',
+    duration: '3' + t('days'),
     data: '4608MB',
     price: 87,
     code: 'NET 3D',
   }, {
     id: 4,
-    duration: '7d',
+    duration: '7' + t('days'),
     data: '10752MB',
     price: 218,
     code: 'NET 7D',
   }, {
     id: 5,
-    duration: '30d',
+    duration: '30' + t('days'),
     data: '25600MB',
     price: 870,
     code: 'NET 30D',

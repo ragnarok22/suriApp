@@ -1,6 +1,9 @@
 {
   "accept": "Aceptar",
   "cancel": "Cancelar",
+  "hours": "Horas",
+  "day": "Día",
+  "days": "Días",
   "home": {
     "title": "Inicio",
     "check_balance": "Consultar Saldo",
