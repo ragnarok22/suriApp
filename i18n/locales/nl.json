@@ -17,6 +17,7 @@
     "check_mobile_data_description": "Controleer uw mobiele data",
     "recharge_mobile_data": "Mobiele data herladen",
     "recharge_mobile_data_description": "Herlaad uw mobiele data",
+    "pincode_error": "Pincode moet 12 cijfers bevatten",
   },
   "settings": {
     "title": "Instellingen",

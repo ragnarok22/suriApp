@@ -1,8 +1,7 @@
 import type { PropsWithChildren } from 'react';
 import { Image, StyleSheet, useColorScheme } from 'react-native';
 
-import { ThemedView } from '@/components/themed/ThemedView';
-import { ThemedText } from '@/components/themed/ThemedText';
+import { ThemedView, ThemedText } from '@/components/themed';
 
 type Props = PropsWithChildren<{
   title: string;

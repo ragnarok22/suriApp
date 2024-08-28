@@ -1,6 +1,5 @@
 import { Alert, StyleSheet, TextInput } from "react-native";
-import { ThemedText } from "./themed/ThemedText";
-import ThemedModal from "./themed/ThemedModal";
+import { ThemedText, ThemedModal } from "@/components/themed";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 
@@ -15,9 +14,21 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
   const [pincode, setPincode] = useState<string>('');
 
   const handleAccept = () => {
-    onAccept(pincode);
-    setPincode('');
-    close();
+    const isCorrect = validatePincode(pincode)
+
+    if (isCorrect) {
+      onAccept(pincode);
+      setPincode('');
+      close();
+    }
+  }
+
+  const validatePincode = (pincode: string) => {
+    if (pincode.length < 12) {
+      Alert.alert(t('home.pincode_error'));
+      return false;
+    }
+    return true;
   }
 
   return (

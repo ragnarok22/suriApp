@@ -17,6 +17,7 @@
     "check_mobile_data_description": "Consulte os seus dados móveis",
     "recharge_mobile_data": "Recarregar Dados Móveis",
     "recharge_mobile_data_description": "Recarregue os seus dados móveis",
+    "pincode_error": "O PIN deve ter 12 dígitos",
   },
   "settings": {
     "title": "Configurações",

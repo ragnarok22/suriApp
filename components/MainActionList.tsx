@@ -64,11 +64,11 @@ export default function MainActionList() {
     icon: '💳',
     title: t('home.recharge_balance'),
     description: t('home.recharge_balance_description'),
-  }, {
-    id: 'transfer_balance',
-    icon: '💸',
-    title: t('home.transfer_balance'),
-    description: t('home.transfer_balance_description'),
+  // }, {
+  //   id: 'transfer_balance',
+  //   icon: '💸',
+  //   title: t('home.transfer_balance'),
+  //   description: t('home.transfer_balance_description'),
   }, {
     id: 'check_mobile_data',
     icon: '📱',
