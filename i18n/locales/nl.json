@@ -25,4 +25,7 @@
     "provider": "Provider",
     "contact_developer": "Neem contact op met de ontwikkelaar",
   },
+  "mobile": {
+    "title": "Mobiele data plannen",
+  },
 }

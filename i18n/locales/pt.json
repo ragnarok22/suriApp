@@ -25,4 +25,7 @@
     "provider": "Fornecedor",
     "contact_developer": "Contatar o Desenvolvedor",
   },
+  "mobile": {
+    "title": "Planos de Dados Móveis",
+  },
 }

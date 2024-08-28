@@ -9,7 +9,7 @@ type Props = PropsWithChildren<{
 }>;
 
 const bgColors = {
-  light: '#81DBC3',
+  light: '#A1CEDC',
   dark: '#1D3D47',
 };
 

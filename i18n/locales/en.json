@@ -25,4 +25,7 @@
     "provider": "Provider",
     "contact_developer": "Contact Developer",
   },
+  "mobile": {
+    "title": "Mobile Data plans",
+  },
 }
