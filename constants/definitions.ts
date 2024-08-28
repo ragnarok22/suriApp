@@ -8,3 +8,11 @@ export type Action = {
 export type HomeActions = Action[]
 
 export type Carrier = "telesur" | "digicel"
+
+export type Plan = {
+  id: number
+  duration: string
+  data: string
+  price: number
+  code: string
+}

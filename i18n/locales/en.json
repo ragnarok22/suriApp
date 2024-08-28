@@ -1,6 +1,8 @@
 {
   "accept": "Accept",
   "cancel": "Cancel",
+  "hours": "Hours",
+  "days": "Days",
   "home": {
     "title": "Home",
     "check_balance": "Check Balance",
