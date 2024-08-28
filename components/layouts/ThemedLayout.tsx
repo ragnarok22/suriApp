@@ -1,8 +1,7 @@
 import type { PropsWithChildren } from 'react';
 import { Image, StyleSheet, useColorScheme } from 'react-native';
 
-import { ThemedView } from '@/components/themed/ThemedView';
-import { ThemedText } from '../themed/ThemedText';
+import { ThemedView, ThemedText } from '@/components/themed';
 
 const MENU_RADIUS = 32;
 

@@ -1,7 +1,6 @@
 import { type ComponentProps } from 'react';
-import { Alert, Modal, Pressable, StyleSheet } from "react-native";
-import { ThemedText } from "@/components/themed/ThemedText";
-import { ThemedView } from "@/components/themed/ThemedView";
+import { Modal, Pressable, StyleSheet } from "react-native";
+import { ThemedText, ThemedView } from '@/components/themed';
 import { useTranslation } from 'react-i18next';
 
 type ThemedModalProps = ComponentProps<typeof Modal> & {

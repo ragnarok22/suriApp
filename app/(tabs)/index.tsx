@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { ThemedView } from '@/components/themed/ThemedView';
+import { ThemedView } from '@/components/themed';
 import MainActionList from '@/components/MainActionList';
 import ThemedLayout from '@/components/layouts/ThemedLayout';
 

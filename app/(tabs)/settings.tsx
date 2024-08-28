@@ -3,8 +3,7 @@ import * as Cellular from 'expo-cellular';
 import { Button, Linking, StyleSheet, useColorScheme } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-import { ThemedText } from '@/components/themed/ThemedText';
-import { ThemedView } from '@/components/themed/ThemedView';
+import { ThemedText, ThemedView } from '@/components/themed';
 import NavigationLayout from '@/components/layouts/NavigationLayout';
 import { ExternalLink } from '@/components/ExternalLink';
 import { Carrier } from '@/constants/definitions';

@@ -1,9 +1,7 @@
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
-import { ThemedView } from '@/components/themed/ThemedView';
+import { ThemedView, ThemedText, ThemedFlatList } from '@/components/themed';
 import ThemedLayout from '@/components/layouts/ThemedLayout';
-import { ThemedText } from '@/components/themed/ThemedText';
-import { ThemedFlatList } from '@/components/themed/ThemedFlatList';
 import { sendSms } from '@/utils/mobile';
 import { useMemo } from 'react';
 import { Plan } from '@/constants/definitions';
@@ -72,7 +70,8 @@ export default function MobileScreen() {
     data: '25600MB',
     price: 870,
     code: 'NET 30D',
-  }], []);
+  }], [t]);
+
   const onPress = (code: string) => {
     sendSms('4040', code);
   }

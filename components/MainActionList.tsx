@@ -3,9 +3,7 @@ import { TouchableOpacity } from "react-native";
 import { router } from "expo-router";
 
 import { Action, HomeActions } from "@/constants/definitions";
-import { ThemedFlatList } from "./themed/ThemedFlatList";
-import { ThemedText } from "./themed/ThemedText";
-import { ThemedView } from "./themed/ThemedView";
+import { ThemedFlatList, ThemedText, ThemedView } from "@/components/themed";
 import { check_balance, check_mobile_data, recharge_balance, transfer_balance } from "@/utils/actions";
 import i18next from '@/i18n'
 import RechargeBalanceModal from "./RechargeBalanceModal";
