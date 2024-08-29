@@ -1,10 +1,10 @@
-import { useMemo, useState } from "react";
-import { TouchableOpacity } from "react-native";
+import { useEffect, useMemo, useState } from "react";
+import { Alert, DeviceEventEmitter, TouchableOpacity } from "react-native";
 import { router } from "expo-router";
 
 import { Action, HomeActions } from "@/constants/definitions";
 import { ThemedFlatList, ThemedText, ThemedView } from "@/components/themed";
-import { check_balance, check_mobile_data, recharge_balance, transfer_balance } from "@/utils/actions";
+import { check_balance, check_mobile_data, extract_balance, recharge_balance, transfer_balance } from "@/utils/actions";
 import i18next from '@/i18n'
 import RechargeBalanceModal from "./RechargeBalanceModal";
 const { t } = i18next;
@@ -51,8 +51,9 @@ const ActionItem = ({ item, onPress }: ActionItemsProps) => {
   )
 }
 
+type ModalType = "recharge_balance" | "transfer_balance";
+
 export default function MainActionList() {
-  type ModalType = "recharge_balance" | "transfer_balance";
   const [modalVisible, setModalVisible] = useState<ModalType | null>();
   const data: HomeActions = useMemo(() => [{
     id: 'check_balance',
@@ -64,11 +65,11 @@ export default function MainActionList() {
     icon: '💳',
     title: t('home.recharge_balance'),
     description: t('home.recharge_balance_description'),
-  // }, {
-  //   id: 'transfer_balance',
-  //   icon: '💸',
-  //   title: t('home.transfer_balance'),
-  //   description: t('home.transfer_balance_description'),
+    // }, {
+    //   id: 'transfer_balance',
+    //   icon: '💸',
+    //   title: t('home.transfer_balance'),
+    //   description: t('home.transfer_balance_description'),
   }, {
     id: 'check_mobile_data',
     icon: '📱',
@@ -81,7 +82,20 @@ export default function MainActionList() {
     description: t('home.recharge_mobile_data_description'),
   }], []);
 
-  const onPress = (item_id: string) => {
+  useEffect(() => {
+    const subscription = DeviceEventEmitter.addListener('SMSReceived', (message) => {
+      if (message.sender == '4040') {
+        const balance = extract_balance(message.message);
+        Alert.alert(t('home.data_saldo'), `${balance} MB`);
+      }
+    })
+
+    return () => {
+      subscription.remove();
+    }
+  }, [])
+
+  const onPress = async (item_id: string) => {
     switch (item_id) {
       case 'check_balance':
         check_balance();
@@ -94,7 +108,7 @@ export default function MainActionList() {
         transfer_balance();
         break;
       case 'check_mobile_data':
-        check_mobile_data();
+        await check_mobile_data();
         break;
       case 'recharge_mobile_data':
         router.push('/mobile');

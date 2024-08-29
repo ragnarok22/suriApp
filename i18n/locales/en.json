@@ -18,6 +18,7 @@
     "recharge_mobile_data": "Recharge Mobile Data",
     "recharge_mobile_data_description": "Recharge your mobile data",
     "pincode_error": "Pincode must be 12 digits",
+    "data_saldo": "Data Saldo",
   },
   "settings": {
     "title": "Settings",

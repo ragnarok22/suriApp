@@ -19,6 +19,7 @@ export default function SettingsScreen() {
 
   useEffect(() => {
     Cellular.getCarrierNameAsync().then((carrier) => {
+      console.log(carrier)
       setCarrier(getCarrierName(carrier || 'TeleG'));
     });
   }, []);
