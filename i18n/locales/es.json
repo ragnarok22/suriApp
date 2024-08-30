@@ -19,6 +19,10 @@
     "recharge_mobile_data_description": "Recarga tus datos móviles",
     "pincode_error": "El PIN debe tener 12 dígitos",
     "data_saldo": "Saldo de Datos",
+    "error": "Error",
+    "error_insufficient_balance": "Saldo insuficiente",
+    "success": "Éxito",
+    "success_recharge_balance": "Saldo recargado con éxito",
   },
   "settings": {
     "title": "Ajustes",

@@ -4,9 +4,10 @@ import { router } from "expo-router";
 
 import { Action, HomeActions } from "@/constants/definitions";
 import { ThemedFlatList, ThemedText, ThemedView } from "@/components/themed";
-import { check_balance, check_mobile_data, extract_balance, recharge_balance, transfer_balance } from "@/utils/actions";
+import { check_balance, check_buy_message, check_mobile_data, extract_balance, recharge_balance, transfer_balance } from "@/utils/actions";
 import i18next from '@/i18n'
 import RechargeBalanceModal from "./RechargeBalanceModal";
+import { sendSms } from "@/utils/mobile";
 const { t } = i18next;
 
 
@@ -85,8 +86,23 @@ export default function MainActionList() {
   useEffect(() => {
     const subscription = DeviceEventEmitter.addListener('SMSReceived', (message) => {
       if (message.sender == '4040') {
+        if (check_buy_message(message.message)) {
+          console.log('send A to confirm')
+          sendSms('4040', 'A');
+          return
+        }
+        if (message.message.includes('onvoldoende saldo')) {
+          Alert.alert(t('home.error'), t('home.error_insufficient_balance'));
+          return;
+        }
+        if (message.message.includes('rekening gebracht')) {
+          Alert.alert(t('home.success'), t('home.success_recharge_balance'));
+          return;
+        }
         const balance = extract_balance(message.message);
-        Alert.alert(t('home.data_saldo'), `${balance} MB`);
+        if (balance) {
+          Alert.alert(t('home.data_saldo'), `${balance} MB`);
+        }
       }
     })
 

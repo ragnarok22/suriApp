@@ -30,3 +30,9 @@ export function extract_balance(message: string) {
     return matchData[1];
   }
 }
+
+export function check_buy_message(message: string) {
+  const regexBuyData = /Zend A/;
+  const matchBuyData = regexBuyData.test(message);
+  return !!matchBuyData;
+}

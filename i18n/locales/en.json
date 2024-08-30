@@ -19,6 +19,10 @@
     "recharge_mobile_data_description": "Recharge your mobile data",
     "pincode_error": "Pincode must be 12 digits",
     "data_saldo": "Data Saldo",
+    "error": "Error",
+    "error_insufficient_balance": "Insufficient balance",
+    "success": "Success",
+    "success_recharge_balance": "Balance recharged successfully",
   },
   "settings": {
     "title": "Settings",

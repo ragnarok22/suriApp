@@ -19,6 +19,10 @@
     "recharge_mobile_data_description": "Herlaad uw mobiele data",
     "pincode_error": "Pincode moet 12 cijfers bevatten",
     "data_saldo": "Data Saldo",
+    "error": "Fout",
+    "error_insufficient_balance": "Onvoldoende saldo",
+    "success": "Succes",
+    "success_recharge_balance": "Saldo succesvol herladen",
   },
   "settings": {
     "title": "Instellingen",
