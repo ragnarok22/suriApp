@@ -22,8 +22,7 @@ export function recharge_mobile_data() {
 }
 
 export function extract_balance(message: string) {
-  console.log('extract balance');
-  const regexData = /(\d+)\s*MB/;
+  const regexData = /(\d+(\.\d+)?)\s*MB/;
   const matchData = message.match(regexData);
   if (matchData) {
     console.log(`Data saldo: ${matchData[1]} MB`);
