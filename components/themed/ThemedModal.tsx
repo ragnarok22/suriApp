@@ -3,6 +3,7 @@ import { Modal, Pressable, StyleSheet } from "react-native";
 import ThemedText from './ThemedText';
 import ThemedView from './ThemedView';
 import { useTranslation } from 'react-i18next';
+import { useThemeColor } from '@/hooks/useThemeColor';
 
 type ThemedModalProps = ComponentProps<typeof Modal> & {
   open: boolean;
@@ -12,7 +13,10 @@ type ThemedModalProps = ComponentProps<typeof Modal> & {
 };
 
 export default function ThemedModal({ children, open, close, onAccept, ...modalProps }: ThemedModalProps) {
+  const backgroundColor = useThemeColor({}, 'background');
+  const color = useThemeColor({ light: 'white', dark: 'white' }, 'text');
   const { t } = useTranslation();
+
   return (
     <Modal
       animationType="slide"
@@ -24,7 +28,7 @@ export default function ThemedModal({ children, open, close, onAccept, ...modalP
       {...modalProps}
     >
       <ThemedView style={styles.centeredView}>
-        <ThemedView style={styles.modalView}>
+        <ThemedView style={[styles.modalView, { backgroundColor }]}>
           {children}
           <ThemedView style={styles.buttonView}>
             <Pressable
@@ -33,13 +37,13 @@ export default function ThemedModal({ children, open, close, onAccept, ...modalP
                 close();
               }}
             >
-              <ThemedText style={[styles.btnText]}>{t('cancel')}</ThemedText>
+              <ThemedText style={[styles.btnText, { color }]}>{t('cancel')}</ThemedText>
             </Pressable>
             <Pressable
               style={[styles.btn, styles.acceptBtn]}
               onPress={onAccept}
             >
-              <ThemedText style={[styles.btnText]}>{t('accept')}</ThemedText>
+              <ThemedText style={[styles.btnText, { color }]}>{t('accept')}</ThemedText>
             </Pressable>
           </ThemedView>
         </ThemedView>
@@ -60,7 +64,6 @@ const styles = StyleSheet.create({
     margin: 10,
     width: "80%",
     minHeight: 200,
-    backgroundColor: "rgb(50, 50, 50)",
     borderRadius: 12,
     padding: 20,
     alignItems: "center",

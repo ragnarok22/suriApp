@@ -2,6 +2,7 @@ import { Alert, StyleSheet, TextInput } from "react-native";
 import { ThemedText, ThemedModal } from "@/components/themed";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { useThemeColor } from "@/hooks/useThemeColor";
 
 type RechargeBalanceModalProps = {
   open: boolean;
@@ -10,6 +11,7 @@ type RechargeBalanceModalProps = {
 };
 
 export default function RechargeBalanceModal({ open, close, onAccept }: RechargeBalanceModalProps) {
+  const backgroundColor = useThemeColor({ light: '#ECEDEE', dark: 'white' }, 'background');
   const { t } = useTranslation();
   const [pincode, setPincode] = useState<string>('');
 
@@ -46,7 +48,7 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
     >
       <ThemedText type="subtitle">{t('home.recharge_balance')}</ThemedText>
       <TextInput
-        style={styles.pincode}
+        style={[styles.pincode, { backgroundColor }]}
         placeholder={t('home.write_your_pincode')}
         keyboardType="numeric"
         value={pincode}
@@ -60,7 +62,6 @@ const styles = StyleSheet.create({
   pincode: {
     paddingHorizontal: 12,
     paddingVertical: 8,
-    backgroundColor: 'white',
     borderRadius: 4,
     width: '100%',
     marginTop: 12,
