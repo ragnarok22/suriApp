@@ -1,5 +1,8 @@
-export function info() {
+import { Info } from "@/constants/definitions";
+import app from '@/app.json';
+
+export function info(): Info {
   return {
-    version: '0.1.0',
+    version: app.expo.version,
   }
 }

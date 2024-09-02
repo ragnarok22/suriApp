@@ -16,3 +16,7 @@ export type Plan = {
   price: number
   code: string
 }
+
+export type Info = {
+  version: string
+}
