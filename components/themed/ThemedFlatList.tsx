@@ -1,7 +1,7 @@
 import { SafeAreaView, FlatList, type ViewProps, ListRenderItem, StyleSheet } from 'react-native';
 
 import { useThemeColor } from '@/hooks/useThemeColor';
-import { ThemedView } from '@/components/themed';
+import ThemedView from './ThemedView';
 
 export type ThemedFlatListProps = ViewProps & {
   data: any;
