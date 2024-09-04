@@ -28,8 +28,9 @@
     "title": "Configurações",
     "version": "Versão",
     "created_by": "Criado por",
-    "provider": "Fornecedor",
+    "provider": "Operadora",
     "contact_developer": "Contatar o Desenvolvedor",
+    "open_website": "🌐 Abrir Site",
   },
   "mobile": {
     "title": "Planos de Dados Móveis",

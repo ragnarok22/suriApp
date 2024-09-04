@@ -30,6 +30,8 @@
     "created_by": "Created by",
     "provider": "Provider",
     "contact_developer": "Contact Developer",
+    "open_website": "🌐 Open Website",
+    "description": "Easily manage your mobile credit and data plans. Top up your balance and stay connected anytime, anywhere.",
   },
   "mobile": {
     "title": "Mobile Data plans",
