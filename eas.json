@@ -19,7 +19,11 @@
         "buildType": "app-bundle"
       }
     },
-    "production": {}
+    "production": {
+      "android": {
+        "image": "latest"
+      }
+    }
   },
   "submit": {
     "production": {}
