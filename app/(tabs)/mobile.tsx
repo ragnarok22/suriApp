@@ -7,6 +7,7 @@ import { useMemo } from 'react';
 import { Plan } from '@/constants/definitions';
 import { useTranslation } from 'react-i18next';
 import MobileIcon from '@/components/icons/MobileIcon';
+import { humanize_data } from '@/utils/actions';
 
 type PlanItemProps = {
   item: Plan
@@ -43,31 +44,31 @@ export default function MobileScreen() {
   const dataPlans: Plan[] = useMemo(() => [{
     id: 1,
     duration: '12 ' + t('hours'),
-    data: '150MB',
+    data: 150,
     price: 23,
     code: 'NET 12',
   }, {
     id: 2,
     duration: '1 ' + t('day'),
-    data: '2560MB',
+    data: 2560,
     price: 44,
     code: 'NET 1D',
   }, {
     id: 3,
     duration: '3 ' + t('days'),
-    data: '4608MB',
+    data: 4608,
     price: 87,
     code: 'NET 3D',
   }, {
     id: 4,
     duration: '7 ' + t('days'),
-    data: '10752MB',
+    data: 10752,
     price: 218,
     code: 'NET 7D',
   }, {
     id: 5,
     duration: '30 ' + t('days'),
-    data: '25600MB',
+    data: 25600,
     price: 870,
     code: 'NET 30D',
   }], [t]);
@@ -76,6 +77,8 @@ export default function MobileScreen() {
     sendSms('4040', code);
   }
 
+  const data = dataPlans.map((plan) => ({ ...plan, duration: humanize_data(plan.data) }));
+
   return (
     <ThemedLayout
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -83,7 +86,7 @@ export default function MobileScreen() {
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">{t('mobile.title')}</ThemedText>
         <ThemedView style={styles.list}>
-          <ThemedFlatList data={dataPlans} renderItem={PlanItem} style={{ width: '100%' }} onPress={onPress} />
+          <ThemedFlatList data={data} renderItem={PlanItem} style={{ width: '100%' }} onPress={onPress} />
         </ThemedView>
       </ThemedView>
     </ThemedLayout>

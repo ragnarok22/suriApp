@@ -28,3 +28,8 @@ export const data: HomeActions = [{
   title: t('home.recharge_mobile_data'),
   description: t('home.recharge_mobile_data_description'),
 }];
+
+export const phones = [{
+  "number": "2266",
+  "name": "Customer Service"
+}];

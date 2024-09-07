@@ -12,7 +12,7 @@ export type Carrier = "telesur" | "digicel"
 export type Plan = {
   id: number
   duration: string
-  data: string
+  data: number
   price: number
   code: string
 }

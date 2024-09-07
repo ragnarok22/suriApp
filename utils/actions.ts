@@ -35,3 +35,11 @@ export function check_buy_message(message: string) {
   const matchBuyData = regexBuyData.test(message);
   return !!matchBuyData;
 }
+
+export function humanize_data(data: number) {
+  if (data < 1024) {
+    return `${data} MB`;
+  } else {
+    return `${data / 1024} GB`;
+  }
+}
