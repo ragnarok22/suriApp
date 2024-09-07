@@ -53,6 +53,8 @@
     "provider": "Provider",
     "contact_developer": "Neem contact op met de ontwikkelaar",
     "open_website": "🌐 Open website",
+    "clear_config": "Configuraties wissen",
+    "config_cleared": "Configuraties gewist",
   },
   "mobile": {
     "title": "Mobiele data plannen",

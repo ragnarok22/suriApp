@@ -13,8 +13,8 @@ import PrivateNumberModal from "./PrivateNumber";
 import SetPinModal from "./SetPinModal";
 import FirstTimeTransferModal from "./FirstTimeTransferModal";
 import TransferBalanceModal from "./TransferBalanceModal";
+import { useConfig } from "@/hooks/useConfig";
 const { t } = i18next;
-
 
 type ItemProps = {
   item: Action
@@ -63,12 +63,12 @@ type ModalType = "recharge_balance" | "first_time_transfer" | "set_p2p_pin" | "t
 
 export default function MainActionList() {
   const [modalVisible, setModalVisible] = useState<ModalType | null>();
+  const config = useConfig();
 
   useEffect(() => {
     const subscription = DeviceEventEmitter.addListener('SMSReceived', (message) => {
       if (message.sender == '4040') {
         if (check_buy_message(message.message)) {
-          console.log('send A to confirm')
           sendSms('4040', 'A');
           return
         }
@@ -104,9 +104,9 @@ export default function MainActionList() {
         setModalVisible('set_p2p_pin');
         break;
       case 'transfer_balance': {
-        const hasPin = false;
+        const isFirstTime = await config.isFirstTimeTransfer();
 
-        if (!hasPin) {
+        if (isFirstTime) {
           setModalVisible('first_time_transfer');
         } else {
           setModalVisible('transfer_balance');
@@ -134,12 +134,16 @@ export default function MainActionList() {
   const isFirstTimeTransferOpen = modalVisible === 'first_time_transfer';
   const closeFirstTimeTransferModal = () => setModalVisible(null);
   const handleSetPincode = () => setModalVisible('set_p2p_pin');
-  const handleIHavePincode = () => setModalVisible('transfer_balance');
+  const handleIHavePincode = () => {
+    setModalVisible('transfer_balance');
+    config.toggleFirstTimeTransfer();
+  }
 
   const isSetP2PPingOpen = modalVisible === 'set_p2p_pin';
   const closeSetP2PPingModal = () => setModalVisible(null);
-  const handleSetP2PPing = (ping: string) => {
-    set_p2p_pin(ping);
+  const handleSetP2PPing = async (ping: string) => {
+    await set_p2p_pin(ping);
+    await config.toggleFirstTimeTransfer();
   }
 
   const isTransferBalanceOpen = modalVisible === 'transfer_balance';

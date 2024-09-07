@@ -53,6 +53,8 @@
     "provider": "Operadora",
     "contact_developer": "Contatar o Desenvolvedor",
     "open_website": "🌐 Abrir Site",
+    "clear_config": "Limpar Configurações",
+    "config_cleared": "Configurações limpas",
   },
   "mobile": {
     "title": "Planos de Dados Móveis",

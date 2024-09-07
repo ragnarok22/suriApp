@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import * as Cellular from 'expo-cellular';
-import { Button, Linking, StyleSheet, useColorScheme } from 'react-native';
+import { Button, Linking, StyleSheet, ToastAndroid, useColorScheme } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
 import { ThemedText, ThemedView } from '@/components/themed';
@@ -10,16 +10,17 @@ import { Carrier } from '@/constants/definitions';
 import { getCarrierName } from '@/utils/mobile';
 import { info } from '@/utils/info';
 import { useTranslation } from 'react-i18next';
+import { useConfig } from '@/hooks/useConfig';
 
 export default function SettingsScreen() {
   const { t } = useTranslation();
+  const config = useConfig();
   const colorScheme = useColorScheme() ?? 'light';
   const [carrier, setCarrier] = useState<Carrier>('telesur');
   const version = info().version;
 
   useEffect(() => {
     Cellular.getCarrierNameAsync().then((carrier) => {
-      console.log(carrier)
       setCarrier(getCarrierName(carrier || 'TeleG'));
     });
   }, []);
@@ -46,7 +47,16 @@ export default function SettingsScreen() {
         </Picker>
       </ThemedView>
 
+
       <ThemedView style={[{ display: 'flex', gap: 12, marginTop: 'auto' }, styles.transparent]}>
+        <Button
+          title={t('settings.clear_config')}
+          onPress={async () => {
+            await config.clear()
+            ToastAndroid.show(t('settings.config_cleared'), ToastAndroid.SHORT)
+          }}
+        />
+
         <ThemedView style={styles.division} />
         <ThemedView style={styles.contactButton}>
           <Button
