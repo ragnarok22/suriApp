@@ -39,6 +39,11 @@
       "transfer": "Overdracht",
       "transfer_title": "Saldo overmaken",
       "write_phone_number": "Schrijf het telefoonnummer",
+      "write_amount": "Schrijf het bedrag",
+      "write_pincode": "Schrijf je pincode",
+      "amount_error": "Bedrag moet groter zijn dan 0",
+      "phone_number_error": "Telefoonnummer moet 7 cijfers bevatten",
+      "pincode_error": "Pincode moet 6 cijfers bevatten",
     },
   },
   "settings": {

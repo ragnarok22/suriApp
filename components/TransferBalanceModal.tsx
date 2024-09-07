@@ -1,4 +1,4 @@
-import { PermissionsAndroid, Pressable, StyleSheet, TextInput, View } from "react-native";
+import { Pressable, StyleSheet, TextInput, ToastAndroid, View, Text } from "react-native";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import * as Contacts from 'expo-contacts';
@@ -10,24 +10,63 @@ import ContactIcon from "./icons/ContactIcon";
 type TransferBalanceModalProps = {
   open: boolean;
   close: () => void;
-  onAccept: (phoneNumber: string) => void;
+  onAccept: (phoneNumber: string, amount: number, pincode: string) => Promise<void>;
 };
 
 export default function TransferBalanceModal({ open, close, onAccept }: TransferBalanceModalProps) {
   const backgroundColor = useThemeColor({ light: '#ECEDEE', dark: 'white' }, 'background');
   const { t } = useTranslation();
   const [phoneNumber, setPhoneNumber] = useState<string>('');
+  const [amount, setAmount] = useState<string>('0');
+  const [pincode, setPincode] = useState<string>('');
 
-  const handleAccept = () => {
-    onAccept(phoneNumber);
-    setPhoneNumber('');
+  const handleAccept = async () => {
+    const saldo = parseInt(amount);
+    if (saldo <= 0) {
+      ToastAndroid.show(t('home.transfer.amount_error'), ToastAndroid.SHORT);
+      return;
+    }
+
+    if (!phoneNumber || !validatePhoneNumber(phoneNumber)) {
+      ToastAndroid.show(t('home.transfer.phone_number_error'), ToastAndroid.SHORT);
+      return;
+    }
+
+    if (!pincode || !validatePincode(pincode)) {
+      ToastAndroid.show(t('home.transfer.pincode_error'), ToastAndroid.SHORT);
+      return;
+    }
+
+    await onAccept(phoneNumber, saldo, pincode);
+    cleanForm();
     close();
   }
 
+  const validatePhoneNumber = (phoneNumber: string): boolean => {
+    return phoneNumber.length === 7;
+  }
+
+  const validatePincode = (pincode: string): boolean => {
+    return pincode.length === 6;
+  }
+
+  const cleanForm = () => {
+    setPhoneNumber('');
+    setAmount('0');
+    setPincode('');
+  }
+
   const handleOpenContacts = async () => {
-    // const response = await Contacts.requestPermissionsAsync();
-    const response = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS)
-    console.log(response)
+    const { status } = await Contacts.requestPermissionsAsync();
+    if (status !== Contacts.PermissionStatus.GRANTED) {
+      ToastAndroid.show('Permission to access contacts was denied', ToastAndroid.SHORT);
+      close();
+    }
+
+    console.log('permission granted')
+    const { data } = await Contacts.getContactsAsync();
+    console.log('contacts')
+    console.log(data[0])
   }
 
   return (
@@ -37,6 +76,7 @@ export default function TransferBalanceModal({ open, close, onAccept }: Transfer
       animationType="slide"
       transparent={true}
       onRequestClose={() => {
+        cleanForm();
         close();
       }}
       onAccept={handleAccept}
@@ -44,23 +84,53 @@ export default function TransferBalanceModal({ open, close, onAccept }: Transfer
     >
       <ThemedText type="subtitle">{t('home.transfer.transfer_title')}</ThemedText>
 
-      <View style={styles.inputView}>
-        <TextInput
-          style={[styles.phone, { backgroundColor }]}
-          placeholder={t('home.transfer.write_phone_number')}
-          keyboardType="phone-pad"
-          value={phoneNumber}
-          onChangeText={setPhoneNumber}
-        />
-        <Pressable onPress={handleOpenContacts}>
+      <View style={styles.inputContainerView}>
+        <View style={styles.inputView}>
+          <TextInput
+            style={[styles.input, { backgroundColor }]}
+            placeholder={t('home.transfer.write_phone_number')}
+            keyboardType="phone-pad"
+            value={phoneNumber}
+            onChangeText={setPhoneNumber}
+            maxLength={7}
+          />
+          {/**<Pressable onPress={handleOpenContacts}>
           <ContactIcon size={40} />
-        </Pressable>
+        </Pressable>**/}
+        </View>
+        <View style={styles.inputForm}>
+          <Text style={styles.inputLabel}>🔑</Text>
+          <TextInput
+            style={[styles.input, { backgroundColor }]}
+            placeholder={t('home.transfer.write_pincode')}
+            keyboardType="numeric"
+            value={pincode}
+            onChangeText={setPincode}
+            maxLength={6}
+          />
+        </View>
+        <View style={styles.inputForm}>
+          <Text style={styles.inputLabel}>SRD</Text>
+          <TextInput
+            style={[styles.input, { backgroundColor }]}
+            placeholder={t('home.transfer.write_amount')}
+            keyboardType="numeric"
+            value={amount}
+            onChangeText={setAmount}
+          />
+        </View>
       </View>
     </ThemedModal>
   );
 }
 
 const styles = StyleSheet.create({
+  inputContainerView: {
+    width: '100%',
+    marginTop: 16,
+    marginBottom: 16,
+    gap: 12,
+  },
   inputView: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -69,10 +139,26 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 16,
   },
-  phone: {
+  inputForm: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  inputLabel: {
+    backgroundColor: '#ECEDEE',
+    paddingVertical: 10,
+    paddingHorizontal: 8,
+    height: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderTopLeftRadius: 4,
+    borderBottomLeftRadius: 4,
+  },
+  input: {
     paddingHorizontal: 12,
     paddingVertical: 8,
-    borderRadius: 4,
-    flex: 1,
+    borderTopRightRadius: 4,
+    borderBottomRightRadius: 4,
+    flexGrow: 1,
   },
 });

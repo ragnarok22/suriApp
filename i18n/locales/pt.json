@@ -39,6 +39,11 @@
       "transfer": "Transferir",
       "transfer_title": "Transferir Saldo",
       "write_phone_number": "Escreva o número de telefone",
+      "write_amount": "Escreva o montante",
+      "write_pincode": "Escreva o seu PIN",
+      "amount_error": "O montante deve ser superior a 0",
+      "phone_number_error": "O número de telefone deve ter 7 dígitos",
+      "pincode_error": "O PIN deve ter 6 dígitos",
     },
   },
   "settings": {

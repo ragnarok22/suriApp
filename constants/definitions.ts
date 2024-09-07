@@ -1,6 +1,6 @@
 export type Action = {
   id: string
-  icon: string
+  icon: string | JSX.Element
   title: string
   description: string
 }

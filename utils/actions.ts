@@ -8,8 +8,8 @@ export function recharge_balance(pincode: string) {
   makeCall(`*131*${pincode}#`);
 }
 
-export function transfer_balance() {
-  console.log('transfer balance');
+export async function set_p2p_pin(ping: string) {
+  await sendSms('134', `SET ${ping}`);
 }
 
 export async function check_mobile_data() {
@@ -17,8 +17,8 @@ export async function check_mobile_data() {
   sendSms('4040', 'NET INFO');
 }
 
-export function recharge_mobile_data() {
-  console.log('recharge mobile data');
+export async function transfer_balance(pincode: string, amount: number, phone_number: string) {
+  await sendSms('134', `p2p ${pincode} ${amount} ${phone_number}`);
 }
 
 export function extract_balance(message: string) {

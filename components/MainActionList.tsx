@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, DeviceEventEmitter, TouchableOpacity } from "react-native";
 import { router } from "expo-router";
 
-import { Action, HomeActions } from "@/constants/definitions";
+import { Action } from "@/constants/definitions";
 import { ThemedFlatList, ThemedText, ThemedView } from "@/components/themed";
-import { check_balance, check_buy_message, check_mobile_data, extract_balance, recharge_balance, transfer_balance } from "@/utils/actions";
+import { check_balance, check_buy_message, check_mobile_data, extract_balance, recharge_balance, set_p2p_pin, transfer_balance } from "@/utils/actions";
 import i18next from '@/i18n'
 import RechargeBalanceModal from "./RechargeBalanceModal";
 import { sendSms } from "@/utils/mobile";
@@ -139,12 +139,13 @@ export default function MainActionList() {
   const isSetP2PPingOpen = modalVisible === 'set_p2p_pin';
   const closeSetP2PPingModal = () => setModalVisible(null);
   const handleSetP2PPing = (ping: string) => {
-    sendSms('134', `SET ${ping}`);
+    set_p2p_pin(ping);
   }
 
   const isTransferBalanceOpen = modalVisible === 'transfer_balance';
   const closeTransferBalanceModal = () => setModalVisible(null);
-  const handleTransferBalance = (phone_number: string) => {
+  const handleTransferBalance = async (phone_number: string, amount: number, pincode: string) => {
+    await transfer_balance(pincode, amount, phone_number);
   }
 
   const isPrivateNumberOpen = modalVisible === 'private_number';

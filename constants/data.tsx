@@ -3,7 +3,7 @@ import { HomeActions } from './definitions';
 import PhoneIcon from '@/components/icons/PhoneIcon';
 const { t } = i18next;
 
-export const data = [{
+export const data: HomeActions = [{
   id: 'check_balance',
   icon: '💰',
   title: t('home.check_balance'),

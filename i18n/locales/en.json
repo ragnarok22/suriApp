@@ -39,6 +39,11 @@
       "transfer": "Transfer",
       "transfer_title": "Transfer Balance",
       "write_phone_number": "Write the phone number",
+      "write_amount": "Write the amount",
+      "write_pincode": "Write your pincode",
+      "amount_error": "Amount must be greater than 0",
+      "phone_number_error": "Phone number must be 7 digits",
+      "pincode_error": "Pincode must be 6 digits",
     },
   },
   "settings": {
