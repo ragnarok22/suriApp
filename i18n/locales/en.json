@@ -4,6 +4,8 @@
   "hours": "Hours",
   "day": "Day",
   "days": "Days",
+  "deactivate": "Deactivate",
+  "activate": "Activate",
   "home": {
     "title": "Home",
     "check_balance": "Check Balance",
@@ -23,6 +25,8 @@
     "error_insufficient_balance": "Insufficient balance",
     "success": "Success",
     "success_recharge_balance": "Balance recharged successfully",
+    "private_number": "Private number",
+    "private_number_description": "Make your number private",
   },
   "settings": {
     "title": "Settings",

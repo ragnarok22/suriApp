@@ -4,6 +4,8 @@
   "hours": "Uren",
   "day": "Dag",
   "days": "Dagen",
+  "deactivate": "Deactiveren",
+  "activate": "Activeren",
   "home": {
     "title": "Naar huis",
     "check_balance": "Controleer saldo",
@@ -23,6 +25,8 @@
     "error_insufficient_balance": "Onvoldoende saldo",
     "success": "Succes",
     "success_recharge_balance": "Saldo succesvol herladen",
+    "private_number": "Privénummer",
+    "private_number_description": "Maak je nummer privé",
   },
   "settings": {
     "title": "Instellingen",

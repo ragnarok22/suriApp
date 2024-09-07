@@ -4,6 +4,8 @@
   "hours": "Horas",
   "day": "Dia",
   "days": "Dias",
+  "deactivate": "Desativar",
+  "activate": "Ativar",
   "home": {
     "title": "Página Inicial",
     "check_balance": "Consultar Saldo",
@@ -23,6 +25,8 @@
     "error_insufficient_balance": "Saldo insuficiente",
     "success": "Sucesso",
     "success_recharge_balance": "Saldo recarregado com sucesso",
+    "private_number": "Número Privado",
+    "private_number_description": "Torne o seu número privado",
   },
   "settings": {
     "title": "Configurações",
