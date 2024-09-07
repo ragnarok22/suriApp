@@ -10,6 +10,9 @@ import RechargeBalanceModal from "./RechargeBalanceModal";
 import { sendSms } from "@/utils/mobile";
 import { data } from "@/constants/data";
 import PrivateNumberModal from "./PrivateNumber";
+import SetPinModal from "./SetPinModal";
+import FirstTimeTransferModal from "./FirstTimeTransferModal";
+import TransferBalanceModal from "./TransferBalanceModal";
 const { t } = i18next;
 
 
@@ -40,11 +43,13 @@ const Item = ({ item, onPress }: ItemProps) => (
 
 const ActionItem = ({ item, onPress }: ActionItemsProps) => {
   const emptyFunction = () => { }
+
   const handlePress = () => {
     if (onPress) {
       onPress(item.id)
     }
   }
+
   return (
     <>
       <ThemedView key={item.id}>
@@ -54,7 +59,7 @@ const ActionItem = ({ item, onPress }: ActionItemsProps) => {
   )
 }
 
-type ModalType = "recharge_balance" | "transfer_balance" | "private_number";
+type ModalType = "recharge_balance" | "first_time_transfer" | "set_p2p_pin" | "transfer_balance" | "private_number";
 
 export default function MainActionList() {
   const [modalVisible, setModalVisible] = useState<ModalType | null>();
@@ -95,10 +100,19 @@ export default function MainActionList() {
       case 'recharge_balance':
         setModalVisible('recharge_balance')
         break;
-      case 'transfer_balance':
-        setModalVisible('transfer_balance');
-        transfer_balance();
+      case 'set_p2p_pin':
+        setModalVisible('set_p2p_pin');
         break;
+      case 'transfer_balance': {
+        const hasPin = false;
+
+        if (!hasPin) {
+          setModalVisible('first_time_transfer');
+        } else {
+          setModalVisible('transfer_balance');
+        }
+        break;
+      }
       case 'check_mobile_data':
         await check_mobile_data();
         break;
@@ -117,16 +131,32 @@ export default function MainActionList() {
     recharge_balance(pincode);
   }
 
-  const isPrivateNumberOpen = modalVisible === 'private_number';
-  const closePrivateNumberModal = () => setModalVisible(null);
-  const handlePrivateNumber = () => {
+  const isFirstTimeTransferOpen = modalVisible === 'first_time_transfer';
+  const closeFirstTimeTransferModal = () => setModalVisible(null);
+  const handleSetPincode = () => setModalVisible('set_p2p_pin');
+  const handleIHavePincode = () => setModalVisible('transfer_balance');
+
+  const isSetP2PPingOpen = modalVisible === 'set_p2p_pin';
+  const closeSetP2PPingModal = () => setModalVisible(null);
+  const handleSetP2PPing = (ping: string) => {
+    sendSms('134', `SET ${ping}`);
   }
 
+  const isTransferBalanceOpen = modalVisible === 'transfer_balance';
+  const closeTransferBalanceModal = () => setModalVisible(null);
+  const handleTransferBalance = (phone_number: string) => {
+  }
+
+  const isPrivateNumberOpen = modalVisible === 'private_number';
+  const closePrivateNumberModal = () => setModalVisible(null);
 
   return (
     <>
       <RechargeBalanceModal open={isRechageBalanceOpen} close={closeRechargeBalanceModal} onAccept={handleRechageBalance} />
-      <PrivateNumberModal open={isPrivateNumberOpen} close={closePrivateNumberModal} onAccept={handlePrivateNumber} />
+      <FirstTimeTransferModal open={isFirstTimeTransferOpen} close={closeFirstTimeTransferModal} onSetPincode={handleSetPincode} onHavePincode={handleIHavePincode} />
+      <SetPinModal open={isSetP2PPingOpen} close={closeSetP2PPingModal} onAccept={handleSetP2PPing} />
+      <TransferBalanceModal open={isTransferBalanceOpen} close={closeTransferBalanceModal} onAccept={handleTransferBalance} />
+      <PrivateNumberModal open={isPrivateNumberOpen} close={closePrivateNumberModal} />
       <ThemedFlatList data={data} renderItem={ActionItem} style={{ width: '100%' }} onPress={onPress} />
     </>
   )
