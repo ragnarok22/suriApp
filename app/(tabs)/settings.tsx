@@ -30,6 +30,9 @@ export default function SettingsScreen() {
         <ThemedText>{t('settings.version')} {version}</ThemedText>
       </ThemedView>
 
+      <ThemedView style={[styles.transparent]}>
+        <ThemedText style={[{ textAlign: 'center', fontSize: 18 }]}>{t('settings.description')}</ThemedText>
+      </ThemedView>
 
       <ThemedView style={[styles.transparent, styles.provider]}>
         <ThemedText>{t('settings.provider')}:</ThemedText>
@@ -41,10 +44,6 @@ export default function SettingsScreen() {
           <Picker.Item label="Telesur" value="telesur" />
           {/**<Picker.Item label="Digicel" value="digicel" />**/}
         </Picker>
-      </ThemedView>
-
-      <ThemedView style={[styles.transparent]}>
-        <ThemedText style={[{ textAlign: 'center', fontSize: 18 }]}>{t('settings.description')}</ThemedText>
       </ThemedView>
 
       <ThemedView style={[{ display: 'flex', gap: 12, marginTop: 'auto' }, styles.transparent]}>

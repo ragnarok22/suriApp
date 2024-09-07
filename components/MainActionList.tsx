@@ -8,6 +8,7 @@ import { check_balance, check_buy_message, check_mobile_data, extract_balance, r
 import i18next from '@/i18n'
 import RechargeBalanceModal from "./RechargeBalanceModal";
 import { sendSms } from "@/utils/mobile";
+import { data } from "@/constants/data";
 const { t } = i18next;
 
 
@@ -56,32 +57,6 @@ type ModalType = "recharge_balance" | "transfer_balance";
 
 export default function MainActionList() {
   const [modalVisible, setModalVisible] = useState<ModalType | null>();
-  const data: HomeActions = useMemo(() => [{
-    id: 'check_balance',
-    icon: '💰',
-    title: t('home.check_balance'),
-    description: t('home.check_balance_description'),
-  }, {
-    id: 'recharge_balance',
-    icon: '💳',
-    title: t('home.recharge_balance'),
-    description: t('home.recharge_balance_description'),
-    // }, {
-    //   id: 'transfer_balance',
-    //   icon: '💸',
-    //   title: t('home.transfer_balance'),
-    //   description: t('home.transfer_balance_description'),
-  }, {
-    id: 'check_mobile_data',
-    icon: '📱',
-    title: t('home.check_mobile_data'),
-    description: t('home.check_mobile_data_description'),
-  }, {
-    id: 'recharge_mobile_data',
-    icon: '📶',
-    title: t('home.recharge_mobile_data'),
-    description: t('home.recharge_mobile_data_description'),
-  }], []);
 
   useEffect(() => {
     const subscription = DeviceEventEmitter.addListener('SMSReceived', (message) => {
