@@ -27,6 +27,11 @@ export const data: HomeActions = [{
   icon: '📶',
   title: t('home.recharge_mobile_data'),
   description: t('home.recharge_mobile_data_description'),
+}, {
+  id: 'private_number',
+  icon: '📞',
+  title: t('home.private_number'),
+  description: t('home.private_number_description'),
 }];
 
 export const phones = [{

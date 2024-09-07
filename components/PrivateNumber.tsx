@@ -1,16 +1,17 @@
-import { Alert, StyleSheet, TextInput } from "react-native";
+import { Alert, StyleSheet } from "react-native";
 import { ThemedText, ThemedModal } from "@/components/themed";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { useThemeColor } from "@/hooks/useThemeColor";
+import { makeCall } from "@/utils/mobile";
 
-type RechargeBalanceModalProps = {
+type PrivateNumberModalProps = {
   open: boolean;
   close: () => void;
   onAccept: (pincode: string) => void;
 };
 
-export default function RechargeBalanceModal({ open, close, onAccept }: RechargeBalanceModalProps) {
+export default function PrivateNumberModal({ open, close, onAccept }: PrivateNumberModalProps) {
   const backgroundColor = useThemeColor({ light: '#ECEDEE', dark: 'white' }, 'background');
   const { t } = useTranslation();
   const [pincode, setPincode] = useState<string>('');
@@ -33,35 +34,36 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
     return true;
   }
 
+  const handleDeactivate = () => {
+    makeCall('#31#');
+    close();
+  }
+
+  const handleActivate = () => {
+    makeCall('*31#');
+    close();
+  }
+
+
+
   return (
     <ThemedModal
       open={open}
-      close={close}
+      close={handleDeactivate}
       animationType="slide"
       transparent={true}
       onRequestClose={() => {
         close();
       }}
-      onAccept={handleAccept}
+      onAccept={handleActivate}
+      cancelText={t('deactivate')}
+      acceptText={t('activate')}
     >
-      <ThemedText type="subtitle">{t('home.recharge_balance')}</ThemedText>
-      <TextInput
-        style={[styles.pincode, { backgroundColor }]}
-        placeholder={t('home.write_your_pincode')}
-        keyboardType="numeric"
-        value={pincode}
-        onChangeText={setPincode}
-      />
+      <ThemedText type="subtitle" style={{ textAlign: 'center' }}>Do you want to activate your private number?</ThemedText>
+      <ThemedText style={{ marginBottom: 16, marginTop: 8 }}>When you activate your private number, your number will be hidden from the person you are calling until you deactivate it.</ThemedText>
     </ThemedModal>
   );
 }
 
 const styles = StyleSheet.create({
-  pincode: {
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderRadius: 4,
-    width: '100%',
-    marginTop: 12,
-  },
 });

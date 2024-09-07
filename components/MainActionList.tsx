@@ -9,6 +9,7 @@ import i18next from '@/i18n'
 import RechargeBalanceModal from "./RechargeBalanceModal";
 import { sendSms } from "@/utils/mobile";
 import { data } from "@/constants/data";
+import PrivateNumberModal from "./PrivateNumber";
 const { t } = i18next;
 
 
@@ -53,7 +54,7 @@ const ActionItem = ({ item, onPress }: ActionItemsProps) => {
   )
 }
 
-type ModalType = "recharge_balance" | "transfer_balance";
+type ModalType = "recharge_balance" | "transfer_balance" | "private_number";
 
 export default function MainActionList() {
   const [modalVisible, setModalVisible] = useState<ModalType | null>();
@@ -104,19 +105,28 @@ export default function MainActionList() {
       case 'recharge_mobile_data':
         router.push('/mobile');
         break;
+      case 'private_number':
+        setModalVisible('private_number');
+        break;
     }
   }
 
   const isRechageBalanceOpen = modalVisible === 'recharge_balance';
   const closeRechargeBalanceModal = () => setModalVisible(null);
-
   const handleRechageBalance = (pincode: string) => {
     recharge_balance(pincode);
   }
 
+  const isPrivateNumberOpen = modalVisible === 'private_number';
+  const closePrivateNumberModal = () => setModalVisible(null);
+  const handlePrivateNumber = () => {
+  }
+
+
   return (
     <>
       <RechargeBalanceModal open={isRechageBalanceOpen} close={closeRechargeBalanceModal} onAccept={handleRechageBalance} />
+      <PrivateNumberModal open={isPrivateNumberOpen} close={closePrivateNumberModal} onAccept={handlePrivateNumber} />
       <ThemedFlatList data={data} renderItem={ActionItem} style={{ width: '100%' }} onPress={onPress} />
     </>
   )

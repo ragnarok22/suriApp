@@ -8,6 +8,8 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 type ThemedModalProps = ComponentProps<typeof Modal> & {
   open: boolean;
   close: () => void;
+  cancelText?: string;
+  acceptText?: string;
   children: React.ReactNode;
   onAccept: () => void;
 };
@@ -37,13 +39,13 @@ export default function ThemedModal({ children, open, close, onAccept, ...modalP
                 close();
               }}
             >
-              <ThemedText style={[styles.btnText, { color }]}>{t('cancel')}</ThemedText>
+              <ThemedText style={[styles.btnText, { color }]}>{modalProps.cancelText || t('cancel')}</ThemedText>
             </Pressable>
             <Pressable
               style={[styles.btn, styles.acceptBtn]}
               onPress={onAccept}
             >
-              <ThemedText style={[styles.btnText, { color }]}>{t('accept')}</ThemedText>
+              <ThemedText style={[styles.btnText, { color }]}>{modalProps.acceptText || t('accept')}</ThemedText>
             </Pressable>
           </ThemedView>
         </ThemedView>
