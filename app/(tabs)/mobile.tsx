@@ -77,7 +77,7 @@ export default function MobileScreen() {
     sendSms('4040', code);
   }
 
-  const data = dataPlans.map((plan) => ({ ...plan, duration: humanize_data(plan.data) }));
+  const data = dataPlans.map((plan) => ({ ...plan, data: humanize_data(plan.data) }));
 
   return (
     <ThemedLayout
