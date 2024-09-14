@@ -7,7 +7,17 @@
   "deactivate": "Deactivate",
   "activate": "Activate",
   "onboarding": {
+    "skip": "Skip",
+    "next": "Next",
+    "done": "Done",
     "welcome": "Welcome",
+    "welcome_description": "Easily manage your mobile credit and data plans. Top up your balance and stay connected anytime, anywhere.",
+    "multiple_languages": "Multiple languages",
+    "choose_your_language": "Available in your language and Dutch, Spanish and Portuguese",
+    "offline": "Total privacy, no internet",
+    "use_without_internet": "Your data stays on your device, 100% private.",
+    "touch": "Manage your data plan in seconds",
+    "touch_description": "Check your balance, recharge your data plan, transfer balance and much more in a couple of taps.",
   },
   "home": {
     "title": "Home",

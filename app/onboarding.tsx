@@ -28,7 +28,19 @@ export default function OnboardingScreen() {
       />
     ),
     title: t('onboarding.welcome'),
-    subtitle: t('onboarding.manage_your_mobile_balance'),
+    subtitle: t('onboarding.welcome_description'),
+  }, {
+    backgroundColor,
+    image: (
+      <Lottie
+        source={require('../assets/animations/touch.json')}
+        autoPlay
+        loop
+        style={styles.lottie}
+      />
+    ),
+    title: t('onboarding.touch'),
+    subtitle: t('onboarding.touch_description'),
   }, {
     backgroundColor,
     image: (
@@ -39,8 +51,20 @@ export default function OnboardingScreen() {
         style={styles.lottie}
       />
     ),
-    title: 'Multiple languages',
-    subtitle: 'Available in English, Dutch, Spanish and Portuguese',
+    title: t('onboarding.multiple_languages'),
+    subtitle: t('onboarding.choose_your_language'),
+  }, {
+    backgroundColor,
+    image: (
+      <Lottie
+        source={require('../assets/animations/offline.json')}
+        autoPlay
+        loop
+        style={styles.lottie}
+      />
+    ),
+    title: t('onboarding.offline'),
+    subtitle: t('onboarding.use_without_internet'),
   }];
 
   const handleDone = async () => {

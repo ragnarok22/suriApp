@@ -1,12 +1,13 @@
 import { useTranslation } from "react-i18next";
-import { TouchableOpacity, Text, StyleSheet, ButtonProps } from "react-native";
+import { TouchableOpacity, StyleSheet, ButtonProps } from "react-native";
+import { ThemedText } from "../themed";
 
 export default function SkipButton({ ...props }: ButtonProps) {
   const { t } = useTranslation();
 
   return (
     <TouchableOpacity style={styles.doneButton} {...props}>
-      <Text style={styles.doneText}>{t('onboarding.skip')}</Text>
+      <ThemedText>{t('onboarding.skip')}</ThemedText>
     </TouchableOpacity>
   );
 }
@@ -14,9 +15,5 @@ export default function SkipButton({ ...props }: ButtonProps) {
 const styles = StyleSheet.create({
   doneButton: {
     padding: 20,
-  },
-  doneText: {
-    color: 'white',
-    fontSize: 16,
   },
 });
