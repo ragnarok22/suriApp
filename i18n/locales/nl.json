@@ -58,6 +58,8 @@
       "phone_number_error": "Telefoonnummer moet 7 cijfers bevatten",
       "pincode_error": "Pincode moet 6 cijfers bevatten",
     },
+    "phones": "Handige telefoonnummers",
+    "phones_description": "Handige telefoonnummers",
   },
   "settings": {
     "title": "Instellingen",
@@ -73,4 +75,12 @@
   "mobile": {
     "title": "Mobiele data plannen",
   },
+  "phones": {
+    "title": "Handige telefoonnummers",
+    "customer_service": "Klantenservice",
+    "firefighters": "Brandweer",
+    "emergency": "Noodgevallen",
+    "my_phone_number": "Mijn telefoonnummer",
+    "get_current_time": "Huidige tijd ophalen",
+  }
 }

@@ -56,6 +56,12 @@ export default function TabLayout() {
           href: null,
         }}
       />
+      <Tabs.Screen
+        name="phones"
+        options={{
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }

@@ -58,6 +58,8 @@
       "phone_number_error": "Phone number must be 7 digits",
       "pincode_error": "Pincode must be 6 digits",
     },
+    "phones": "Useful Phone Numbers",
+    "phones_description": "Useful phone numbers",
   },
   "settings": {
     "title": "Settings",
@@ -73,4 +75,12 @@
   "mobile": {
     "title": "Mobile Data plans",
   },
+  "phones": {
+    "title": "Useful Phone Numbers",
+    "customer_service": "Customer Service",
+    "firefighters": "Firefighters",
+    "emergency": "Emergency",
+    "my_phone_number": "My Phone Number",
+    "get_current_time": "Get Current Time",
+  }
 }

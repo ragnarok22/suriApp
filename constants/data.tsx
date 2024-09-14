@@ -6,6 +6,7 @@ import AttachMoneyIcon from '@/components/icons/AttachMoney';
 import MoneyTransferIcon from '@/components/icons/MoneyTransferIcon';
 import MobileScreenIcon from '@/components/icons/MobileScreenIcon';
 import MobileIcon from '@/components/icons/MobileIcon';
+import ContactIcon from '@/components/icons/ContactIcon';
 const { t } = i18next;
 
 export const data: HomeActions = [{
@@ -18,11 +19,11 @@ export const data: HomeActions = [{
   icon: <MoneyIcon size={25} />,
   title: t('home.recharge_balance'),
   description: t('home.recharge_balance_description'),
-  }, {
-    id: 'transfer_balance',
-    icon: <MoneyTransferIcon size={25} />,
-    title: t('home.transfer_balance'),
-    description: t('home.transfer_balance_description'),
+}, {
+  id: 'transfer_balance',
+  icon: <MoneyTransferIcon size={25} />,
+  title: t('home.transfer_balance'),
+  description: t('home.transfer_balance_description'),
 }, {
   id: 'check_mobile_data',
   icon: <MobileScreenIcon size={25} />,
@@ -38,14 +39,26 @@ export const data: HomeActions = [{
   icon: <PhoneIcon size={25} />,
   title: t('home.private_number'),
   description: t('home.private_number_description'),
-}];
-
-export const utils = [{
-  "number": "*555#",
-  "name": "My Phone number"
+}, {
+  id: 'phones',
+  icon: <ContactIcon size={25} />,
+  title: t('home.phones'),
+  description: t('home.phones_description'),
 }];
 
 export const phones = [{
   "number": "152",
-  "name": "Customer Service"
+  "name": t('phones.customer_service')
+}, {
+  "number": "110",
+  "name": t('phones.firefighters')
+}, {
+  "number": "115",
+  "name": t('phones.emergency')
+}, {
+  "number": "*555#",
+  "name": t('phones.my_phone_number')
+}, {
+  "number": "102",
+  "name": t('phones.get_current_time')
 }];

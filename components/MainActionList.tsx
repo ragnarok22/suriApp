@@ -119,6 +119,9 @@ export default function MainActionList() {
       case 'recharge_mobile_data':
         router.push('/mobile');
         break;
+      case 'phones':
+        router.push('/phones');
+        break;
       case 'private_number':
         setModalVisible('private_number');
         break;

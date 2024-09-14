@@ -58,6 +58,8 @@
       "phone_number_error": "O número de telefone deve ter 7 dígitos",
       "pincode_error": "O PIN deve ter 6 dígitos",
     },
+    "phones": "Números de Telefone Úteis",
+    "phones_description": "Números de telefone úteis",
   },
   "settings": {
     "title": "Configurações",
@@ -73,4 +75,12 @@
   "mobile": {
     "title": "Planos de Dados Móveis",
   },
+  "phones": {
+    "title": "Números de Telefone Úteis",
+    "customer_service": "Serviço ao Cliente",
+    "firefighters": "Bombeiros",
+    "emergency": "Emergência",
+    "my_phone_number": "O Meu Número de Telefone",
+    "get_current_time": "Obter Hora Atual",
+  }
 }
