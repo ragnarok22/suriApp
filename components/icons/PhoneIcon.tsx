@@ -7,4 +7,3 @@ export default function PhoneIcon({ lightColor, darkColor, size = 28 }: IconProp
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
   return <Feather size={size} name='phone' style={{ color }} />
 }
-
