@@ -47,18 +47,23 @@ export const data: HomeActions = [{
 }];
 
 export const phones = [{
+  "id": "customer_service",
   "number": "152",
   "name": t('phones.customer_service')
 }, {
-  "number": "110",
-  "name": t('phones.firefighters')
+  "id": "get_current_time",
+  "number": "102",
+  "name": t('phones.get_current_time')
 }, {
-  "number": "115",
-  "name": t('phones.emergency')
-}, {
+  "id": "my_phone_number",
   "number": "*555#",
   "name": t('phones.my_phone_number')
 }, {
-  "number": "102",
-  "name": t('phones.get_current_time')
+  "id": "firefighters",
+  "number": "110",
+  "name": t('phones.firefighters')
+}, {
+  "id": "emergency",
+  "number": "115",
+  "name": t('phones.emergency')
 }];
