@@ -6,6 +6,13 @@
   "days": "Días",
   "deactivate": "Desactivar",
   "activate": "Activar",
+  "onboarding": {
+    "skip": "Saltar",
+    "next": "Siguiente",
+    "done": "Hecho",
+    "welcome": "Bienvenido",
+    "manage_your_mobile_balance": "Administra tu saldo móvil y planes de datos",
+  },
   "home": {
     "title": "Inicio",
     "check_balance": "Consultar Saldo",

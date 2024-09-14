@@ -4,6 +4,10 @@ import Lottie from 'lottie-react-native';
 import { useNavigation } from "expo-router";
 import { useConfig } from "@/hooks/useConfig";
 import { useThemeColor } from "@/hooks/useThemeColor";
+import DoneButton from "@/components/onboarding/DoneButton";
+import SkipButton from "@/components/onboarding/SkipButton";
+import NextButton from "@/components/onboarding/NextButton";
+import { useTranslation } from "react-i18next";
 
 const { width } = Dimensions.get('window');
 
@@ -11,6 +15,7 @@ export default function OnboardingScreen() {
   const navigation = useNavigation();
   const config = useConfig();
   const backgroundColor = useThemeColor({}, 'background');
+  const { t } = useTranslation();
 
   const pages = [{
     backgroundColor,
@@ -22,8 +27,8 @@ export default function OnboardingScreen() {
         style={styles.lottie}
       />
     ),
-    title: 'Welcome',
-    subtitle: 'Manage your Mobile Balance and Data',
+    title: t('onboarding.welcome'),
+    subtitle: t('onboarding.manage_your_mobile_balance'),
   }, {
     backgroundColor,
     image: (
@@ -53,6 +58,9 @@ export default function OnboardingScreen() {
       <Onboarding
         onDone={handleDone}
         onSkip={handleSkip}
+        SkipButtonComponent={SkipButton}
+        NextButtonComponent={NextButton}
+        DoneButtonComponent={DoneButton}
         containerStyles={{ paddingHorizontal: 15 }}
         pages={pages}
       />

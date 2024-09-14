@@ -6,6 +6,9 @@
   "days": "Days",
   "deactivate": "Deactivate",
   "activate": "Activate",
+  "onboarding": {
+    "welcome": "Welcome",
+  },
   "home": {
     "title": "Home",
     "check_balance": "Check Balance",
