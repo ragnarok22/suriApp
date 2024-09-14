@@ -17,6 +17,11 @@ export default function TabLayout() {
   const colorScheme = useColorScheme();
   const { t } = useTranslation();
 
+  // const showPresentation = true;
+  // if (showPresentation) {
+  //   return <Onboarding />;
+  // }
+
   return (
     <Tabs
       screenOptions={{

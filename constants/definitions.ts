@@ -1,3 +1,8 @@
+export type Config = {
+  firstTimeTransfer: boolean
+  newUser: boolean;
+};
+
 export type Action = {
   id: string
   icon: string | JSX.Element
