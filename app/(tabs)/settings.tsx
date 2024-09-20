@@ -27,7 +27,7 @@ export default function SettingsScreen() {
 
   return (
     <ThemedLayout headerBackgroundColor={{ dark: '#1D3D47', light: '#A1CEDC' }}>
-      <ScrollView style={styles.container}>
+      <ScrollView style={[styles.container]} contentContainerStyle={{ height: '100%' }}>
         <ThemedView style={styles.view}>
           <ThemedText>{t('settings.version')} {version}</ThemedText>
         </ThemedView>
@@ -72,11 +72,11 @@ export default function SettingsScreen() {
             />
           </ThemedView>
 
-        </ThemedView>
-        <ThemedView style={[styles.view, { marginTop: 'auto' }]}>
-          <ThemedText style={{ fontSize: 18, marginTop: 18 }}>
-            {t('settings.created_by')} <ExternalLink href="https://reinierhernandez.com" style={styles.link}>Reinier Hernández</ExternalLink>
-          </ThemedText>
+          <ThemedView style={[styles.view]}>
+            <ThemedText style={{ fontSize: 18, marginTop: 18 }}>
+              {t('settings.created_by')} <ExternalLink href="https://reinierhernandez.com" style={styles.link}>Reinier Hernández</ExternalLink>
+            </ThemedText>
+          </ThemedView>
         </ThemedView>
 
       </ScrollView>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 2,
     backgroundColor: 'rgba(0, 0, 0, 0.15)',
-    marginVertical: 16,
+    marginVertical: 8,
   },
   provider: {
     marginTop: 12,
