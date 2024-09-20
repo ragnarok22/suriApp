@@ -1,10 +1,11 @@
 import type { PropsWithChildren } from 'react';
-import { Image, StyleSheet, useColorScheme } from 'react-native';
+import { Image, ScrollView, StyleSheet, useColorScheme } from 'react-native';
 
 import { ThemedView, ThemedText } from '@/components/themed';
 
 type Props = PropsWithChildren<{
   title: string;
+  style: any;
 }>;
 
 const bgColors = {
@@ -15,34 +16,44 @@ const bgColors = {
 export default function NavigationLayout({
   children,
   title,
+  style,
 }: Props) {
   const colorScheme = useColorScheme() ?? 'light';
 
   return (
-    <ThemedView style={[
-      styles.container,
+    <ScrollView style={[
+      styles.scrollContainer,
       { backgroundColor: bgColors[colorScheme] },
     ]}>
-      <ThemedView
-        style={[
-          styles.header,
-          { backgroundColor: bgColors[colorScheme] },
-        ]}>
-        <ThemedText type="title">{title}</ThemedText>
-        <Image
-          source={require('@/assets/images/suri-logo.png')}
-          style={styles.logo}
-        />
-        <ThemedText type='subtitle'>Suri</ThemedText>
+      <ThemedView style={[
+        styles.container,
+      ]}>
+        <ThemedView
+          style={[
+            styles.header,
+            { backgroundColor: bgColors[colorScheme] },
+          ]}>
+          <ThemedText type="title">{title}</ThemedText>
+          <Image
+            source={require('@/assets/images/suri-logo.png')}
+            style={styles.logo}
+          />
+          <ThemedText type='subtitle'>Suri</ThemedText>
+        </ThemedView>
+        <ThemedView style={[styles.content, style, { backgroundColor: bgColors[colorScheme] }]}>
+          {children}
+        </ThemedView>
       </ThemedView>
-      <ThemedView style={[styles.content, { backgroundColor: bgColors[colorScheme] }]}>
-        {children}
-      </ThemedView>
-    </ThemedView>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    flex: 1,
+    height: '100%',
+    backgroundColor: 'red',
+  },
   container: {
     flex: 1,
     height: '100%',
@@ -60,5 +71,6 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     padding: 32,
+    height: '100%',
   },
 });
