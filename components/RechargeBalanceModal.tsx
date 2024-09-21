@@ -36,22 +36,28 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
     return true;
   }
 
+  const handleClose = () => {
+    setPincode('');
+    setShowScanCamera(false);
+    close();
+  }
+
   return (
     <ThemedModal
       open={open}
-      close={close}
+      close={handleClose}
       animationType="slide"
       transparent={true}
-      onRequestClose={() => {
-        close();
-      }}
+      onRequestClose={handleClose}
       onAccept={handleAccept}
     >
       {showScanCamera ? (
-        <ScanRechargeCard onDone={(card: string) => {
-          setPincode(card);
-          setShowScanCamera(false);
-        }} />
+        <View style={{ width: '100%', height: 350 }}>
+          <ScanRechargeCard onDone={(card: string) => {
+            setPincode(card);
+            setShowScanCamera(false);
+          }} />
+        </View>
       ) : (
         <>
           <ThemedText type="subtitle">{t('home.recharge_balance')}</ThemedText>
