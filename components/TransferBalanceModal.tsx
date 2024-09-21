@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, TextInput, ToastAndroid, View, Text } from "react-native";
+import { Pressable, StyleSheet, TextInput, View, Text } from "react-native";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import * as Contacts from 'expo-contacts';
@@ -6,6 +6,7 @@ import * as Contacts from 'expo-contacts';
 import { ThemedText, ThemedModal } from "@/components/themed";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import ContactIcon from "./icons/ContactIcon";
+import { toast } from "@/utils/mobile";
 
 type TransferBalanceModalProps = {
   open: boolean;
@@ -23,17 +24,17 @@ export default function TransferBalanceModal({ open, close, onAccept }: Transfer
   const handleAccept = async () => {
     const saldo = parseInt(amount);
     if (saldo <= 0) {
-      ToastAndroid.show(t('home.transfer.amount_error'), ToastAndroid.SHORT);
+      toast(t('home.transfer.amount_error'));
       return;
     }
 
     if (!phoneNumber || !validatePhoneNumber(phoneNumber)) {
-      ToastAndroid.show(t('home.transfer.phone_number_error'), ToastAndroid.SHORT);
+      toast(t('home.transfer.phone_number_error'));
       return;
     }
 
     if (!pincode || !validatePincode(pincode)) {
-      ToastAndroid.show(t('home.transfer.pincode_error'), ToastAndroid.SHORT);
+      toast(t('home.transfer.pincode_error'));
       return;
     }
 
@@ -59,7 +60,7 @@ export default function TransferBalanceModal({ open, close, onAccept }: Transfer
   const handleOpenContacts = async () => {
     const { status } = await Contacts.requestPermissionsAsync();
     if (status !== Contacts.PermissionStatus.GRANTED) {
-      ToastAndroid.show('Permission to access contacts was denied', ToastAndroid.SHORT);
+      toast(t('home.transfer.contacts_permission_error'));
       close();
     }
 
