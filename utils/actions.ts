@@ -43,3 +43,14 @@ export function humanize_data(data: number) {
     return `${data / 1024} GB`;
   }
 }
+
+export function getRechargeNumber(text: string): string | null {
+  const regex = /\d{4} \d{4} \d{4}/g;
+  const cardNumber = text.match(regex);
+
+  if (cardNumber) {
+    return cardNumber[0];
+  }
+
+  return null;
+}

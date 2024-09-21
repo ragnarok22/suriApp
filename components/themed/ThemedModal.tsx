@@ -27,6 +27,7 @@ export default function ThemedModal({ children, open, close, onAccept, ...modalP
       onRequestClose={() => {
         close();
       }}
+      style={{ zIndex: 100 }}
       {...modalProps}
     >
       <ThemedView style={styles.centeredView}>

@@ -1,8 +1,10 @@
-import { Alert, StyleSheet, TextInput } from "react-native";
+import { Alert, Pressable, StyleSheet, TextInput, View } from "react-native";
 import { ThemedText, ThemedModal } from "@/components/themed";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { useThemeColor } from "@/hooks/useThemeColor";
+import CameraIcon from "./icons/CameraIcon";
+import ScanRechargeCard from "./ScanRechargeCard";
 
 type RechargeBalanceModalProps = {
   open: boolean;
@@ -14,6 +16,7 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
   const backgroundColor = useThemeColor({ light: '#ECEDEE', dark: 'white' }, 'background');
   const { t } = useTranslation();
   const [pincode, setPincode] = useState<string>('');
+  const [showScanCamera, setShowScanCamera] = useState<boolean>(false);
 
   const handleAccept = () => {
     const isCorrect = validatePincode(pincode)
@@ -44,15 +47,32 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
       }}
       onAccept={handleAccept}
     >
-      <ThemedText type="subtitle">{t('home.recharge_balance')}</ThemedText>
-      <TextInput
-        style={[styles.pincode, { backgroundColor }]}
-        placeholder={t('home.write_your_pincode')}
-        keyboardType="numeric"
-        value={pincode}
-        onChangeText={setPincode}
-      />
-    </ThemedModal>
+      {showScanCamera ? (
+        <ScanRechargeCard onDone={(card: string) => {
+          setPincode(card);
+          setShowScanCamera(false);
+        }} />
+      ) : (
+        <>
+          <ThemedText type="subtitle">{t('home.recharge_balance')}</ThemedText>
+
+          <View style={styles.inputForm}>
+            <TextInput
+              style={[styles.pincode, { backgroundColor }]}
+              placeholder={t('home.write_your_pincode')}
+              keyboardType="numeric"
+              value={pincode}
+              onChangeText={setPincode}
+            />
+            <Pressable onPress={() => setShowScanCamera(true)}>
+              <ThemedText>
+                <CameraIcon />
+              </ThemedText>
+            </Pressable>
+          </View>
+        </>
+      )}
+    </ThemedModal >
   );
 }
 
@@ -61,6 +81,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 4,
+    flexGrow: 1,
+  },
+  inputForm: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 8,
     width: '100%',
     marginTop: 12,
   },
