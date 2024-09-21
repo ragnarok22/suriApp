@@ -21,10 +21,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ragnarokreinier.suri",
-      "permissions": [
-        "android.permission.READ_CONTACTS"
-      ]
+      "package": "com.ragnarokreinier.suri"
     },
     "web": {
       "bundler": "metro",
@@ -33,7 +30,8 @@
     },
     "plugins": [
       "expo-router",
-      "expo-localization"
+      "expo-localization",
+      "react-native-vision-camera"
     ],
     "experiments": {
       "typedRoutes": true

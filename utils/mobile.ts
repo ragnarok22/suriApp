@@ -1,7 +1,7 @@
 import * as Linking from 'expo-linking';
 import * as SMS from 'expo-sms';
 import { Carrier } from "@/constants/definitions";
-import { NativeModules, PermissionsAndroid } from 'react-native';
+import { NativeModules, PermissionsAndroid, Platform, ToastAndroid } from 'react-native';
 const { DirectSMS, DirectCall } = NativeModules;
 
 export async function sendSms(phoneNumber: string, message: string) {
@@ -33,6 +33,32 @@ export function getCarrierName(carrierCode: string): Carrier {
   }
 }
 
+export function toast(message: string, duration: "short" | "long" = "short") {
+  let time;
+  switch (duration) {
+    case 'short':
+      time = ToastAndroid.SHORT;
+      break;
+    case 'long':
+      time = ToastAndroid.LONG;
+      break;
+    default:
+      time = ToastAndroid.SHORT;
+  }
+
+  const os = Platform.OS;
+  switch (os) {
+    case 'android':
+      ToastAndroid.show(message, time);
+      break;
+    case 'ios':
+      // Implement iOS toast
+      break;
+    default:
+      console.log(message);
+  }
+}
+
 export async function requestSMSPermission() {
   try {
     const granted = await PermissionsAndroid.request(
@@ -42,6 +68,7 @@ export async function requestSMSPermission() {
       console.log("SMS permission granted");
     } else {
       console.log("SMS permission denied", granted);
+      toast('Permission to send SMS was denied');
     }
   } catch (err) {
     console.warn(err);
@@ -64,6 +91,7 @@ export async function requestAllSMSPermissions() {
       console.log('SMS permissions granted');
     } else {
       console.log('SMS permissions denied');
+      toast('Permission to send SMS was denied');
     }
   } catch (err) {
     console.warn(err);
@@ -80,6 +108,7 @@ export async function requestCallPermission(): Promise<boolean> {
       return true;
     } else {
       console.log("Call Phone permission denied", granted);
+      toast('Permission to make calls was denied');
       return false;
     }
   } catch (err) {

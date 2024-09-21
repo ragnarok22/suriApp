@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import * as Cellular from 'expo-cellular';
-import { Button, Linking, ScrollView, StyleSheet, ToastAndroid, useColorScheme } from 'react-native';
+import { Button, Linking, ScrollView, StyleSheet, useColorScheme } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
 import { ThemedText, ThemedView } from '@/components/themed';
 import { ExternalLink } from '@/components/ExternalLink';
 import { Carrier } from '@/constants/definitions';
-import { getCarrierName } from '@/utils/mobile';
+import { getCarrierName, toast } from '@/utils/mobile';
 import { info } from '@/utils/info';
 import { useTranslation } from 'react-i18next';
 import { useConfig } from '@/hooks/useConfig';
@@ -53,7 +53,7 @@ export default function SettingsScreen() {
             title={t('settings.clear_config')}
             onPress={async () => {
               await config.clear()
-              ToastAndroid.show(t('settings.config_cleared'), ToastAndroid.SHORT)
+              toast(t('settings.config_cleared'))
             }}
           />
 
