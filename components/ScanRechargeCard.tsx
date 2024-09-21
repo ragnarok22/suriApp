@@ -6,7 +6,11 @@ import { Text } from "react-native-vision-camera-text-recognition/lib/typescript
 import { getRechargeNumber } from "@/utils/actions";
 import { ThemedText, ThemedView } from "./themed";
 
-export default function ScanRechargeCard({ onDone }) {
+type ScanRechargeCardProps = {
+  onDone: (card: string) => void;
+};
+
+export default function ScanRechargeCard({ onDone }: ScanRechargeCardProps) {
   const { hasPermission, requestPermission } = useCameraPermission();
   const device = useCameraDevice("back");
 
