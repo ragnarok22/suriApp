@@ -19,10 +19,11 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
   const [showScanCamera, setShowScanCamera] = useState<boolean>(false);
 
   const handleAccept = () => {
-    const isCorrect = validatePincode(pincode)
+    const pin = pincode.replace(/\s/g, '');
+    const isCorrect = validatePincode(pin)
 
     if (isCorrect) {
-      onAccept(pincode);
+      onAccept(pin);
       setPincode('');
       close();
     }
@@ -40,6 +41,13 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
     setPincode('');
     setShowScanCamera(false);
     close();
+  }
+
+  const handleOnChangePincode = (pincode: string) => {
+    // Pincodes are 12 digits long, so we add a space every 4 digits
+    if (pincode.length > 14) return;
+
+    setPincode(pincode.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim());
   }
 
   return (
@@ -68,7 +76,7 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
               placeholder={t('home.write_your_pincode')}
               keyboardType="numeric"
               value={pincode}
-              onChangeText={setPincode}
+              onChangeText={handleOnChangePincode}
             />
             <Pressable onPress={() => setShowScanCamera(true)}>
               <ThemedText>
