@@ -1,10 +1,11 @@
-import { Alert, Pressable, StyleSheet, TextInput, View } from "react-native";
+import { Alert, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { ThemedText, ThemedModal } from "@/components/themed";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import CameraIcon from "./icons/CameraIcon";
 import ScanRechargeCard from "./ScanRechargeCard";
+import CloseIcon from "./icons/CloseIcon";
 
 type RechargeBalanceModalProps = {
   open: boolean;
@@ -60,7 +61,10 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
       onAccept={handleAccept}
     >
       {showScanCamera ? (
-        <View style={{ width: '100%', height: 350 }}>
+        <View style={{ width: '100%', height: 350, position: 'relative' }}>
+          <Pressable style={styles.closeBtn} onPress={() => setShowScanCamera(false)}>
+            <CloseIcon lightColor="white" />
+          </Pressable>
           <ScanRechargeCard onDone={(card: string) => {
             setPincode(card);
             setShowScanCamera(false);
@@ -105,4 +109,10 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 12,
   },
+  closeBtn: {
+    position: 'absolute',
+    top: 20,
+    right: 5,
+    zIndex: 1,
+  }
 });
