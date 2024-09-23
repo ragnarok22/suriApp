@@ -73,7 +73,7 @@ export default function SettingsScreen() {
           <ThemedView style={styles.contactButton}>
             <FontAwesome.Button
               name="heart-o"
-              onPress={() => Linking.openURL('https://suri.reinierhernandez.com')}
+              onPress={() => navigation.navigate('donate')}
               backgroundColor={colorScheme === 'dark' ? 'white' : '#1D3D47'}
               color={colorScheme === 'dark' ? '#1D3D47' : 'white'}
               style={styles.button}
