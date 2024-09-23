@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import * as Cellular from 'expo-cellular';
-import { Button, Linking, ScrollView, StyleSheet, useColorScheme } from 'react-native';
+import { Button, Image, Linking, ScrollView, StyleSheet, View, useColorScheme } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { FontAwesome } from '@expo/vector-icons';
 
 import { ThemedText, ThemedView } from '@/components/themed';
 import { ExternalLink } from '@/components/ExternalLink';
@@ -10,7 +11,7 @@ import { getCarrierName, toast } from '@/utils/mobile';
 import { info } from '@/utils/info';
 import { useTranslation } from 'react-i18next';
 import { useConfig } from '@/hooks/useConfig';
-import ThemedLayout from '@/components/layouts/ThemedLayout';
+import SimpleLayout from '@/components/layouts/SimpleLayout';
 
 export default function SettingsScreen() {
   const { t } = useTranslation();
@@ -18,6 +19,8 @@ export default function SettingsScreen() {
   const colorScheme = useColorScheme() ?? 'light';
   const [carrier, setCarrier] = useState<Carrier>('telesur');
   const version = info().version;
+  const btnBackground = colorScheme === 'dark' ? '#1D3D47' : 'transparent';
+  const btnColor = colorScheme === 'dark' ? 'white' : '#1D3D47';
 
   useEffect(() => {
     Cellular.getCarrierNameAsync().then((carrier) => {
@@ -26,29 +29,70 @@ export default function SettingsScreen() {
   }, []);
 
   return (
-    <ThemedLayout headerBackgroundColor={{ dark: '#1D3D47', light: '#A1CEDC' }}>
+    <SimpleLayout>
       <ScrollView style={[styles.container]} contentContainerStyle={{ height: '100%' }}>
-        <ThemedView style={styles.view}>
+        <View style={styles.header}>
+          <Image
+            source={require('@/assets/images/suri-logo.png')}
+            style={styles.logo}
+          />
+          <ThemedText type='title'>Suri</ThemedText>
           <ThemedText>{t('settings.version')} {version}</ThemedText>
-        </ThemedView>
+        </View>
 
-        <ThemedView style={[styles.transparent]}>
+        <View style={{ gap: 12 }}>
           <ThemedText style={[{ textAlign: 'center', fontSize: 18 }]}>{t('settings.description')}</ThemedText>
-        </ThemedView>
 
-        <ThemedView style={[styles.transparent, styles.provider]}>
-          <ThemedText>{t('settings.provider')}:</ThemedText>
-          <Picker
-            selectedValue={carrier}
-            onValueChange={(itemValue) => setCarrier(itemValue)}
-            style={{ width: 150, color: colorScheme === 'dark' ? 'white' : 'black' }}
-          >
-            <Picker.Item label="Telesur" value="telesur" />
-            {/**<Picker.Item label="Digicel" value="digicel" />**/}
-          </Picker>
-        </ThemedView>
+          <ThemedView style={[styles.contactButton]}>
+            <FontAwesome.Button
+              name="envelope-o"
+              onPress={() => Linking.openURL('https://reinierhernandez.com')}
+              backgroundColor={btnBackground}
+              color={btnColor}
+              style={styles.button}
+            >
+              {t('settings.contact_developer')}
+            </FontAwesome.Button>
+          </ThemedView>
 
-        <ThemedView style={[{ display: 'flex', gap: 12, marginTop: 'auto' }, styles.transparent]}>
+          <ThemedView style={styles.contactButton}>
+            <FontAwesome.Button
+              name="external-link"
+              onPress={() => Linking.openURL('https://suri.reinierhernandez.com')}
+              backgroundColor={btnBackground}
+              color={btnColor}
+              style={styles.button}
+            >
+              {t('settings.open_website')}
+            </FontAwesome.Button>
+          </ThemedView>
+
+          <ThemedView style={styles.contactButton}>
+            <FontAwesome.Button
+              name="question-circle-o"
+              onPress={() => Linking.openURL('https://suri.reinierhernandez.com')}
+              backgroundColor={btnBackground}
+              color={btnColor}
+              style={styles.button}
+            >
+              {t('settings.faq')}
+            </FontAwesome.Button>
+          </ThemedView>
+
+          <ThemedView style={styles.contactButton}>
+            <FontAwesome.Button
+              name="heart-o"
+              onPress={() => Linking.openURL('https://suri.reinierhernandez.com')}
+              backgroundColor={colorScheme === 'dark' ? 'white' : '#1D3D47'}
+              color={colorScheme === 'dark' ? '#1D3D47' : 'white'}
+              style={styles.button}
+            >
+              {t('settings.donate')}
+            </FontAwesome.Button>
+          </ThemedView>
+        </View>
+
+        <ThemedView style={[{ display: 'flex', marginTop: 'auto' }, styles.transparent]}>
           <Button
             title={t('settings.clear_config')}
             onPress={async () => {
@@ -58,19 +102,6 @@ export default function SettingsScreen() {
           />
 
           <ThemedView style={styles.division} />
-          <ThemedView style={[styles.contactButton]}>
-            <Button
-              title={t('settings.contact_developer')}
-              onPress={() => Linking.openURL('https://reinierhernandez.com')}
-            />
-          </ThemedView>
-
-          <ThemedView style={styles.contactButton}>
-            <Button
-              title={t('settings.open_website')}
-              onPress={() => Linking.openURL('https://suri.reinierhernandez.com')}
-            />
-          </ThemedView>
 
           <ThemedView style={[styles.view]}>
             <ThemedText style={{ fontSize: 18, marginTop: 18 }}>
@@ -80,13 +111,22 @@ export default function SettingsScreen() {
         </ThemedView>
 
       </ScrollView>
-    </ThemedLayout>
+    </SimpleLayout>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     height: '100%',
+  },
+  logo: {
+    width: 120,
+    height: 120,
+  },
+  header: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 32,
   },
   view: {
     alignItems: 'center',
@@ -103,9 +143,14 @@ const styles = StyleSheet.create({
     color: '#0a7ea4',
     cursor: 'pointer',
   },
+  button: {
+    justifyContent: 'center',
+    borderColor: '#1D3D47',
+    borderWidth: 1,
+  },
   division: {
     width: '100%',
-    height: 2,
+    height: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.15)',
     marginVertical: 8,
   },

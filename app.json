@@ -21,7 +21,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ragnarokreinier.suri"
+      "package": "com.ragnarokreinier.suri-dev"
     },
     "web": {
       "bundler": "metro",
