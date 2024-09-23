@@ -31,7 +31,16 @@
     "plugins": [
       "expo-router",
       "expo-localization",
-      "react-native-vision-camera"
+      "react-native-vision-camera",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "enableProguardInReleaseBuilds": true,
+            "enableShrinkResourcesInReleaseBuilds": true
+          }
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
