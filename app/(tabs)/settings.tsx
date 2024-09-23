@@ -1,32 +1,23 @@
-import { useEffect, useState } from 'react';
-import * as Cellular from 'expo-cellular';
 import { Button, Image, Linking, ScrollView, StyleSheet, View, useColorScheme } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
 import { FontAwesome } from '@expo/vector-icons';
 
 import { ThemedText, ThemedView } from '@/components/themed';
 import { ExternalLink } from '@/components/ExternalLink';
-import { Carrier } from '@/constants/definitions';
-import { getCarrierName, toast } from '@/utils/mobile';
+import { toast } from '@/utils/mobile';
 import { info } from '@/utils/info';
 import { useTranslation } from 'react-i18next';
 import { useConfig } from '@/hooks/useConfig';
 import SimpleLayout from '@/components/layouts/SimpleLayout';
+import { useNavigation } from 'expo-router';
 
 export default function SettingsScreen() {
+  const navigation = useNavigation();
   const { t } = useTranslation();
   const config = useConfig();
   const colorScheme = useColorScheme() ?? 'light';
-  const [carrier, setCarrier] = useState<Carrier>('telesur');
   const version = info().version;
   const btnBackground = colorScheme === 'dark' ? '#1D3D47' : 'transparent';
   const btnColor = colorScheme === 'dark' ? 'white' : '#1D3D47';
-
-  useEffect(() => {
-    Cellular.getCarrierNameAsync().then((carrier) => {
-      setCarrier(getCarrierName(carrier || 'TeleG'));
-    });
-  }, []);
 
   return (
     <SimpleLayout>
@@ -70,7 +61,7 @@ export default function SettingsScreen() {
           <ThemedView style={styles.contactButton}>
             <FontAwesome.Button
               name="question-circle-o"
-              onPress={() => Linking.openURL('https://suri.reinierhernandez.com')}
+              onPress={() => navigation.navigate('faq')}
               backgroundColor={btnBackground}
               color={btnColor}
               style={styles.button}

@@ -85,5 +85,11 @@
     "emergency": "Emergency",
     "my_phone_number": "My Phone Number",
     "get_current_time": "Get Current Time",
+  },
+  "faq": {
+    "what_is_suri": "What is Suri?",
+    "what_is_suri_description": "Suri is a mobile application that allows you to manage your mobile credit and data plans. Top up your balance and stay connected anytime, anywhere.",
+    "how_get_free_sms": "How can I get free SMS?",
+    "how_get_free_sms_description": "After sending 5 paid texts to Telesur mobile numbers, you receive 100 free texts valid until 11:59 PM the same day, usable only for Telesur mobiles (other networks and premium services excluded). This offer is available once per day.",
   }
 }

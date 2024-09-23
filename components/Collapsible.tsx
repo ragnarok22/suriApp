@@ -2,16 +2,21 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { PropsWithChildren, useState } from 'react';
 import { StyleSheet, Pressable, useColorScheme } from 'react-native';
 
-import { ThemedText } from '@/components/themed/ThemedText';
-import { ThemedView } from '@/components/themed/ThemedView';
+import { ThemedText } from '@/components/themed';
+import { ThemedView } from '@/components/themed';
 import { Colors } from '@/constants/Colors';
 
-export function Collapsible({ children, title }: PropsWithChildren & { title: string }) {
+type CollapsibleProps = PropsWithChildren<{
+  title: string;
+  style?: any;
+}>;
+
+export function Collapsible({ children, title, style }: CollapsibleProps) {
   const [isOpen, setIsOpen] = useState(false);
   const theme = useColorScheme() ?? 'light';
 
   return (
-    <ThemedView>
+    <ThemedView style={style}>
       <Pressable
         style={styles.heading}
         onPress={() => setIsOpen((value) => !value)}
