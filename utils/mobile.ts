@@ -6,17 +6,37 @@ const { DirectSMS, DirectCall } = NativeModules;
 
 export async function sendSms(phoneNumber: string, message: string) {
   const isAvailable = await SMS.isAvailableAsync();
-
-  if (isAvailable) {
-    // return await SMS.sendSMSAsync([phoneNumber], message);
-    return await DirectSMS.sendSMS(phoneNumber, message);
+  if (!isAvailable) {
+    console.log('SMS is not available on this device');
+    return;
   }
-  console.log('SMS is not available on this device');
+
+  const hasPermission = await requestAllSMSPermissions();
+  if (!hasPermission) {
+    console.log('Permission to send SMS was denied');
+    SMS.sendSMSAsync([phoneNumber], message);
+    return;
+  }
+
+  return await DirectSMS.sendSMS(phoneNumber, message);
 }
 
 export async function makeCall(phoneNumber: string) {
-  // Linking.openURL(`tel:${phoneNumber}`);
   const isGranted = await requestCallPermission();
+
+  if (!isGranted) {
+    if (Platform.OS === 'web') {
+      window.open(`tel:${phoneNumber}`, '_blank');
+      return;
+    }
+
+    if (Platform.OS === 'ios') {
+      Linking.openURL(`telprompt:${encodeURIComponent(phoneNumber)}`);
+      return;
+    }
+    Linking.openURL(`tel:${phoneNumber}`);
+  }
+
   if (isGranted) {
     DirectCall.makeCall(phoneNumber);
   }
@@ -59,7 +79,7 @@ export function toast(message: string, duration: "short" | "long" = "short") {
   }
 }
 
-export async function requestSMSPermission() {
+async function requestAndroidSMSPermission(): Promise<boolean> {
   try {
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.SEND_SMS
@@ -75,7 +95,20 @@ export async function requestSMSPermission() {
   }
 }
 
-export async function requestAllSMSPermissions() {
+export async function requestSMSPermission() {
+  if (Platform.OS === 'android') {
+    return await requestAndroidSMSPermission();
+  }
+
+  if (Platform.OS === 'ios') {
+    // Implement iOS SMS permission
+    return false;
+  }
+
+  return false;
+}
+
+async function requestAllAndroidSMSPermissions() {
   try {
     const granted = await PermissionsAndroid.requestMultiple([
       PermissionsAndroid.PERMISSIONS.RECEIVE_SMS,
@@ -98,7 +131,20 @@ export async function requestAllSMSPermissions() {
   }
 }
 
-export async function requestCallPermission(): Promise<boolean> {
+export async function requestAllSMSPermissions() {
+  if (Platform.OS === 'android') {
+    return await requestAllAndroidSMSPermissions();
+  }
+
+  if (Platform.OS === 'ios') {
+    // Implement iOS SMS permission
+    return false;
+  }
+
+  return false;
+}
+
+async function requestAndroidCallPermission(): Promise<boolean> {
   try {
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.CALL_PHONE
@@ -115,4 +161,23 @@ export async function requestCallPermission(): Promise<boolean> {
     console.warn(err);
     return false;
   }
+}
+
+export async function requestCallPermission(): Promise<boolean> {
+  if (Platform.OS === 'android') {
+    return await requestAndroidCallPermission();
+  }
+
+  if (Platform.OS === 'ios') {
+    // Implement iOS call permission
+    return false;
+  }
+
+  if (Platform.OS === 'web') {
+    // Implement web call permission
+    console.log('Web call permission not implemented');
+    return false;
+  }
+
+  return false;
 }
