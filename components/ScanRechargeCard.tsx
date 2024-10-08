@@ -1,5 +1,7 @@
-import { useEffect } from "react";
-import { StyleSheet, View } from "react-native";
+import { useEffect, useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
+
 import { getRechargeNumber } from "@/utils/actions";
 import { ThemedText, ThemedView } from "./themed";
 
@@ -8,6 +10,26 @@ type ScanRechargeCardProps = {
 };
 
 export default function ScanRechargeCard({ onDone }: ScanRechargeCardProps) {
+  const [facing, setFacing] = useState<CameraType>('back');
+  const [permission, requestPermission] = useCameraPermissions();
+
+  useEffect(() => {
+    if (permission && permission.granted) {
+      requestPermission();
+    }
+  }, []);
+
+  if (!permission || !permission.granted) {
+    // Camera permissions are still loading.
+    return (
+      <View style={{ width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
+        <ThemedText>
+          You need to grant camera permissions to scan a recharge card.
+        </ThemedText>
+      </View>
+    )
+  }
+
   return (
     <View style={styles.cameraContainer}>
       {/*<Camera
@@ -21,6 +43,11 @@ export default function ScanRechargeCard({ onDone }: ScanRechargeCardProps) {
         callback={handleProcessText}
         resizeMode="contain"
       />*/}
+      <CameraView style={styles.camera} facing={facing}>
+        <View>
+          <Text>Flip Camera</Text>
+        </View>
+      </CameraView>
       <View style={styles.numberPreview}>
         <View style={{ width: '80%', height: 50, borderWidth: 2, borderColor: 'rgba(0,0,0,.3)' }} />
       </View>
