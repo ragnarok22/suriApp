@@ -31,7 +31,7 @@
     "plugins": [
       "expo-router",
       "expo-localization",
-      "react-native-vision-camera",
+      "expo-camera",
       [
         "expo-build-properties",
         {
