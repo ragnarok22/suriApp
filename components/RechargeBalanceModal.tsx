@@ -1,4 +1,4 @@
-import { Alert, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { Alert, Platform, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { ThemedText, ThemedModal } from "@/components/themed";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
@@ -82,11 +82,13 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
               value={pincode}
               onChangeText={handleOnChangePincode}
             />
-            <Pressable onPress={() => setShowScanCamera(true)}>
-              <ThemedText>
-                <CameraIcon />
-              </ThemedText>
-            </Pressable>
+            {Platform.OS === 'android' && (
+              <Pressable onPress={() => setShowScanCamera(true)}>
+                <ThemedText>
+                  <CameraIcon />
+                </ThemedText>
+              </Pressable>
+            )}
           </View>
         </>
       )}
