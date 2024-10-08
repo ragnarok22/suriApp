@@ -7,7 +7,7 @@ import pt from './locales/pt.json';
 import nl from './locales/nl.json';
 
 const resources = {
-  'en-US': { translation: en },
+  'en': { translation: en },
   'es': { translation: es },
   'pt': { translation: pt },
   'nl': { translation: nl },
