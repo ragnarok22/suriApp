@@ -14,7 +14,7 @@ export default function ScanRechargeCard({ onDone }: ScanRechargeCardProps) {
   const [permission, requestPermission] = useCameraPermissions();
 
   useEffect(() => {
-    if (permission && permission.granted) {
+    if (permission && !permission.granted) {
       requestPermission();
     }
   }, []);
@@ -43,11 +43,10 @@ export default function ScanRechargeCard({ onDone }: ScanRechargeCardProps) {
         callback={handleProcessText}
         resizeMode="contain"
       />*/}
-      <CameraView style={styles.camera} facing={facing}>
-        <View>
-          <Text>Flip Camera</Text>
-        </View>
-      </CameraView>
+      <CameraView
+        style={styles.camera}
+        facing={facing}
+      />
       <View style={styles.numberPreview}>
         <View style={{ width: '80%', height: 50, borderWidth: 2, borderColor: 'rgba(0,0,0,.3)' }} />
       </View>
@@ -78,6 +77,5 @@ const styles = StyleSheet.create({
   camera: {
     width: '100%',
     height: '100%',
-    overflow: 'hidden',
   },
 });
