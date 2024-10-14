@@ -307,7 +307,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1";
 				SWIFT_OBJC_BRIDGING_HEADER = suri/suri-Bridging-Header.h;
 				CODE_SIGN_ENTITLEMENTS = suri/suri.entitlements;
 			};
@@ -333,7 +333,7 @@
 				PRODUCT_NAME = "Suri";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1";
 				SWIFT_OBJC_BRIDGING_HEADER = suri/suri-Bridging-Header.h;
 				CODE_SIGN_ENTITLEMENTS = suri/suri.entitlements;
 			};

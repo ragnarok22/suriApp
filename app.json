@@ -12,17 +12,18 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.ragnarokreinier.suri",
-      "bundleIdentifier": 2
-    },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ragnarokreinier.suri-dev"
+      "package": "com.ragnarokreinier.suri",
+      "permissions": [
+      ]
+    },
+    "ios": {
+      "bundleIdentifier": "com.ragnarokreinier.suri",
+      "buildNumber": 3
     },
     "web": {
       "bundler": "metro",
