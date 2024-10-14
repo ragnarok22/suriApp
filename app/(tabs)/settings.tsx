@@ -96,7 +96,8 @@ export default function SettingsScreen() {
 
           <ThemedView style={[styles.view]}>
             <ThemedText style={{ fontSize: 18, marginTop: 18 }}>
-              {t('settings.created_by')} <ExternalLink href="https://reinierhernandez.com" style={styles.link}>Reinier Hernández</ExternalLink>
+              {t('settings.created_by')}{' '}
+              <ExternalLink href="https://reinierhernandez.com" style={styles.link} text="Reinier Hernández" />
             </ThemedText>
           </ThemedView>
         </ThemedView>
@@ -131,8 +132,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   link: {
-    color: '#0a7ea4',
-    cursor: 'pointer',
+    color: '#0A7EA4',
   },
   button: {
     justifyContent: 'center',

@@ -1,19 +1,11 @@
 import { Link } from 'expo-router';
 import { openBrowserAsync } from 'expo-web-browser';
 import { type ComponentProps } from 'react';
-import { Linking, Platform, Text } from 'react-native';
+import { Platform, Text } from 'react-native';
 
-type Props = Omit<ComponentProps<typeof Link>, 'href'> & { href: string };
+type Props = Omit<ComponentProps<typeof Link>, 'href'> & { href: string, text: string };
 
 export function ExternalLink({ href, ...rest }: Props) {
-  if (Platform.OS === 'ios') {
-    return (
-      <Text style={rest.style} onPress={() => Linking.openURL(href)}>
-        {rest.children}
-      </Text>
-    )
-  }
-
   return (
     <Link
       target="_blank"
@@ -27,6 +19,8 @@ export function ExternalLink({ href, ...rest }: Props) {
           await openBrowserAsync(href);
         }
       }}
-    />
+    >
+      <Text>{rest.text}</Text>
+    </Link>
   );
 }

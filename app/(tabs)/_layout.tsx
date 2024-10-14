@@ -54,12 +54,14 @@ export default function TabLayout() {
         name="mobile"
         options={{
           href: null,
+          presentation: 'modal',
         }}
       />
       <Tabs.Screen
         name="phones"
         options={{
           href: null,
+          presentation: 'modal',
         }}
       />
     </Tabs>
