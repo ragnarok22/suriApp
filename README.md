@@ -1,50 +1,32 @@
-# Welcome to your Expo app 👋
+# Suri App
+Mobile app to manage Telesur mobile data in Suriname
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Getting Started
 
-## Get started
 
-1. Install dependencies
 
-   ```bash
-   npm install
-   ```
+## Build
 
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+### Android
 ```bash
-npm run reset-project
+eas build --platform android
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### iOS
 
-## Learn more
+[Expo docs](https://docs.expo.dev/tutorial/eas/ios-production-build/)
 
-To learn more about developing your project with Expo, look at the following resources:
+Update the build number in `app.json` and run the following command:
+```bash
+npx expo prebuild
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+then run the following command:
+```bash
+eas build --platform ios
+```
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+After that, you can submit the build to the App Store with the following command:
+```bash
+eas submit --platform ios
+```
