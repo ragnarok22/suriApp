@@ -1,16 +1,16 @@
-import { Alert, StyleSheet, TextInput } from "react-native";
-import { ThemedText, ThemedModal } from "@/components/themed";
+import { StyleSheet, View } from "react-native";
+import { ThemedText } from "@/components/themed";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { useThemeColor } from "@/hooks/useThemeColor";
+import { BottomSheetTextInput } from "@gorhom/bottom-sheet";
+import Button from "./Button";
 
 type SetPinModalProps = {
-  open: boolean;
-  close: () => void;
   onAccept: (pin: string) => void;
 };
 
-export default function SetPinModal({ open, close, onAccept }: SetPinModalProps) {
+export default function SetPinModal({ onAccept }: SetPinModalProps) {
   const backgroundColor = useThemeColor({ light: '#ECEDEE', dark: 'white' }, 'background');
   const { t } = useTranslation();
   const [pin, setPin] = useState<string>('');
@@ -18,22 +18,12 @@ export default function SetPinModal({ open, close, onAccept }: SetPinModalProps)
   const handleAccept = () => {
     onAccept(pin);
     setPin('');
-    close();
   }
 
   return (
-    <ThemedModal
-      open={open}
-      close={close}
-      animationType="slide"
-      transparent={true}
-      onRequestClose={() => {
-        close();
-      }}
-      onAccept={handleAccept}
-    >
+    <View style={{ flex: 1, width: '100%' }}>
       <ThemedText type="subtitle">{t('home.set_pin')}</ThemedText>
-      <TextInput
+      <BottomSheetTextInput
         style={[styles.pin, { backgroundColor }]}
         placeholder={t('home.write_your_pin_here')}
         keyboardType="numeric"
@@ -41,7 +31,13 @@ export default function SetPinModal({ open, close, onAccept }: SetPinModalProps)
         onChangeText={setPin}
         maxLength={6}
       />
-    </ThemedModal>
+
+      <View style={{ marginTop: 16 }}>
+        <Button onPress={handleAccept} variant="primary">
+          <ThemedText>{t('accept')}</ThemedText>
+        </Button>
+      </View>
+    </View>
   );
 }
 
@@ -50,7 +46,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 4,
-    width: '100%',
     marginTop: 12,
   },
 });

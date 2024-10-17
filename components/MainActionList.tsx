@@ -59,14 +59,11 @@ const ActionItem = ({ item, onPress }: ActionItemsProps) => {
   )
 }
 
-type ModalType = "recharge_balance" | "first_time_transfer" | "set_p2p_pin" | "transfer_balance" | "private_number";
-
 type MainActionListProps = {
   openModal: (content: React.ReactNode) => void
 }
 
 export default function MainActionList({ openModal }: MainActionListProps) {
-  const [modalVisible, setModalVisible] = useState<ModalType | null>();
   const config = useConfig();
 
   useEffect(() => {
@@ -105,15 +102,15 @@ export default function MainActionList({ openModal }: MainActionListProps) {
         openModal(<RechargeBalanceModal onAccept={handleRechageBalance} />);
         break;
       case 'set_p2p_pin':
-        setModalVisible('set_p2p_pin');
+        openModal(<SetPinModal onAccept={handleSetP2PPing} />)
         break;
       case 'transfer_balance': {
         const isFirstTime = await config.isFirstTimeTransfer();
 
         if (isFirstTime) {
-          setModalVisible('first_time_transfer');
+          openModal(<FirstTimeTransferModal onSetPincode={handleSetPincode} onHavePincode={handleIHavePincode} />)
         } else {
-          setModalVisible('transfer_balance');
+          openModal(<TransferBalanceModal onAccept={handleTransferBalance} />)
         }
         break;
       }
@@ -136,33 +133,23 @@ export default function MainActionList({ openModal }: MainActionListProps) {
     recharge_balance(pincode);
   }
 
-  const isFirstTimeTransferOpen = modalVisible === 'first_time_transfer';
-  const closeFirstTimeTransferModal = () => setModalVisible(null);
-  const handleSetPincode = () => setModalVisible('set_p2p_pin');
+  const handleSetPincode = () => openModal(<SetPinModal onAccept={handleSetP2PPing} />);
   const handleIHavePincode = () => {
-    setModalVisible('transfer_balance');
+    console.log('talla')
+    openModal(<TransferBalanceModal onAccept={handleTransferBalance} />)
     config.toggleFirstTimeTransfer();
   }
 
-  const isSetP2PPingOpen = modalVisible === 'set_p2p_pin';
-  const closeSetP2PPingModal = () => setModalVisible(null);
   const handleSetP2PPing = async (ping: string) => {
     await set_p2p_pin(ping);
     await config.toggleFirstTimeTransfer();
   }
 
-  const isTransferBalanceOpen = modalVisible === 'transfer_balance';
-  const closeTransferBalanceModal = () => setModalVisible(null);
   const handleTransferBalance = async (phone_number: string, amount: number, pincode: string) => {
     await transfer_balance(pincode, amount, phone_number);
   }
 
   return (
-    <>
-      <FirstTimeTransferModal open={isFirstTimeTransferOpen} close={closeFirstTimeTransferModal} onSetPincode={handleSetPincode} onHavePincode={handleIHavePincode} />
-      <SetPinModal open={isSetP2PPingOpen} close={closeSetP2PPingModal} onAccept={handleSetP2PPing} />
-      <TransferBalanceModal open={isTransferBalanceOpen} close={closeTransferBalanceModal} onAccept={handleTransferBalance} />
-      <ThemedFlatList data={data} renderItem={ActionItem} style={{ width: '100%' }} onPress={onPress} />
-    </>
+    <ThemedFlatList data={data} renderItem={ActionItem} style={{ width: '100%' }} onPress={onPress} />
   )
 }

@@ -1,20 +1,20 @@
-import { Pressable, StyleSheet, TextInput, View, Text } from "react-native";
+import { StyleSheet, TextInput, View, Text } from "react-native";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import * as Contacts from 'expo-contacts';
 
-import { ThemedText, ThemedModal } from "@/components/themed";
+import { ThemedText } from "@/components/themed";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import ContactIcon from "./icons/ContactIcon";
 import { toast } from "@/utils/mobile";
+import Button from "./Button";
+import { BottomSheetTextInput } from "@gorhom/bottom-sheet";
 
 type TransferBalanceModalProps = {
-  open: boolean;
-  close: () => void;
   onAccept: (phoneNumber: string, amount: number, pincode: string) => Promise<void>;
 };
 
-export default function TransferBalanceModal({ open, close, onAccept }: TransferBalanceModalProps) {
+export default function TransferBalanceModal({ onAccept }: TransferBalanceModalProps) {
   const backgroundColor = useThemeColor({ light: '#ECEDEE', dark: 'white' }, 'background');
   const { t } = useTranslation();
   const [phoneNumber, setPhoneNumber] = useState<string>('');
@@ -40,7 +40,6 @@ export default function TransferBalanceModal({ open, close, onAccept }: Transfer
 
     await onAccept(phoneNumber, saldo, pincode);
     cleanForm();
-    close();
   }
 
   const validatePhoneNumber = (phoneNumber: string): boolean => {
@@ -61,7 +60,6 @@ export default function TransferBalanceModal({ open, close, onAccept }: Transfer
     const { status } = await Contacts.requestPermissionsAsync();
     if (status !== Contacts.PermissionStatus.GRANTED) {
       toast(t('home.transfer.contacts_permission_error'));
-      close();
     }
 
     console.log('permission granted')
@@ -71,23 +69,12 @@ export default function TransferBalanceModal({ open, close, onAccept }: Transfer
   }
 
   return (
-    <ThemedModal
-      open={open}
-      close={close}
-      animationType="slide"
-      transparent={true}
-      onRequestClose={() => {
-        cleanForm();
-        close();
-      }}
-      onAccept={handleAccept}
-      acceptText={t('home.transfer.transfer')}
-    >
+    <View>
       <ThemedText type="subtitle">{t('home.transfer.transfer_title')}</ThemedText>
 
       <View style={styles.inputContainerView}>
         <View style={styles.inputView}>
-          <TextInput
+          <BottomSheetTextInput
             style={[styles.input, { backgroundColor }]}
             placeholder={t('home.transfer.write_phone_number')}
             keyboardType="phone-pad"
@@ -101,7 +88,7 @@ export default function TransferBalanceModal({ open, close, onAccept }: Transfer
         </View>
         <View style={styles.inputForm}>
           <Text style={styles.inputLabel}>🔑</Text>
-          <TextInput
+          <BottomSheetTextInput
             style={[styles.input, { backgroundColor }]}
             placeholder={t('home.transfer.write_pincode')}
             keyboardType="numeric"
@@ -112,7 +99,7 @@ export default function TransferBalanceModal({ open, close, onAccept }: Transfer
         </View>
         <View style={styles.inputForm}>
           <Text style={styles.inputLabel}>SRD</Text>
-          <TextInput
+          <BottomSheetTextInput
             style={[styles.input, { backgroundColor }]}
             placeholder={t('home.transfer.write_amount')}
             keyboardType="numeric"
@@ -121,7 +108,11 @@ export default function TransferBalanceModal({ open, close, onAccept }: Transfer
           />
         </View>
       </View>
-    </ThemedModal>
+
+      <Button onPress={handleAccept} variant="primary">
+        <ThemedText>{t('home.transfer.transfer')}</ThemedText>
+      </Button>
+    </View>
   );
 }
 

@@ -1,7 +1,7 @@
 import * as Linking from 'expo-linking';
 import * as SMS from 'expo-sms';
 import { Carrier } from "@/constants/definitions";
-import { NativeModules, PermissionsAndroid, Platform, ToastAndroid } from 'react-native';
+import { Alert, NativeModules, PermissionsAndroid, Platform, ToastAndroid } from 'react-native';
 const { DirectSMS, DirectCall } = NativeModules;
 
 export async function sendSms(phoneNumber: string, message: string) {
@@ -72,7 +72,7 @@ export function toast(message: string, duration: "short" | "long" = "short") {
       ToastAndroid.show(message, time);
       break;
     case 'ios':
-      // Implement iOS toast
+      Alert.alert(message);
       break;
     default:
       console.log(message);

@@ -42,10 +42,4 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 16,
   },
-  deactivateButton: {
-    backgroundColor: 'red',
-  },
-  activateButton: {
-    backgroundColor: 'green',
-  },
 });
