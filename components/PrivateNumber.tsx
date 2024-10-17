@@ -22,12 +22,13 @@ export default function PrivateNumberModal({ }: PrivateNumberModalProps) {
     <View>
       <ThemedText type="subtitle" style={{ textAlign: 'center' }}>{t('home.private_number_title')}</ThemedText>
       <ThemedText style={{ marginBottom: 16, marginTop: 8 }}>{t('home.private_number_text')}</ThemedText>
+
       <View style={styles.buttonContainer}>
-        <Button onPress={handleDeactivate}>
+        <Button onPress={handleDeactivate} variant="danger">
           <ThemedText style={{ marginBottom: 8 }}>{t('deactivate')}</ThemedText>
         </Button>
 
-        <Button onPress={handleActivate}>
+        <Button onPress={handleActivate} variant="primary">
           <ThemedText>{t('activate')}</ThemedText>
         </Button>
       </View>
@@ -40,5 +41,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 16,
+  },
+  deactivateButton: {
+    backgroundColor: 'red',
+  },
+  activateButton: {
+    backgroundColor: 'green',
   },
 });
