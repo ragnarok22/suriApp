@@ -102,7 +102,7 @@ export default function MainActionList({ openModal }: MainActionListProps) {
         check_balance();
         break;
       case 'recharge_balance':
-        setModalVisible('recharge_balance')
+        openModal(<RechargeBalanceModal onAccept={handleRechageBalance} />);
         break;
       case 'set_p2p_pin':
         setModalVisible('set_p2p_pin');
@@ -132,8 +132,6 @@ export default function MainActionList({ openModal }: MainActionListProps) {
     }
   }
 
-  const isRechageBalanceOpen = modalVisible === 'recharge_balance';
-  const closeRechargeBalanceModal = () => setModalVisible(null);
   const handleRechageBalance = (pincode: string) => {
     recharge_balance(pincode);
   }
@@ -159,12 +157,8 @@ export default function MainActionList({ openModal }: MainActionListProps) {
     await transfer_balance(pincode, amount, phone_number);
   }
 
-  const isPrivateNumberOpen = modalVisible === 'private_number';
-  const closePrivateNumberModal = () => setModalVisible(null);
-
   return (
     <>
-      <RechargeBalanceModal open={isRechageBalanceOpen} close={closeRechargeBalanceModal} onAccept={handleRechageBalance} />
       <FirstTimeTransferModal open={isFirstTimeTransferOpen} close={closeFirstTimeTransferModal} onSetPincode={handleSetPincode} onHavePincode={handleIHavePincode} />
       <SetPinModal open={isSetP2PPingOpen} close={closeSetP2PPingModal} onAccept={handleSetP2PPing} />
       <TransferBalanceModal open={isTransferBalanceOpen} close={closeTransferBalanceModal} onAccept={handleTransferBalance} />

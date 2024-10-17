@@ -1,19 +1,19 @@
-import { Alert, Platform, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
-import { ThemedText, ThemedModal } from "@/components/themed";
+import { Alert, Platform, Pressable, StyleSheet, View } from "react-native";
+import { ThemedText } from "@/components/themed";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import CameraIcon from "./icons/CameraIcon";
 import ScanRechargeCard from "./ScanRechargeCard";
 import CloseIcon from "./icons/CloseIcon";
+import { BottomSheetTextInput } from "@gorhom/bottom-sheet";
+import Button from "./Button";
 
 type RechargeBalanceModalProps = {
-  open: boolean;
-  close: () => void;
   onAccept: (pincode: string) => void;
 };
 
-export default function RechargeBalanceModal({ open, close, onAccept }: RechargeBalanceModalProps) {
+export default function RechargeBalanceModal({ onAccept }: RechargeBalanceModalProps) {
   const backgroundColor = useThemeColor({ light: '#ECEDEE', dark: 'white' }, 'background');
   const { t } = useTranslation();
   const [pincode, setPincode] = useState<string>('');
@@ -26,7 +26,6 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
     if (isCorrect) {
       onAccept(pin);
       setPincode('');
-      close();
     }
   }
 
@@ -41,7 +40,6 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
   const handleClose = () => {
     setPincode('');
     setShowScanCamera(false);
-    close();
   }
 
   const handleOnChangePincode = (pincode: string) => {
@@ -52,14 +50,7 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
   }
 
   return (
-    <ThemedModal
-      open={open}
-      close={handleClose}
-      animationType="slide"
-      transparent={true}
-      onRequestClose={handleClose}
-      onAccept={handleAccept}
-    >
+    <View>
       {showScanCamera ? (
         <View style={{ width: '100%', height: 350, position: 'relative' }}>
           <Pressable style={styles.closeBtn} onPress={() => setShowScanCamera(false)}>
@@ -75,7 +66,7 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
           <ThemedText type="subtitle">{t('home.recharge_balance')}</ThemedText>
 
           <View style={styles.inputForm}>
-            <TextInput
+            <BottomSheetTextInput
               style={[styles.pincode, { backgroundColor }]}
               placeholder={t('home.write_your_pincode')}
               keyboardType="numeric"
@@ -92,7 +83,13 @@ export default function RechargeBalanceModal({ open, close, onAccept }: Recharge
           </View>
         </>
       )}
-    </ThemedModal >
+
+      <View style={{ marginTop: 16 }}>
+        <Button onPress={handleAccept} variant="primary">
+          <ThemedText style={{ marginBottom: 8 }}>{t('accept')}</ThemedText>
+        </Button>
+      </View>
+    </View>
   );
 }
 

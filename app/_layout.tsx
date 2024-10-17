@@ -36,6 +36,8 @@ export default function RootLayout() {
           <Stack.Screen name="onboarding" options={{ headerShown: false }} />
           <Stack.Screen name="phones" options={{ headerShown: false, presentation: 'modal' }} />
           <Stack.Screen name="mobile" options={{ headerShown: false, presentation: 'modal' }} />
+          <Stack.Screen name="faq" options={{ headerShown: false, presentation: 'modal' }} />
+          <Stack.Screen name="donate" options={{ headerShown: false, presentation: 'modal' }} />
           <Stack.Screen name="+not-found" />
         </Stack>
       </GestureHandlerRootView>

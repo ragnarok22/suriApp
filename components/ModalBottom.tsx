@@ -1,7 +1,7 @@
 import { useThemeColor } from '@/hooks/useThemeColor';
-import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
-import { forwardRef, useMemo } from 'react';
-import { StyleSheet } from 'react-native';
+import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
+import { forwardRef, useCallback, useMemo } from 'react';
+import { StyleSheet, View } from 'react-native';
 
 interface ModalBottomProps {
   content: React.ReactNode;
@@ -18,6 +18,10 @@ const ModalBottom = forwardRef<Ref, ModalBottomProps>((props, ref) => {
     snapPoints = useMemo(() => ['50%', '100%'], []);
   }
 
+  const renderBackdrop = useCallback(
+    (props: any) => <BottomSheetBackdrop appearsOnIndex={0} disappearsOnIndex={-1} {...props} />, []
+  );
+
   return (
     <BottomSheet
       ref={ref}
@@ -25,7 +29,9 @@ const ModalBottom = forwardRef<Ref, ModalBottomProps>((props, ref) => {
       snapPoints={snapPoints}
       style={[styles.container, { backgroundColor: 'transparent' }]}
       backgroundStyle={{ backgroundColor }}
+      handleIndicatorStyle={{ backgroundColor: 'grey' }}
       enablePanDownToClose
+      backdropComponent={renderBackdrop}
     >
       <BottomSheetView style={[styles.contentContainer]}>
         {props.content}
@@ -44,6 +50,10 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     alignItems: 'center',
+  },
+  backdrop: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
 });
 
