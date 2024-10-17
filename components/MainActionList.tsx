@@ -61,7 +61,11 @@ const ActionItem = ({ item, onPress }: ActionItemsProps) => {
 
 type ModalType = "recharge_balance" | "first_time_transfer" | "set_p2p_pin" | "transfer_balance" | "private_number";
 
-export default function MainActionList() {
+type MainActionListProps = {
+  openModal: (content: React.ReactNode) => void
+}
+
+export default function MainActionList({ openModal }: MainActionListProps) {
   const [modalVisible, setModalVisible] = useState<ModalType | null>();
   const config = useConfig();
 
@@ -123,7 +127,7 @@ export default function MainActionList() {
         router.push('/phones');
         break;
       case 'private_number':
-        setModalVisible('private_number');
+        openModal(<PrivateNumberModal />);
         break;
     }
   }
@@ -164,7 +168,6 @@ export default function MainActionList() {
       <FirstTimeTransferModal open={isFirstTimeTransferOpen} close={closeFirstTimeTransferModal} onSetPincode={handleSetPincode} onHavePincode={handleIHavePincode} />
       <SetPinModal open={isSetP2PPingOpen} close={closeSetP2PPingModal} onAccept={handleSetP2PPing} />
       <TransferBalanceModal open={isTransferBalanceOpen} close={closeTransferBalanceModal} onAccept={handleTransferBalance} />
-      <PrivateNumberModal open={isPrivateNumberOpen} close={closePrivateNumberModal} />
       <ThemedFlatList data={data} renderItem={ActionItem} style={{ width: '100%' }} onPress={onPress} />
     </>
   )
