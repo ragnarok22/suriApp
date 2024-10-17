@@ -4,7 +4,8 @@ import { ThemedView } from '@/components/themed';
 import MainActionList from '@/components/MainActionList';
 import ThemedLayout from '@/components/layouts/ThemedLayout';
 
-export default function HomeScreen() {
+export default function HomeScreen(props) {
+  console.log('HomeScreen', props);
   return (
     <ThemedLayout
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
