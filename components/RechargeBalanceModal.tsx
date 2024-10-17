@@ -73,7 +73,7 @@ export default function RechargeBalanceModal({ onAccept }: RechargeBalanceModalP
               value={pincode}
               onChangeText={handleOnChangePincode}
             />
-            {Platform.OS === 'android' && (
+            {false && (
               <Pressable onPress={() => setShowScanCamera(true)}>
                 <ThemedText>
                   <CameraIcon />
