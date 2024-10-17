@@ -135,7 +135,6 @@ export default function MainActionList({ openModal }: MainActionListProps) {
 
   const handleSetPincode = () => openModal(<SetPinModal onAccept={handleSetP2PPing} />);
   const handleIHavePincode = () => {
-    console.log('talla')
     openModal(<TransferBalanceModal onAccept={handleTransferBalance} />)
     config.toggleFirstTimeTransfer();
   }
