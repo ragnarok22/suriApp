@@ -50,20 +50,6 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="mobile"
-        options={{
-          href: null,
-          presentation: 'modal',
-        }}
-      />
-      <Tabs.Screen
-        name="phones"
-        options={{
-          href: null,
-          presentation: 'modal',
-        }}
-      />
     </Tabs>
   );
 }
