@@ -88,9 +88,9 @@ export default function TransferBalanceModal({ onAccept }: TransferBalanceModalP
         </Pressable>**/}
         </View>
         <View style={styles.inputForm}>
-          <Text style={[styles.inputLabel]}>
+          <View style={[styles.inputLabel]}>
             <KeyIcon size={16} darkColor="black" />
-          </Text>
+          </View>
           <BottomSheetTextInput
             style={[styles.input, { backgroundColor }]}
             placeholder={t('home.transfer.write_pincode')}
@@ -141,13 +141,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 4,
     overflow: 'hidden',
+    maxHeight: 42,
   },
   inputLabel: {
     backgroundColor: '#ECEDEE',
     paddingVertical: 10,
     paddingHorizontal: 8,
-    height: '100%',
     display: 'flex',
+    height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     minWidth: 42,

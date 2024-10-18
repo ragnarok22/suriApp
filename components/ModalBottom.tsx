@@ -19,7 +19,7 @@ const ModalBottom = forwardRef<Ref, ModalBottomProps>((props, ref) => {
   }
 
   const renderBackdrop = useCallback(
-    (props: any) => <BottomSheetBackdrop appearsOnIndex={0} disappearsOnIndex={-1} {...props}></BottomSheetBackdrop>, []
+    (props: any) => <BottomSheetBackdrop appearsOnIndex={0} disappearsOnIndex={-1} {...props} />, []
   );
 
   return (

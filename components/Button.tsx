@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { StyleSheet, Pressable, PressableProps, useColorScheme } from "react-native"
 
 type ButtonProps = PressableProps & {
@@ -9,32 +10,36 @@ export default function Button(props: ButtonProps) {
   const btnBackground = colorScheme === 'dark' ? '#1D3D47' : 'transparent';
   const btnColor = colorScheme === 'dark' ? 'white' : '#1D3D47';
 
-  const variant: Record<string, { backgroundColor: string, color: string }> = {
+  const variant: Record<string, any> = {
     primary: {
-      backgroundColor: '#1D3D47',
-      color: 'white',
+      backgroundColor: btnBackground,
+      color: btnColor,
+      borderColor: '#1D3D47',
     },
     secondary: {
       backgroundColor: 'transparent',
       color: '#1D3D47',
+      borderColor: '#1D3D47',
     },
     danger: {
       backgroundColor: 'red',
       color: 'white',
+      borderColor: 'red',
     },
   }
 
-  const btnStyles = [
+  const btnStyles = useMemo(() => [
     styles.button,
     {
       backgroundColor: variant[props.variant ?? 'primary'].backgroundColor,
       color: variant[props.variant ?? 'primary'].color,
+      borderColor: variant[props.variant ?? 'primary'].borderColor,
     },
     props.style,
-  ]
+  ], [props.variant, props.style])
 
   return (
-    <Pressable style={btnStyles} {...props}>
+    <Pressable style={[btnStyles]} {...props}>
       {props.children}
     </Pressable>
   )
@@ -47,7 +52,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: '#1D3D47',
     borderWidth: 1,
     paddingHorizontal: 12,
     paddingVertical: 6,

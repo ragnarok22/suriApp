@@ -25,7 +25,7 @@ export default function PrivateNumberModal({ }: PrivateNumberModalProps) {
 
       <View style={styles.buttonContainer}>
         <Button onPress={handleDeactivate} variant="danger">
-          <ThemedText style={{ marginBottom: 8 }}>{t('deactivate')}</ThemedText>
+          <ThemedText lightColor="white">{t('deactivate')}</ThemedText>
         </Button>
 
         <Button onPress={handleActivate} variant="primary">

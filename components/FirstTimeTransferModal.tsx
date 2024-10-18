@@ -12,13 +12,13 @@ export default function FirstTimeTransferModal({ onSetPincode, onHavePincode }: 
   const { t } = useTranslation();
 
   return (
-    <View>
+    <View style={{ width: '100%' }}>
       <ThemedText type="subtitle" style={{ textAlign: 'center' }}>{t('home.first_time_transfer_title')}</ThemedText>
       <ThemedText style={{ marginBottom: 16, marginTop: 8 }}>{t('home.first_time_transfer_text')}</ThemedText>
 
       <View style={styles.buttonContainer}>
         <Button onPress={onHavePincode} variant="danger">
-          <ThemedText style={{ marginBottom: 8 }}>{t('home.transfer.already_have_pincode')}</ThemedText>
+          <ThemedText lightColor="white">{t('home.transfer.already_have_pincode')}</ThemedText>
         </Button>
 
         <Button onPress={onSetPincode} variant="primary">
@@ -34,5 +34,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 16,
+    gap: 8,
   },
 });
