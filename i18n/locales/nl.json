@@ -84,5 +84,26 @@
     "emergency": "Noodgevallen",
     "my_phone_number": "Mijn telefoonnummer",
     "get_current_time": "Huidige tijd ophalen",
-  }
+  },
+  "faq": {
+    "what_is_suri": "Wat is Suri?",
+    "what_is_suri_description": "Suri is een mobiele applicatie waarmee u uw mobiele beltegoed en dataplannen kunt beheren. Laad uw saldo op en blijf altijd en overal verbonden.",
+    "how_get_free_sms": "Hoe kan ik gratis sms'en krijgen?",
+    "how_get_free_sms_description": "Na het verzenden van 5 betaalde sms'jes naar Telesur mobiele nummers, ontvang je 100 gratis sms'jes die geldig zijn tot 23:59 uur op dezelfde dag, alleen te gebruiken voor Telesur mobielen (andere netwerken en premium services uitgesloten). Deze aanbieding is eenmaal per dag beschikbaar.",
+  },
+  "donate": {
+    "donate": "Doneren",
+    "subtitle": "Steun onze app",
+    "headline_1": "Uw donaties helpen ons de app te verbeteren en advertentievrij te houden. Gebruik de SWIFT-informatie hieronder om een donatie te doen:",
+    "headline_2": "Uw donatie wordt zeer op prijs gesteld. Alle opbrengsten gaan rechtstreeks naar app-ontwikkeling en abonnementskosten.",
+    "copied_to_clipboard": "Gekopieerd naar klembord",
+    "srd": "Surinaamse Dollar (SRD)",
+    "usd": "Amerikaanse dollar (USD)",
+    "bank_subtitle": "SWIFT-informatie voor ",
+    "donations": " donaties",
+    "account_holder": "Rekeninghouder:",
+    "swift_code": "SWIFT-code:",
+    "account_number": "Rekeningnummer:",
+    "bank_name": "Banknaam:",
+  },
 }

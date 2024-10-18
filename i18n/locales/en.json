@@ -91,5 +91,20 @@
     "what_is_suri_description": "Suri is a mobile application that allows you to manage your mobile credit and data plans. Top up your balance and stay connected anytime, anywhere.",
     "how_get_free_sms": "How can I get free SMS?",
     "how_get_free_sms_description": "After sending 5 paid texts to Telesur mobile numbers, you receive 100 free texts valid until 11:59 PM the same day, usable only for Telesur mobiles (other networks and premium services excluded). This offer is available once per day.",
-  }
+  },
+  "donate": {
+    "donate": "Donate",
+    "subtitle": "Support Our App",
+    "headline_1": "Your donations help us improve the app and keep it ad-free. Use the SWIFT information bellow to make a donation:",
+    "headline_2": "Your donation is greatly appreciated. All proceeds go directly towards app development and subscriptions costs.",
+    "copied_to_clipboard": "Copied to clipboard",
+    "srd": "Surinamese Dollar (SRD)",
+    "usd": "United States Dollar (USD)",
+    "bank_subtitle": "SWIFT information for ",
+    "donations": " donations",
+    "account_holder": "Account holder name:",
+    "swift_code": "SWIFT code:",
+    "account_number": "Account number:",
+    "bank_name": "Bank name:",
+  },
 }

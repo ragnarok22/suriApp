@@ -84,5 +84,27 @@
     "emergency": "Emergência",
     "my_phone_number": "O Meu Número de Telefone",
     "get_current_time": "Obter Hora Atual",
-  }
+  },
+  "faq": {
+    "what_is_suri": "O que é Suri?",
+    "what_is_suri_description": "Suri é uma aplicação móvel que lhe permite gerir o seu crédito e planos de dados móveis. Recarregue o seu saldo e mantenha-se conectado a qualquer hora e em qualquer lugar.",
+    "how_get_free_sms": "Como posso obter SMS gratuitos?",
+    "how_get_free_sms_description": "Após enviar 5 mensagens pagas para números móveis da Telesur, você recebe 100 mensagens gratuitas válidas até às 23:59 do mesmo dia, utilizáveis apenas para Telesur móveis (outros redes e serviços premium excluídos). Esta oferta está disponível uma vez por dia.",
+  },
+  "donate": {
+    "donate": "Doar",
+    "subtitle": "Apoie a nossa aplicação",
+    "headline_1": "As suas doações ajudam-nos a melhorar a aplicação e a mantê-la sem anúncios. Utilize as informações SWIFT abaixo para fazer uma doação:",
+    "headline_2": "A sua doação é muito apreciada. Todos os rendimentos vão diretamente para o desenvolvimento da aplicação e custos de subscrição.",
+    "copied_to_clipboard": "Copiado para a área de transferência",
+    "srd": "Dólar do Suriname (SRD)",
+    "usd": "Dólar dos Estados Unidos (USD)",
+    "bank_subtitle": "Informações SWIFT para doações em ",
+    "donations": ".",
+    "account_holder": "Titular da conta:",
+    "swift_code": "Código SWIFT:",
+    "account_number": "Número da conta:",
+    "bank_name": "Nome do banco:",
+    "bank_name": "Bank name:",
+  },
 }
