@@ -9,6 +9,7 @@ import ContactIcon from "./icons/ContactIcon";
 import { toast } from "@/utils/mobile";
 import Button from "./Button";
 import { BottomSheetTextInput } from "@gorhom/bottom-sheet";
+import KeyIcon from "./icons/KeyIcon";
 
 type TransferBalanceModalProps = {
   onAccept: (phoneNumber: string, amount: number, pincode: string) => Promise<void>;
@@ -75,7 +76,7 @@ export default function TransferBalanceModal({ onAccept }: TransferBalanceModalP
       <View style={styles.inputContainerView}>
         <View style={styles.inputView}>
           <BottomSheetTextInput
-            style={[styles.input, { backgroundColor }]}
+            style={[styles.input, { backgroundColor, borderRadius: 4 }]}
             placeholder={t('home.transfer.write_phone_number')}
             keyboardType="phone-pad"
             value={phoneNumber}
@@ -87,7 +88,9 @@ export default function TransferBalanceModal({ onAccept }: TransferBalanceModalP
         </Pressable>**/}
         </View>
         <View style={styles.inputForm}>
-          <Text style={styles.inputLabel}>🔑</Text>
+          <Text style={[styles.inputLabel]}>
+            <KeyIcon size={16} darkColor="black" />
+          </Text>
           <BottomSheetTextInput
             style={[styles.input, { backgroundColor }]}
             placeholder={t('home.transfer.write_pincode')}
@@ -109,9 +112,11 @@ export default function TransferBalanceModal({ onAccept }: TransferBalanceModalP
         </View>
       </View>
 
-      <Button onPress={handleAccept} variant="primary">
-        <ThemedText>{t('home.transfer.transfer')}</ThemedText>
-      </Button>
+      <View>
+        <Button onPress={handleAccept} variant="primary">
+          <ThemedText>{t('home.transfer.transfer')}</ThemedText>
+        </Button>
+      </View>
     </View>
   );
 }
@@ -134,6 +139,8 @@ const styles = StyleSheet.create({
   inputForm: {
     flexDirection: 'row',
     alignItems: 'center',
+    borderRadius: 4,
+    overflow: 'hidden',
   },
   inputLabel: {
     backgroundColor: '#ECEDEE',
@@ -143,14 +150,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderTopLeftRadius: 4,
-    borderBottomLeftRadius: 4,
+    minWidth: 42,
   },
   input: {
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    borderTopRightRadius: 4,
-    borderBottomRightRadius: 4,
+    paddingVertical: 10,
+    paddingHorizontal: 8,
     flexGrow: 1,
+    height: '100%',
   },
 });

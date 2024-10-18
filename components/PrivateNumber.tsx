@@ -38,8 +38,10 @@ export default function PrivateNumberModal({ }: PrivateNumberModalProps) {
 
 const styles = StyleSheet.create({
   buttonContainer: {
+    width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 16,
+    gap: 8,
   },
 });
