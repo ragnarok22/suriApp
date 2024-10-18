@@ -23,7 +23,10 @@
     },
     "ios": {
       "bundleIdentifier": "com.ragnarokreinier.suri",
-      "buildNumber": "6"
+      "buildNumber": "6",
+      "entitlements": {
+        "aps-environment": "development"
+      }
     },
     "web": {
       "bundler": "metro",
