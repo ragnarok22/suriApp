@@ -15,6 +15,7 @@ type RechargeBalanceModalProps = {
 
 export default function RechargeBalanceModal({ onAccept }: RechargeBalanceModalProps) {
   const backgroundColor = useThemeColor({ light: '#ECEDEE', dark: 'white' }, 'background');
+  const placeholderTextColor = useThemeColor({ light: '#A1A1A1', dark: '#A1A1A1' }, 'text');
   const { t } = useTranslation();
   const [pincode, setPincode] = useState<string>('');
   const [showScanCamera, setShowScanCamera] = useState<boolean>(false);
@@ -69,6 +70,7 @@ export default function RechargeBalanceModal({ onAccept }: RechargeBalanceModalP
             <BottomSheetTextInput
               style={[styles.pincode, { backgroundColor }]}
               placeholder={t('home.write_your_pincode')}
+              placeholderTextColor={placeholderTextColor}
               keyboardType="numeric"
               value={pincode}
               onChangeText={handleOnChangePincode}
@@ -86,7 +88,7 @@ export default function RechargeBalanceModal({ onAccept }: RechargeBalanceModalP
 
       <View style={{ marginTop: 16 }}>
         <Button onPress={handleAccept} variant="primary">
-          <ThemedText>{t('accept')}</ThemedText>
+          <ThemedText lightColor="white">{t('accept')}</ThemedText>
         </Button>
       </View>
     </View>

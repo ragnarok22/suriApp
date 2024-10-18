@@ -17,6 +17,7 @@ type TransferBalanceModalProps = {
 
 export default function TransferBalanceModal({ onAccept }: TransferBalanceModalProps) {
   const backgroundColor = useThemeColor({ light: '#ECEDEE', dark: 'white' }, 'background');
+  const placeholderTextColor = useThemeColor({ light: '#A1A1A1', dark: '#A1A1A1' }, 'text');
   const { t } = useTranslation();
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [amount, setAmount] = useState<string>('0');
@@ -78,6 +79,7 @@ export default function TransferBalanceModal({ onAccept }: TransferBalanceModalP
           <BottomSheetTextInput
             style={[styles.input, { backgroundColor, borderRadius: 4 }]}
             placeholder={t('home.transfer.write_phone_number')}
+            placeholderTextColor={placeholderTextColor}
             keyboardType="phone-pad"
             value={phoneNumber}
             onChangeText={setPhoneNumber}
@@ -94,6 +96,7 @@ export default function TransferBalanceModal({ onAccept }: TransferBalanceModalP
           <BottomSheetTextInput
             style={[styles.input, { backgroundColor }]}
             placeholder={t('home.transfer.write_pincode')}
+            placeholderTextColor={placeholderTextColor}
             keyboardType="numeric"
             value={pincode}
             onChangeText={setPincode}
@@ -105,6 +108,7 @@ export default function TransferBalanceModal({ onAccept }: TransferBalanceModalP
           <BottomSheetTextInput
             style={[styles.input, { backgroundColor }]}
             placeholder={t('home.transfer.write_amount')}
+            placeholderTextColor={placeholderTextColor}
             keyboardType="numeric"
             value={amount}
             onChangeText={setAmount}
