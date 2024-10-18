@@ -1,4 +1,4 @@
-import { Button, Image, Linking, ScrollView, StyleSheet, View, useColorScheme } from 'react-native';
+import { Image, Linking, ScrollView, StyleSheet, Text, View, useColorScheme } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
 import { ThemedText, ThemedView } from '@/components/themed';
@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { useConfig } from '@/hooks/useConfig';
 import SimpleLayout from '@/components/layouts/SimpleLayout';
 import { useNavigation } from 'expo-router';
+import Button from '@/components/Button';
 
 export default function SettingsScreen() {
   const navigation = useNavigation();
@@ -83,14 +84,15 @@ export default function SettingsScreen() {
           </ThemedView>
         </View>
 
-        <ThemedView style={[{ display: 'flex', marginTop: 'auto' }, styles.transparent]}>
+        <View style={[{ display: 'flex', marginTop: 'auto' }]}>
           <Button
-            title={t('settings.clear_config')}
             onPress={async () => {
               await config.clear()
               toast(t('settings.config_cleared'))
             }}
-          />
+          >
+            <ThemedText>{t('settings.clear_config')}</ThemedText>
+          </Button>
 
           <ThemedView style={styles.division} />
 
@@ -100,7 +102,7 @@ export default function SettingsScreen() {
               <ExternalLink href="https://reinierhernandez.com" style={styles.link} text="Reinier Hernández" />
             </ThemedText>
           </ThemedView>
-        </ThemedView>
+        </View>
 
       </ScrollView>
     </SimpleLayout>
