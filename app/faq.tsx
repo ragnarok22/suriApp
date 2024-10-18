@@ -3,9 +3,11 @@ import SimpleLayout from "@/components/layouts/SimpleLayout";
 import { StyleSheet, View } from "react-native";
 import { Collapsible } from "@/components/Collapsible";
 import { useTranslation } from "react-i18next";
+import { useThemeColor } from "@/hooks/useThemeColor";
 
 export default function FaqScreen() {
   const { t } = useTranslation();
+  const backgroundColor = useThemeColor({ light: 'rgba(0, 0, 0, 0.1)', dark: 'rgba(255,255,255, 0.2)' }, 'background');
 
   return (
     <SimpleLayout style={styles.container}>
@@ -15,7 +17,7 @@ export default function FaqScreen() {
         <Collapsible title={t('faq.what_is_suri')} style={styles.collapsible}>
           <ThemedText>{t('faq.what_is_suri_description')}</ThemedText>
         </Collapsible>
-        <View style={styles.separator} />
+        <View style={[styles.separator, { backgroundColor }]} />
 
         <Collapsible title={t('faq.how_get_free_sms')} style={styles.collapsible}>
           <ThemedText>{t('faq.how_get_free_sms_description')}</ThemedText>
@@ -40,7 +42,6 @@ const styles = StyleSheet.create({
   separator: {
     height: 1,
     width: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
     marginVertical: 12,
   },
 });

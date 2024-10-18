@@ -88,7 +88,7 @@ export default function RechargeBalanceModal({ onAccept }: RechargeBalanceModalP
 
       <View style={{ marginTop: 16 }}>
         <Button onPress={handleAccept} variant="primary">
-          <ThemedText lightColor="white">{t('accept')}</ThemedText>
+          <ThemedText>{t('accept')}</ThemedText>
         </Button>
       </View>
     </View>

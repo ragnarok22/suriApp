@@ -13,6 +13,7 @@ export default function SwitchSelector({ options, onPress, children, initial = 0
   const [selected, setSelected] = useState(initial);
   const backgroundColor = useThemeColor({}, 'background');
   const itemColor = useThemeColor({}, 'text');
+  const switchSelectorBackgroundColor = useThemeColor({ light: '#ABABAB', dark: '#27272A' }, 'background');
   const itemBackgroundColor = useThemeColor({ light: 'white', dark: 'black' }, 'background');
 
   const handlePressItem = (index: number) => {
@@ -22,7 +23,7 @@ export default function SwitchSelector({ options, onPress, children, initial = 0
 
   return (
     <View style={styles.container}>
-      <View style={styles.switchSelector}>
+      <View style={[styles.switchSelector, { backgroundColor: switchSelectorBackgroundColor }]}>
         <View style={styles.switchHeader}>
           {options.map((option, index) => (
             <Pressable
@@ -33,7 +34,7 @@ export default function SwitchSelector({ options, onPress, children, initial = 0
               ]}
               onPress={() => handlePressItem(index)}
             >
-              <Text style={[styles.switchItemText]}>{option.label}</Text>
+              <Text style={[styles.switchItemText, { color: itemColor }]}>{option.label}</Text>
             </Pressable>
           ))}
         </View>
@@ -53,7 +54,6 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   switchSelector: {
-    backgroundColor: '#27272A',
     padding: 4,
     borderRadius: 8,
   },
@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
     padding: 6,
   },
   switchItemText: {
-    color: 'white',
     textAlign: 'center',
     padding: 8,
   },
