@@ -1,7 +1,7 @@
-import type { PropsWithChildren } from 'react';
-import { Image, StyleSheet, useColorScheme } from 'react-native';
+import type { PropsWithChildren } from "react";
+import { Image, StyleSheet, useColorScheme } from "react-native";
 
-import { ThemedView, ThemedText } from '@/components/themed';
+import { ThemedView, ThemedText } from "@/components/themed";
 
 const MENU_RADIUS = 32;
 
@@ -13,7 +13,7 @@ export default function ThemedLayout({
   children,
   headerBackgroundColor,
 }: Props) {
-  const colorScheme = useColorScheme() ?? 'light';
+  const colorScheme = useColorScheme() ?? "light";
 
   return (
     <ThemedView style={styles.container}>
@@ -21,12 +21,13 @@ export default function ThemedLayout({
         style={[
           styles.header,
           { backgroundColor: headerBackgroundColor[colorScheme] },
-        ]}>
+        ]}
+      >
         <Image
-          source={require('@/assets/images/suri-logo.png')}
+          source={require("@/assets/images/suri-logo.png")}
           style={styles.logo}
         />
-        <ThemedText type='title'>Suri</ThemedText>
+        <ThemedText type="title">Suri</ThemedText>
       </ThemedView>
       <ThemedView style={styles.content}>{children}</ThemedView>
     </ThemedView>
@@ -36,12 +37,12 @@ export default function ThemedLayout({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: '100%',
+    height: "100%",
   },
   header: {
     height: 250,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   logo: {
     width: 120,
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 32,
     gap: 16,
-    overflow: 'hidden',
+    overflow: "hidden",
     borderTopLeftRadius: MENU_RADIUS,
     borderTopRightRadius: MENU_RADIUS,
     marginTop: -MENU_RADIUS,

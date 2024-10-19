@@ -1,9 +1,9 @@
-import { type ComponentProps } from 'react';
+import { type ComponentProps } from "react";
 import { Modal, Pressable, StyleSheet } from "react-native";
-import ThemedText from './ThemedText';
-import ThemedView from './ThemedView';
-import { useTranslation } from 'react-i18next';
-import { useThemeColor } from '@/hooks/useThemeColor';
+import ThemedText from "./ThemedText";
+import ThemedView from "./ThemedView";
+import { useTranslation } from "react-i18next";
+import { useThemeColor } from "@/hooks/useThemeColor";
 
 type ThemedModalProps = ComponentProps<typeof Modal> & {
   open: boolean;
@@ -14,9 +14,15 @@ type ThemedModalProps = ComponentProps<typeof Modal> & {
   onAccept: () => void;
 };
 
-export default function ThemedModal({ children, open, close, onAccept, ...modalProps }: ThemedModalProps) {
-  const backgroundColor = useThemeColor({}, 'background');
-  const color = useThemeColor({ light: 'white', dark: 'white' }, 'text');
+export default function ThemedModal({
+  children,
+  open,
+  close,
+  onAccept,
+  ...modalProps
+}: ThemedModalProps) {
+  const backgroundColor = useThemeColor({}, "background");
+  const color = useThemeColor({ light: "white", dark: "white" }, "text");
   const { t } = useTranslation();
 
   return (
@@ -40,13 +46,17 @@ export default function ThemedModal({ children, open, close, onAccept, ...modalP
                 close();
               }}
             >
-              <ThemedText style={[styles.btnText, { color }]}>{modalProps.cancelText || t('cancel')}</ThemedText>
+              <ThemedText style={[styles.btnText, { color }]}>
+                {modalProps.cancelText || t("cancel")}
+              </ThemedText>
             </Pressable>
             <Pressable
               style={[styles.btn, styles.acceptBtn]}
               onPress={onAccept}
             >
-              <ThemedText style={[styles.btnText, { color }]}>{modalProps.acceptText || t('accept')}</ThemedText>
+              <ThemedText style={[styles.btnText, { color }]}>
+                {modalProps.acceptText || t("accept")}
+              </ThemedText>
             </Pressable>
           </ThemedView>
         </ThemedView>
@@ -79,31 +89,31 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   buttonView: {
-    width: '100%',
+    width: "100%",
     gap: 12,
-    flexDirection: 'row',
-    backgroundColor: 'transparent',
+    flexDirection: "row",
+    backgroundColor: "transparent",
     justifyContent: "space-between",
-    marginTop: 'auto',
+    marginTop: "auto",
   },
   btn: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     paddingHorizontal: 12,
     paddingVertical: 8,
   },
   btnText: {
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   cancelBtn: {
-    backgroundColor: 'red',
-    justifyContent: 'center',
+    backgroundColor: "red",
+    justifyContent: "center",
   },
   acceptBtn: {
-    backgroundColor: 'blue',
-  }
+    backgroundColor: "blue",
+  },
 });

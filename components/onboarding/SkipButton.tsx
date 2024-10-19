@@ -7,7 +7,7 @@ export default function SkipButton({ ...props }: ButtonProps) {
 
   return (
     <TouchableOpacity style={styles.doneButton} {...props}>
-      <ThemedText>{t('onboarding.skip')}</ThemedText>
+      <ThemedText>{t("onboarding.skip")}</ThemedText>
     </TouchableOpacity>
   );
 }

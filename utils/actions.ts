@@ -1,7 +1,7 @@
 import { makeCall, requestAllSMSPermissions, sendSms } from "./mobile";
 
 export function check_balance() {
-  makeCall('*132#');
+  makeCall("*132#");
 }
 
 export function recharge_balance(pincode: string) {
@@ -9,16 +9,20 @@ export function recharge_balance(pincode: string) {
 }
 
 export async function set_p2p_pin(ping: string) {
-  await sendSms('134', `SET ${ping}`);
+  await sendSms("134", `SET ${ping}`);
 }
 
 export async function check_mobile_data() {
   await requestAllSMSPermissions();
-  sendSms('4040', 'NET INFO');
+  sendSms("4040", "NET INFO");
 }
 
-export async function transfer_balance(pincode: string, amount: number, phone_number: string) {
-  await sendSms('134', `p2p ${pincode} ${amount} ${phone_number}`);
+export async function transfer_balance(
+  pincode: string,
+  amount: number,
+  phone_number: string,
+) {
+  await sendSms("134", `p2p ${pincode} ${amount} ${phone_number}`);
 }
 
 export function extract_balance(message: string) {

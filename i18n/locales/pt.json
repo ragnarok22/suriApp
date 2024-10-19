@@ -17,7 +17,7 @@
     "offline": "Privacidade total, sem internet",
     "use_without_internet": "Os seus dados permanecem no seu dispositivo, 100% privados.",
     "touch": "Gerencie o seu plano de dados em segundos",
-    "touch_description": "Consulte o seu saldo, recarregue o seu plano de dados, transfira saldo e muito mais em alguns toques.",
+    "touch_description": "Consulte o seu saldo, recarregue o seu plano de dados, transfira saldo e muito mais em alguns toques."
   },
   "home": {
     "title": "Página Inicial",
@@ -56,10 +56,10 @@
       "write_pincode": "Escreva o seu PIN",
       "amount_error": "O montante deve ser superior a 0",
       "phone_number_error": "O número de telefone deve ter 7 dígitos",
-      "pincode_error": "O PIN deve ter 6 dígitos",
+      "pincode_error": "O PIN deve ter 6 dígitos"
     },
     "phones": "Números de Telefone Úteis",
-    "phones_description": "Números de telefone úteis",
+    "phones_description": "Números de telefone úteis"
   },
   "settings": {
     "title": "Configurações",
@@ -72,10 +72,10 @@
     "donate": "Doar",
     "description": "Gerencie facilmente o seu crédito e planos de dados móveis. Recarregue o seu saldo e mantenha-se conectado a qualquer hora e em qualquer lugar.",
     "clear_config": "Limpar Configurações",
-    "config_cleared": "Configurações limpas",
+    "config_cleared": "Configurações limpas"
   },
   "mobile": {
-    "title": "Planos de Dados Móveis",
+    "title": "Planos de Dados Móveis"
   },
   "phones": {
     "title": "Números de Telefone Úteis",
@@ -83,13 +83,13 @@
     "firefighters": "Bombeiros",
     "emergency": "Emergência",
     "my_phone_number": "O Meu Número de Telefone",
-    "get_current_time": "Obter Hora Atual",
+    "get_current_time": "Obter Hora Atual"
   },
   "faq": {
     "what_is_suri": "O que é Suri?",
     "what_is_suri_description": "Suri é uma aplicação móvel que lhe permite gerir o seu crédito e planos de dados móveis. Recarregue o seu saldo e mantenha-se conectado a qualquer hora e em qualquer lugar.",
     "how_get_free_sms": "Como posso obter SMS gratuitos?",
-    "how_get_free_sms_description": "Após enviar 5 mensagens pagas para números móveis da Telesur, você recebe 100 mensagens gratuitas válidas até às 23:59 do mesmo dia, utilizáveis apenas para Telesur móveis (outros redes e serviços premium excluídos). Esta oferta está disponível uma vez por dia.",
+    "how_get_free_sms_description": "Após enviar 5 mensagens pagas para números móveis da Telesur, você recebe 100 mensagens gratuitas válidas até às 23:59 do mesmo dia, utilizáveis apenas para Telesur móveis (outros redes e serviços premium excluídos). Esta oferta está disponível uma vez por dia."
   },
   "donate": {
     "donate": "Doar",
@@ -105,6 +105,6 @@
     "swift_code": "Código SWIFT:",
     "account_number": "Número da conta:",
     "bank_name": "Nome do banco:",
-    "bank_name": "Bank name:",
-  },
+    "bank_name": "Bank name:"
+  }
 }

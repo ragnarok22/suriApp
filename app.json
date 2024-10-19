@@ -18,8 +18,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.ragnarokreinier.suri",
-      "permissions": [
-      ]
+      "permissions": []
     },
     "ios": {
       "bundleIdentifier": "com.ragnarokreinier.suri",

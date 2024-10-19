@@ -7,7 +7,7 @@ export default function NextButton({ ...props }: ButtonProps) {
 
   return (
     <TouchableOpacity style={styles.doneButton} {...props}>
-      <ThemedText>{t('onboarding.next')}</ThemedText>
+      <ThemedText>{t("onboarding.next")}</ThemedText>
     </TouchableOpacity>
   );
 }

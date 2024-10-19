@@ -9,7 +9,7 @@ export default function IndexRedirectPage() {
 
   useEffect(() => {
     config.isNewUser().then((value) => {
-      if (Platform.OS === 'web') {
+      if (Platform.OS === "web") {
         setIsNewUser(false);
         return;
       }
@@ -21,5 +21,5 @@ export default function IndexRedirectPage() {
     return null;
   }
 
-  return <Redirect href={isNewUser ? '/onboarding' : '/(tabs)'} />;
+  return <Redirect href={isNewUser ? "/onboarding" : "/(tabs)"} />;
 }

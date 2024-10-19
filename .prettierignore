@@ -1,0 +1,3 @@
+.eslintignore
+android/*
+ios/*

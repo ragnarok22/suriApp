@@ -1,7 +1,10 @@
-import { useThemeColor } from '@/hooks/useThemeColor';
-import BottomSheet, { BottomSheetBackdrop, BottomSheetView } from '@gorhom/bottom-sheet';
-import { forwardRef, useCallback, useMemo } from 'react';
-import { StyleSheet } from 'react-native';
+import { useThemeColor } from "@/hooks/useThemeColor";
+import BottomSheet, {
+  BottomSheetBackdrop,
+  BottomSheetView,
+} from "@gorhom/bottom-sheet";
+import { forwardRef, useCallback, useMemo } from "react";
+import { StyleSheet } from "react-native";
 
 interface ModalBottomProps {
   content: React.ReactNode;
@@ -11,15 +14,22 @@ interface ModalBottomProps {
 type Ref = BottomSheet | null;
 
 const ModalBottom = forwardRef<Ref, ModalBottomProps>((props, ref) => {
-  const backgroundColor = useThemeColor({}, 'background');
+  const backgroundColor = useThemeColor({}, "background");
 
   let snapPoints = props.snapPoints;
   if (!props.snapPoints) {
-    snapPoints = useMemo(() => ['50%', '100%'], []);
+    snapPoints = useMemo(() => ["50%", "100%"], []);
   }
 
   const renderBackdrop = useCallback(
-    (props: any) => <BottomSheetBackdrop appearsOnIndex={0} disappearsOnIndex={-1} {...props} />, []
+    (props: any) => (
+      <BottomSheetBackdrop
+        appearsOnIndex={0}
+        disappearsOnIndex={-1}
+        {...props}
+      />
+    ),
+    [],
   );
 
   return (
@@ -27,9 +37,9 @@ const ModalBottom = forwardRef<Ref, ModalBottomProps>((props, ref) => {
       ref={ref}
       index={-1}
       snapPoints={snapPoints}
-      style={[styles.container, { backgroundColor: 'transparent' }]}
+      style={[styles.container, { backgroundColor: "transparent" }]}
       backgroundStyle={{ backgroundColor }}
-      handleIndicatorStyle={{ backgroundColor: 'grey' }}
+      handleIndicatorStyle={{ backgroundColor: "grey" }}
       enablePanDownToClose
       backdropComponent={renderBackdrop}
     >
@@ -37,19 +47,19 @@ const ModalBottom = forwardRef<Ref, ModalBottomProps>((props, ref) => {
         {props.content}
       </BottomSheetView>
     </BottomSheet>
-  )
+  );
 });
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 24,
-    justifyContent: 'center',
-    backgroundColor: 'grey',
+    justifyContent: "center",
+    backgroundColor: "grey",
   },
   contentContainer: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
 });
 
