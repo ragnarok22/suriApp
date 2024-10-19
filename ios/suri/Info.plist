@@ -23,8 +23,6 @@
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleURLTypes</key>
-    <key>LSMinimumSystemVersion</key>
-    <string>13.0.0</string>
     <array>
       <dict>
         <key>CFBundleURLSchemes</key>
@@ -59,6 +57,7 @@
     <string>Allow $(PRODUCT_NAME) to access your microphone</string>
     <key>NSUserActivityTypes</key>
     <array>
+      <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>

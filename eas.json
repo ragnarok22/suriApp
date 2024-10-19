@@ -1,7 +1,7 @@
 {
   "cli": {
     "version": ">= 11.0.2",
-    "appVersionSource": "local"
+    "appVersionSource": "remote"
   },
   "build": {
     "development": {
@@ -21,6 +21,7 @@
       }
     },
     "production": {
+      "autoIncrement": true,
       "android": {
         "image": "latest"
       }
