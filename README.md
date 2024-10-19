@@ -1,5 +1,6 @@
 # Suri App
-[![Super-Linter](https://github.com/ragnarok22/suriApp/actions/workflows/pr/badge.svg)](https://github.com/marketplace/actions/super-linter)
+
+![Linter](https://img.shields.io/github/actions/workflow/status/ragnarok22/suriApp/linter)
 
 Mobile app to manage Telesur mobile data in Suriname
 
