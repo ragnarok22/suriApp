@@ -16,10 +16,6 @@ export default function HomeScreen() {
     modalRef.current?.snapToIndex(0);
   };
 
-  const handleModalClose = () => {
-    modalRef.current?.close();
-  };
-
   return (
     <ThemedLayout headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}>
       <ThemedView style={styles.titleContainer}>

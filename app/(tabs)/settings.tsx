@@ -3,7 +3,6 @@ import {
   Linking,
   ScrollView,
   StyleSheet,
-  Text,
   View,
   useColorScheme,
 } from "react-native";

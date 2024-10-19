@@ -4,9 +4,9 @@ import { makeCall } from "@/utils/mobile";
 import { StyleSheet, View } from "react-native";
 import Button from "./Button";
 
-type PrivateNumberModalProps = {};
+// type PrivateNumberModalProps = {};
 
-export default function PrivateNumberModal({}: PrivateNumberModalProps) {
+export default function PrivateNumberModal() {
   const { t } = useTranslation();
 
   const handleDeactivate = () => {

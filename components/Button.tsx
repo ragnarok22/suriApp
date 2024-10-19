@@ -12,29 +12,30 @@ type ButtonProps = PressableProps & {
 
 export default function Button(props: ButtonProps) {
   const colorScheme = useColorScheme() ?? "light";
-  const btnBackground = colorScheme === "dark" ? "#1D3D47" : "transparent";
-  const btnColor = colorScheme === "dark" ? "white" : "#1D3D47";
 
-  const variant: Record<string, any> = {
-    primary: {
-      backgroundColor: btnBackground,
-      color: btnColor,
-      borderColor: "#1D3D47",
-    },
-    secondary: {
-      backgroundColor: "transparent",
-      color: "#1D3D47",
-      borderColor: "#1D3D47",
-    },
-    danger: {
-      backgroundColor: "red",
-      color: "white",
-      borderColor: "red",
-    },
-  };
+  const variant: Record<string, any> = useMemo(
+    () => ({
+      primary: {
+        backgroundColor: colorScheme === "dark" ? "#1D3D47" : "transparent",
+        color: colorScheme === "dark" ? "white" : "#1D3D47",
+        borderColor: "#1D3D47",
+      },
+      secondary: {
+        backgroundColor: "transparent",
+        color: "#1D3D47",
+        borderColor: "#1D3D47",
+      },
+      danger: {
+        backgroundColor: "red",
+        color: "white",
+        borderColor: "red",
+      },
+    }),
+    [colorScheme],
+  );
 
-  const btnStyles = useMemo(
-    () => [
+  const btnStyles = useMemo(() => {
+    return [
       styles.button,
       {
         backgroundColor: variant[props.variant ?? "primary"].backgroundColor,
@@ -42,9 +43,8 @@ export default function Button(props: ButtonProps) {
         borderColor: variant[props.variant ?? "primary"].borderColor,
       },
       props.style,
-    ],
-    [props.variant, props.style],
-  );
+    ];
+  }, [variant, props.variant, props.style]);
 
   return (
     <Pressable style={[btnStyles]} {...props}>

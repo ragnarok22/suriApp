@@ -16,7 +16,6 @@ export default function SwitchSelector({
   initial = 0,
 }: SwitchSelectorProps) {
   const [selected, setSelected] = useState(initial);
-  const backgroundColor = useThemeColor({}, "background");
   const itemColor = useThemeColor({}, "text");
   const switchSelectorBackgroundColor = useThemeColor(
     { light: "#ABABAB", dark: "#27272A" },

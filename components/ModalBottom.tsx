@@ -5,6 +5,7 @@ import BottomSheet, {
 } from "@gorhom/bottom-sheet";
 import { forwardRef, useCallback, useMemo } from "react";
 import { StyleSheet } from "react-native";
+import { SharedValue } from "react-native-reanimated";
 
 interface ModalBottomProps {
   content: React.ReactNode;
@@ -13,13 +14,19 @@ interface ModalBottomProps {
 
 type Ref = BottomSheet | null;
 
+type SnapPoints =
+  | (string | number)[]
+  | SharedValue<(string | number)[]>
+  | undefined;
+
 const ModalBottom = forwardRef<Ref, ModalBottomProps>((props, ref) => {
   const backgroundColor = useThemeColor({}, "background");
 
-  let snapPoints = props.snapPoints;
-  if (!props.snapPoints) {
-    snapPoints = useMemo(() => ["50%", "100%"], []);
-  }
+  const snapPoints: SnapPoints = useMemo(() => {
+    if (!props.snapPoints) return ["50%", "100%"];
+
+    return snapPoints;
+  }, [props.snapPoints]);
 
   const renderBackdrop = useCallback(
     (props: any) => (
@@ -49,6 +56,8 @@ const ModalBottom = forwardRef<Ref, ModalBottomProps>((props, ref) => {
     </BottomSheet>
   );
 });
+
+ModalBottom.displayName = "ModalBottom";
 
 const styles = StyleSheet.create({
   container: {

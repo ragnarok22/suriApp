@@ -1,11 +1,10 @@
-import { StyleSheet, TextInput, View, Text } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import * as Contacts from "expo-contacts";
+// import * as Contacts from "expo-contacts";
 
 import { ThemedText } from "@/components/themed";
 import { useThemeColor } from "@/hooks/useThemeColor";
-import ContactIcon from "./icons/ContactIcon";
 import { toast } from "@/utils/mobile";
 import Button from "./Button";
 import { BottomSheetTextInput } from "@gorhom/bottom-sheet";
@@ -70,17 +69,17 @@ export default function TransferBalanceModal({
     setPincode("");
   };
 
-  const handleOpenContacts = async () => {
-    const { status } = await Contacts.requestPermissionsAsync();
-    if (status !== Contacts.PermissionStatus.GRANTED) {
-      toast(t("home.transfer.contacts_permission_error"));
-    }
-
-    console.log("permission granted");
-    const { data } = await Contacts.getContactsAsync();
-    console.log("contacts");
-    console.log(data[0]);
-  };
+  // const handleOpenContacts = async () => {
+  //   const { status } = await Contacts.requestPermissionsAsync();
+  //   if (status !== Contacts.PermissionStatus.GRANTED) {
+  //     toast(t("home.transfer.contacts_permission_error"));
+  //   }
+  //
+  //   console.log("permission granted");
+  //   const { data } = await Contacts.getContactsAsync();
+  //   console.log("contacts");
+  //   console.log(data[0]);
+  // };
 
   return (
     <View>

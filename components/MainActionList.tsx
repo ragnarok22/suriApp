@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Alert, DeviceEventEmitter, TouchableOpacity } from "react-native";
 import { router } from "expo-router";
 
@@ -78,7 +78,7 @@ export default function MainActionList({ openModal }: MainActionListProps) {
     const subscription = DeviceEventEmitter.addListener(
       "SMSReceived",
       (message) => {
-        if (message.sender == "4040") {
+        if (message.sender === "4040") {
           if (check_buy_message(message.message)) {
             sendSms("4040", "A");
             return;

@@ -1,4 +1,4 @@
-import { Alert, Platform, Pressable, StyleSheet, View } from "react-native";
+import { Alert, Pressable, StyleSheet, View } from "react-native";
 import { ThemedText } from "@/components/themed";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
@@ -46,10 +46,10 @@ export default function RechargeBalanceModal({
     return true;
   };
 
-  const handleClose = () => {
-    setPincode("");
-    setShowScanCamera(false);
-  };
+  // const handleClose = () => {
+  //   setPincode("");
+  //   setShowScanCamera(false);
+  // };
 
   const handleOnChangePincode = (pincode: string) => {
     // Pincodes are 12 digits long, so we add a space every 4 digits

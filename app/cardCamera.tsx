@@ -1,9 +1,9 @@
 import ScanRechargeCard from "@/components/ScanRechargeCard";
 import { ThemedView } from "@/components/themed";
 import { useThemeColor } from "@/hooks/useThemeColor";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
-export default function cardCameraScreen() {
+export default function CardCameraScreen() {
   const borderColor = useThemeColor(
     { light: "gray", dark: "white" },
     "background",
