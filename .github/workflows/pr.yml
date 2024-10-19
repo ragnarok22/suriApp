@@ -18,11 +18,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4.0.4
         with:
-          fetch-depth: 0
-
-      - name: Super-linter
-        uses: super-linter/super-linter@v7.1.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FILTER_REGEX_EXCLUDE: android|ios|node_modules|\.vscode|\.github|\.git|\.expo|\.expo-shared|\.yarn|\.nuxt|\.next|\.idea|\.vscode
+          node-version: '>=20.16'
+      - run: npm install
+      - run: npm run lint
