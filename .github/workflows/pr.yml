@@ -1,0 +1,26 @@
+name: linter
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  linter:
+    name: Linter
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+      # To report GitHub Actions status checks
+      statuses: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4.0.4
+        with:
+          node-version: 20
+          cache: "npm"
+      - run: npm install
+      - run: npm run lint
