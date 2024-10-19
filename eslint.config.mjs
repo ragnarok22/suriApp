@@ -1,3 +1,4 @@
+import prettier from "eslint-plugin-prettier";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
@@ -10,4 +11,13 @@ const compat = new FlatCompat({
     recommendedConfig: js.configs.recommended,
     allConfig: js.configs.all
 });
-export default [...compat.extends("expo")];
+
+export default [...compat.extends("expo", "prettier"), {
+    plugins: {
+        prettier,
+    },
+
+    rules: {
+        "prettier/prettier": "error",
+    },
+}];
