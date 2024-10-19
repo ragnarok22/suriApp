@@ -17,7 +17,7 @@
     "offline": "Totale privacy, geen internet",
     "use_without_internet": "Uw gegevens blijven op uw apparaat, 100% privé.",
     "touch": "Beheer uw dataplannen in enkele seconden",
-    "touch_description": "Controleer uw saldo, laad uw dataplan op, verplaats saldo en nog veel meer in een paar tikken.",
+    "touch_description": "Controleer uw saldo, laad uw dataplan op, verplaats saldo en nog veel meer in een paar tikken."
   },
   "home": {
     "title": "Naar huis",
@@ -56,10 +56,10 @@
       "write_pincode": "Schrijf je pincode",
       "amount_error": "Bedrag moet groter zijn dan 0",
       "phone_number_error": "Telefoonnummer moet 7 cijfers bevatten",
-      "pincode_error": "Pincode moet 6 cijfers bevatten",
+      "pincode_error": "Pincode moet 6 cijfers bevatten"
     },
     "phones": "Handige telefoonnummers",
-    "phones_description": "Handige telefoonnummers",
+    "phones_description": "Handige telefoonnummers"
   },
   "settings": {
     "title": "Instellingen",
@@ -72,10 +72,10 @@
     "donate": "Doneren",
     "description": "Beheer eenvoudig uw mobiele beltegoed en dataplannen. Laad uw saldo op en blijf altijd en overal verbonden.",
     "clear_config": "Configuraties wissen",
-    "config_cleared": "Configuraties gewist",
+    "config_cleared": "Configuraties gewist"
   },
   "mobile": {
-    "title": "Mobiele data plannen",
+    "title": "Mobiele data plannen"
   },
   "phones": {
     "title": "Handige telefoonnummers",
@@ -83,13 +83,13 @@
     "firefighters": "Brandweer",
     "emergency": "Noodgevallen",
     "my_phone_number": "Mijn telefoonnummer",
-    "get_current_time": "Huidige tijd ophalen",
+    "get_current_time": "Huidige tijd ophalen"
   },
   "faq": {
     "what_is_suri": "Wat is Suri?",
     "what_is_suri_description": "Suri is een mobiele applicatie waarmee u uw mobiele beltegoed en dataplannen kunt beheren. Laad uw saldo op en blijf altijd en overal verbonden.",
     "how_get_free_sms": "Hoe kan ik gratis sms'en krijgen?",
-    "how_get_free_sms_description": "Na het verzenden van 5 betaalde sms'jes naar Telesur mobiele nummers, ontvang je 100 gratis sms'jes die geldig zijn tot 23:59 uur op dezelfde dag, alleen te gebruiken voor Telesur mobielen (andere netwerken en premium services uitgesloten). Deze aanbieding is eenmaal per dag beschikbaar.",
+    "how_get_free_sms_description": "Na het verzenden van 5 betaalde sms'jes naar Telesur mobiele nummers, ontvang je 100 gratis sms'jes die geldig zijn tot 23:59 uur op dezelfde dag, alleen te gebruiken voor Telesur mobielen (andere netwerken en premium services uitgesloten). Deze aanbieding is eenmaal per dag beschikbaar."
   },
   "donate": {
     "donate": "Doneren",
@@ -104,6 +104,6 @@
     "account_holder": "Rekeninghouder:",
     "swift_code": "SWIFT-code:",
     "account_number": "Rekeningnummer:",
-    "bank_name": "Banknaam:",
-  },
+    "bank_name": "Banknaam:"
+  }
 }

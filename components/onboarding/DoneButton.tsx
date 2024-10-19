@@ -7,7 +7,7 @@ export default function DoneButton({ ...props }: ButtonProps) {
 
   return (
     <TouchableOpacity style={styles.doneButton} {...props}>
-      <ThemedText>{t('onboarding.done')}</ThemedText>
+      <ThemedText>{t("onboarding.done")}</ThemedText>
     </TouchableOpacity>
   );
 }

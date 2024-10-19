@@ -1,4 +1,4 @@
-import { Alert, Platform, Pressable, StyleSheet, View } from "react-native";
+import { Alert, Pressable, StyleSheet, View } from "react-native";
 import { ThemedText } from "@/components/themed";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
@@ -13,63 +13,81 @@ type RechargeBalanceModalProps = {
   onAccept: (pincode: string) => void;
 };
 
-export default function RechargeBalanceModal({ onAccept }: RechargeBalanceModalProps) {
-  const backgroundColor = useThemeColor({ light: '#ECEDEE', dark: 'white' }, 'background');
-  const placeholderTextColor = useThemeColor({ light: '#A1A1A1', dark: '#A1A1A1' }, 'text');
+export default function RechargeBalanceModal({
+  onAccept,
+}: RechargeBalanceModalProps) {
+  const backgroundColor = useThemeColor(
+    { light: "#ECEDEE", dark: "white" },
+    "background",
+  );
+  const placeholderTextColor = useThemeColor(
+    { light: "#A1A1A1", dark: "#A1A1A1" },
+    "text",
+  );
   const { t } = useTranslation();
-  const [pincode, setPincode] = useState<string>('');
+  const [pincode, setPincode] = useState<string>("");
   const [showScanCamera, setShowScanCamera] = useState<boolean>(false);
 
   const handleAccept = () => {
-    const pin = pincode.replace(/\s/g, '');
-    const isCorrect = validatePincode(pin)
+    const pin = pincode.replace(/\s/g, "");
+    const isCorrect = validatePincode(pin);
 
     if (isCorrect) {
       onAccept(pin);
-      setPincode('');
+      setPincode("");
     }
-  }
+  };
 
   const validatePincode = (pincode: string) => {
     if (pincode.length < 12) {
-      Alert.alert(t('home.pincode_error'));
+      Alert.alert(t("home.pincode_error"));
       return false;
     }
     return true;
-  }
+  };
 
-  const handleClose = () => {
-    setPincode('');
-    setShowScanCamera(false);
-  }
+  // const handleClose = () => {
+  //   setPincode("");
+  //   setShowScanCamera(false);
+  // };
 
   const handleOnChangePincode = (pincode: string) => {
     // Pincodes are 12 digits long, so we add a space every 4 digits
     if (pincode.length > 14) return;
 
-    setPincode(pincode.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim());
-  }
+    setPincode(
+      pincode
+        .replace(/\s/g, "")
+        .replace(/(\d{4})/g, "$1 ")
+        .trim(),
+    );
+  };
 
   return (
     <View>
       {showScanCamera ? (
-        <View style={{ width: '100%', height: 350, position: 'relative' }}>
-          <Pressable style={styles.closeBtn} onPress={() => setShowScanCamera(false)}>
+        <View style={{ width: "100%", height: 350, position: "relative" }}>
+          <Pressable
+            style={styles.closeBtn}
+            onPress={() => setShowScanCamera(false)}
+          >
             <CloseIcon lightColor="white" />
           </Pressable>
-          <ScanRechargeCard onDone={(card: string) => {
-            setPincode(card);
-            setShowScanCamera(false);
-          }} />
+          <ScanRechargeCard
+            onDone={(card: string) => {
+              setPincode(card);
+              setShowScanCamera(false);
+            }}
+          />
         </View>
       ) : (
         <>
-          <ThemedText type="subtitle">{t('home.recharge_balance')}</ThemedText>
+          <ThemedText type="subtitle">{t("home.recharge_balance")}</ThemedText>
 
           <View style={styles.inputForm}>
             <BottomSheetTextInput
               style={[styles.pincode, { backgroundColor }]}
-              placeholder={t('home.write_your_pincode')}
+              placeholder={t("home.write_your_pincode")}
               placeholderTextColor={placeholderTextColor}
               keyboardType="numeric"
               value={pincode}
@@ -88,7 +106,7 @@ export default function RechargeBalanceModal({ onAccept }: RechargeBalanceModalP
 
       <View style={{ marginTop: 16 }}>
         <Button onPress={handleAccept} variant="primary">
-          <ThemedText>{t('accept')}</ThemedText>
+          <ThemedText>{t("accept")}</ThemedText>
         </Button>
       </View>
     </View>
@@ -103,17 +121,17 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   inputForm: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     gap: 8,
-    width: '100%',
+    width: "100%",
     marginTop: 12,
   },
   closeBtn: {
-    position: 'absolute',
+    position: "absolute",
     top: 20,
     right: 5,
     zIndex: 1,
-  }
+  },
 });

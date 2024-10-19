@@ -17,7 +17,7 @@
     "offline": "Total privacy, no internet",
     "use_without_internet": "Your data stays on your device, 100% private.",
     "touch": "Manage your data plan in seconds",
-    "touch_description": "Check your balance, recharge your data plan, transfer balance and much more in a couple of taps.",
+    "touch_description": "Check your balance, recharge your data plan, transfer balance and much more in a couple of taps."
   },
   "home": {
     "title": "Home",
@@ -57,10 +57,10 @@
       "amount_error": "Amount must be greater than 0",
       "phone_number_error": "Phone number must be 7 digits",
       "pincode_error": "Pincode must be 6 digits",
-      "contacts_permission_error": "You need to give permission to access your contacts",
+      "contacts_permission_error": "You need to give permission to access your contacts"
     },
     "phones": "Useful Phone Numbers",
-    "phones_description": "Useful phone numbers",
+    "phones_description": "Useful phone numbers"
   },
   "settings": {
     "title": "Settings",
@@ -73,10 +73,10 @@
     "donate": "Donate",
     "description": "Easily manage your mobile credit and data plans. Top up your balance and stay connected anytime, anywhere.",
     "clear_config": "Clear Configurations",
-    "config_cleared": "Configurations cleared",
+    "config_cleared": "Configurations cleared"
   },
   "mobile": {
-    "title": "Mobile Data plans",
+    "title": "Mobile Data plans"
   },
   "phones": {
     "title": "Useful Phone Numbers",
@@ -84,13 +84,13 @@
     "firefighters": "Firefighters",
     "emergency": "Emergency",
     "my_phone_number": "My Phone Number",
-    "get_current_time": "Get Current Time",
+    "get_current_time": "Get Current Time"
   },
   "faq": {
     "what_is_suri": "What is Suri?",
     "what_is_suri_description": "Suri is a mobile application that allows you to manage your mobile credit and data plans. Top up your balance and stay connected anytime, anywhere.",
     "how_get_free_sms": "How can I get free SMS?",
-    "how_get_free_sms_description": "After sending 5 paid texts to Telesur mobile numbers, you receive 100 free texts valid until 11:59 PM the same day, usable only for Telesur mobiles (other networks and premium services excluded). This offer is available once per day.",
+    "how_get_free_sms_description": "After sending 5 paid texts to Telesur mobile numbers, you receive 100 free texts valid until 11:59 PM the same day, usable only for Telesur mobiles (other networks and premium services excluded). This offer is available once per day."
   },
   "donate": {
     "donate": "Donate",
@@ -105,6 +105,6 @@
     "account_holder": "Account holder name:",
     "swift_code": "SWIFT code:",
     "account_number": "Account number:",
-    "bank_name": "Bank name:",
-  },
+    "bank_name": "Bank name:"
+  }
 }
