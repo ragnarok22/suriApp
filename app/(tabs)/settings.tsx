@@ -87,7 +87,7 @@ export default function SettingsScreen() {
             </FontAwesome.Button>
           </ThemedView>
 
-          {/*<ThemedView style={styles.contactButton}>
+          <ThemedView style={styles.contactButton}>
             <FontAwesome.Button
               name="heart-o"
               onPress={() => navigation.navigate("donate")}
@@ -97,7 +97,7 @@ export default function SettingsScreen() {
             >
               {t("settings.donate")}
             </FontAwesome.Button>
-          </ThemedView>*/}
+          </ThemedView>
         </View>
 
         <View style={[{ display: "flex", marginTop: "auto" }]}>

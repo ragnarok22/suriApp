@@ -3,6 +3,7 @@ import CoffeeEmptyIcon from "../icons/CoffeeEmptyIcon";
 import CoffeeHotIcon from "../icons/CoffeeHotIcon";
 import { ThemedText } from "../themed";
 import CoffeeMachineIcon from "../icons/CoffeeMachineIcon";
+import { useState } from "react";
 
 const options = [{
   icon: CoffeeEmptyIcon,
@@ -19,19 +20,25 @@ const options = [{
 }]
 
 export default function IOSDonation() {
+  const [selected, setSelected] = useState<number>(0);
+
   return (
     <View style={styles.container}>
       {options.map((option, index) => (
-        <Pressable style={styles.button} key={index}>
+        <Pressable
+          style={[styles.button, selected === index ? styles.btnSelected : styles.btnUnselected]}
+          key={index}
+          onPress={() => setSelected(index)}
+        >
           <option.icon />
           <ThemedText allowFontScaling adjustsFontSizeToFit>
             {option.label} - ${option.value}
           </ThemedText>
         </Pressable>
       ))}
-      <Pressable style={styles.button}>
+      <Pressable style={[styles.button, { backgroundColor: "#1D3D47", borderColor: "#1D3D47" }]}>
         <ThemedText allowFontScaling adjustsFontSizeToFit>
-          Donate
+          Donate ${options[selected].value}
         </ThemedText>
       </Pressable>
     </View>
@@ -48,7 +55,6 @@ const styles = StyleSheet.create({
   button: {
     width: "100%",
     borderWidth: 1,
-    borderColor: "#1D3D47",
     flexShrink: 1,
     padding: 16,
     borderRadius: 8,
@@ -56,5 +62,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     gap: 8,
+  },
+  btnSelected: {
+    backgroundColor: "#1D3D47",
+    borderColor: "#1D3D47",
+  },
+  btnUnselected: {
+    borderColor: "#1D3D47",
   },
 });
