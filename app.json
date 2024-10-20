@@ -37,6 +37,12 @@
       "expo-localization",
       "expo-camera",
       [
+        "react-native-iap",
+        {
+          "paymentProvider": "both"
+        }
+      ],
+      [
         "expo-build-properties",
         {
           "android": {
