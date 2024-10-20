@@ -5,19 +5,23 @@ import { ThemedText } from "../themed";
 import CoffeeMachineIcon from "../icons/CoffeeMachineIcon";
 import { useState } from "react";
 
-const options = [{
-  icon: CoffeeEmptyIcon,
-  label: "coffee",
-  value: 5,
-}, {
-  icon: CoffeeHotIcon,
-  label: "capuccino",
-  value: 10,
-}, {
-  icon: CoffeeMachineIcon,
-  label: "coffee machine",
-  value: 20,
-}]
+const options = [
+  {
+    icon: CoffeeEmptyIcon,
+    label: "coffee",
+    value: 5,
+  },
+  {
+    icon: CoffeeHotIcon,
+    label: "capuccino",
+    value: 10,
+  },
+  {
+    icon: CoffeeMachineIcon,
+    label: "coffee machine",
+    value: 20,
+  },
+];
 
 export default function IOSDonation() {
   const [selected, setSelected] = useState<number>(0);
@@ -26,7 +30,10 @@ export default function IOSDonation() {
     <View style={styles.container}>
       {options.map((option, index) => (
         <Pressable
-          style={[styles.button, selected === index ? styles.btnSelected : styles.btnUnselected]}
+          style={[
+            styles.button,
+            selected === index ? styles.btnSelected : styles.btnUnselected,
+          ]}
           key={index}
           onPress={() => setSelected(index)}
         >
@@ -36,13 +43,18 @@ export default function IOSDonation() {
           </ThemedText>
         </Pressable>
       ))}
-      <Pressable style={[styles.button, { backgroundColor: "#1D3D47", borderColor: "#1D3D47" }]}>
+      <Pressable
+        style={[
+          styles.button,
+          { backgroundColor: "#1D3D47", borderColor: "#1D3D47" },
+        ]}
+      >
         <ThemedText allowFontScaling adjustsFontSizeToFit>
           Donate ${options[selected].value}
         </ThemedText>
       </Pressable>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
