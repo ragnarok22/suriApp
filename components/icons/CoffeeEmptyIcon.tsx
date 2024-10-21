@@ -8,5 +8,11 @@ export default function CoffeeEmptyIcon({
   size = 28,
 }: IconProps) {
   const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
-  return <MaterialCommunityIcons size={size} name="coffee-outline" style={{ color }} />;
+  return (
+    <MaterialCommunityIcons
+      size={size}
+      name="coffee-outline"
+      style={{ color }}
+    />
+  );
 }

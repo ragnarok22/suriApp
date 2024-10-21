@@ -16,11 +16,7 @@ export default function DonateScreen() {
       <ThemedText>{t("donate.headline_1")}</ThemedText>
       <ThemedText>{t("donate.headline_2")}</ThemedText>
 
-      {Platform.OS === "android"
-        ? <AndroidDonation />
-        : <IOSDonation />
-      }
-
+      {Platform.OS === "android" ? <AndroidDonation /> : <IOSDonation />}
     </SimpleLayout>
   );
 }
