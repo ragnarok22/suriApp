@@ -54,9 +54,7 @@ export default function AndroidDonation() {
           {selectedCurrency === "SRD" ? t("donate.srd") : t("donate.usd")}
         </ThemedText>
         <ThemedText>
-          {t("donate.bank_subtitle") +
-            selectedCurrency +
-            t("donate.donations")}
+          {t("donate.bank_subtitle") + selectedCurrency + t("donate.donations")}
         </ThemedText>
       </View>
 
@@ -93,14 +91,10 @@ export default function AndroidDonation() {
 
         <View style={styles.rowInfo}>
           <ThemedText>{t("donate.swift_code")}</ThemedText>
-          <View
-            style={{ flexDirection: "row", gap: 6, alignItems: "center" }}
-          >
+          <View style={{ flexDirection: "row", gap: 6, alignItems: "center" }}>
             <ThemedText>{bankInfo[selectedCurrency].swift}</ThemedText>
             <Pressable
-              onPress={() =>
-                copyToClipboard(bankInfo[selectedCurrency].swift)
-              }
+              onPress={() => copyToClipboard(bankInfo[selectedCurrency].swift)}
             >
               <CopyIcon lightColor="black" darkColor="white" size={20} />
             </Pressable>
@@ -109,9 +103,7 @@ export default function AndroidDonation() {
 
         <View style={styles.rowInfo}>
           <ThemedText>{t("donate.account_number")}</ThemedText>
-          <View
-            style={{ flexDirection: "row", gap: 6, alignItems: "center" }}
-          >
+          <View style={{ flexDirection: "row", gap: 6, alignItems: "center" }}>
             <ThemedText>{bankInfo[selectedCurrency].account}</ThemedText>
             <Pressable
               onPress={() =>
@@ -136,7 +128,7 @@ export default function AndroidDonation() {
         </View>
       </View>
     </SwitchSelector>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
