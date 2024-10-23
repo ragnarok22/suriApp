@@ -1,89 +1,68 @@
 import { useEffect, useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
-import Purchases, { LOG_LEVEL, PurchasesPackage } from "react-native-purchases";
+import Purchases, { LOG_LEVEL } from "react-native-purchases";
 import { MotiView } from "moti";
 
 import CoffeeEmptyIcon from "../icons/CoffeeEmptyIcon";
 import CoffeeHotIcon from "../icons/CoffeeHotIcon";
 import { ThemedText } from "../themed";
 import CoffeeMachineIcon from "../icons/CoffeeMachineIcon";
-import { toast } from "@/utils/mobile";
+import store from "@/store";
 
-const IOS_API_KEY = process.env.IOS_API_KEY;
+const IOS_API_KEY = process.env.EXPO_PUBLIC_IOS_APIKEY;
 const options = [
   {
     icon: CoffeeEmptyIcon,
     label: "coffee",
     value: 5,
+    identifier: "suri_0499_donation",
   },
   {
     icon: CoffeeHotIcon,
     label: "capuccino",
     value: 10,
+    identifier: "suri_0999_donation",
   },
   {
     icon: CoffeeMachineIcon,
     label: "coffee machine",
     value: 20,
+    identifier: "suri_1999_donation",
   },
 ];
 
 export default function IOSDonation() {
   const [selected, setSelected] = useState(0);
-  const [packages, setPackages] = useState<PurchasesPackage[]>([]);
+  const { setLoading } = store.useGlobalStore();
 
   useEffect(() => {
     const init = async () => {
       Purchases.configure({ apiKey: IOS_API_KEY! });
       Purchases.setLogLevel(LOG_LEVEL.DEBUG);
-
-      loadOfferings();
     };
 
-    init();
+    try {
+      init();
+    } catch (e) {
+      console.log("error configure payments", e);
+    }
   }, []);
 
-  const loadOfferings = async () => {
-    try {
-      const offerings = await Purchases.getOfferings();
-      console.log(offerings);
-      if (offerings.current) {
-        const { availablePackages } = offerings.current;
-        console.log(availablePackages);
-        setPackages(availablePackages);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   const handlePurchase = async () => {
+    setLoading(true);
     try {
-      await Purchases.purchasePackage(packages[selected]);
+      const result = await Purchases.purchaseProduct(
+        options[selected].identifier,
+      );
+      console.log(result);
     } catch (e) {
-      toast("Something went wrong, please try again later");
-      console.error(e);
+      console.error(e.message);
     }
+    setLoading(false);
   };
 
   return (
     <View style={styles.container}>
-      {packages.map((pack, index) => (
-        <MotiView
-          style={[styles.buttonWrapper, { width: "100%", overflow: "hidden" }]}
-          animate={{
-            backgroundColor: selected === index ? "#1D3D47" : "transparent",
-            borderColor: selected === index ? "#DEE7E7" : "#1D3D47",
-          }}
-          key={index}
-        >
-          <Pressable style={[styles.button]} onPress={() => setSelected(index)}>
-            <ThemedText allowFontScaling adjustsFontSizeToFit>
-              {pack.product.title} - ${pack.product.price}
-            </ThemedText>
-          </Pressable>
-        </MotiView>
-      ))}
       {options.map((option, index) => (
         <MotiView
           style={[styles.buttonWrapper, { width: "100%", overflow: "hidden" }]}
@@ -123,6 +102,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     gap: 8,
+    position: "relative",
   },
   buttonWrapper: {
     borderRadius: 8,

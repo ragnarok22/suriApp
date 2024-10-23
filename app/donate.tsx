@@ -5,19 +5,25 @@ import { ThemedText } from "@/components/themed";
 import SimpleLayout from "@/components/layouts/SimpleLayout";
 import AndroidDonation from "@/components/donate/AndroidDonation";
 import IOSDonation from "@/components/donate/IOSDonation";
+import Loading from "@/components/Loading";
+import store from "@/store";
 
 export default function DonateScreen() {
   const { t } = useTranslation();
+  const { loading } = store.useGlobalStore();
 
   return (
-    <SimpleLayout style={styles.container}>
-      <ThemedText type="title">{t("donate.donate")}</ThemedText>
-      <ThemedText type="subtitle">{t("donate.subtitle")}</ThemedText>
-      <ThemedText>{t("donate.headline_1")}</ThemedText>
-      <ThemedText>{t("donate.headline_2")}</ThemedText>
+    <>
+      <Loading visible={loading} />
+      <SimpleLayout style={styles.container}>
+        <ThemedText type="title">{t("donate.donate")}</ThemedText>
+        <ThemedText type="subtitle">{t("donate.subtitle")}</ThemedText>
+        <ThemedText>{t("donate.headline_1")}</ThemedText>
+        <ThemedText>{t("donate.headline_2")}</ThemedText>
 
-      {Platform.OS === "android" ? <AndroidDonation /> : <IOSDonation />}
-    </SimpleLayout>
+        {Platform.OS === "android" ? <AndroidDonation /> : <IOSDonation />}
+      </SimpleLayout>
+    </>
   );
 }
 
@@ -28,6 +34,7 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
+    position: "relative",
   },
   collapsible: {
     width: "100%",
