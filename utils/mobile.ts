@@ -18,6 +18,7 @@ export async function sendSms(phoneNumber: string, message: string) {
   }
 
   const hasPermission = await requestAllSMSPermissions();
+  console.log('has permission', hasPermission)
   if (!hasPermission) {
     console.log("Permission to send SMS was denied");
     SMS.sendSMSAsync([phoneNumber], message);
@@ -114,7 +115,7 @@ export async function requestSMSPermission() {
   return false;
 }
 
-async function requestAllAndroidSMSPermissions() {
+async function requestAllAndroidSMSPermissions(): Promise<boolean> {
   try {
     const granted = await PermissionsAndroid.requestMultiple([
       PermissionsAndroid.PERMISSIONS.RECEIVE_SMS,
@@ -131,6 +132,7 @@ async function requestAllAndroidSMSPermissions() {
         PermissionsAndroid.RESULTS.GRANTED
     ) {
       console.log("SMS permissions granted");
+      return true;
     } else {
       console.log("SMS permissions denied");
       toast("Permission to send SMS was denied");
@@ -138,6 +140,8 @@ async function requestAllAndroidSMSPermissions() {
   } catch (err) {
     console.warn(err);
   }
+
+  return false;
 }
 
 export async function requestAllSMSPermissions() {

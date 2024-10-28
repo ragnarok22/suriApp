@@ -1,4 +1,4 @@
-import { makeCall, requestAllSMSPermissions, sendSms } from "./mobile";
+import { makeCall, sendSms } from "./mobile";
 
 export function check_balance() {
   makeCall("*132#");
@@ -13,7 +13,6 @@ export async function set_p2p_pin(ping: string) {
 }
 
 export async function check_mobile_data() {
-  await requestAllSMSPermissions();
   sendSms("4040", "NET INFO");
 }
 
