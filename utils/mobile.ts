@@ -18,7 +18,6 @@ export async function sendSms(phoneNumber: string, message: string) {
   }
 
   const hasPermission = await requestAllSMSPermissions();
-  console.log('has permission', hasPermission)
   if (!hasPermission) {
     console.log("Permission to send SMS was denied");
     SMS.sendSMSAsync([phoneNumber], message);

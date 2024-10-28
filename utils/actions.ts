@@ -13,7 +13,7 @@ export async function set_p2p_pin(ping: string) {
 }
 
 export async function check_mobile_data() {
-  sendSms("4040", "NET INFO");
+  await sendSms("4040", "NET INFO");
 }
 
 export async function transfer_balance(

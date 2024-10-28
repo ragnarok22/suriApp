@@ -22,6 +22,7 @@ import SetPinModal from "./SetPinModal";
 import FirstTimeTransferModal from "./FirstTimeTransferModal";
 import TransferBalanceModal from "./TransferBalanceModal";
 import { useConfig } from "@/hooks/useConfig";
+import store from "@/store";
 const { t } = i18next;
 
 type ItemProps = {
@@ -50,7 +51,7 @@ const Item = ({ item, onPress }: ItemProps) => (
 );
 
 const ActionItem = ({ item, onPress }: ActionItemsProps) => {
-  const emptyFunction = () => {};
+  const emptyFunction = () => { };
 
   const handlePress = () => {
     if (onPress) {
@@ -73,6 +74,7 @@ type MainActionListProps = {
 
 export default function MainActionList({ openModal }: MainActionListProps) {
   const config = useConfig();
+  const { setLoading } = store.useGlobalStore();
 
   useEffect(() => {
     const subscription = DeviceEventEmitter.addListener(
@@ -85,14 +87,17 @@ export default function MainActionList({ openModal }: MainActionListProps) {
           }
           if (message.message.includes("onvoldoende saldo")) {
             Alert.alert(t("home.error"), t("home.error_insufficient_balance"));
+            setLoading(false);
             return;
           }
           if (message.message.includes("rekening gebracht")) {
             Alert.alert(t("home.success"), t("home.success_recharge_balance"));
+            setLoading(false);
             return;
           }
           const balance = extract_balance(message.message);
           if (balance) {
+            setLoading(false);
             Alert.alert(t("home.data_saldo"), `${balance} MB`);
           }
         }
@@ -130,9 +135,11 @@ export default function MainActionList({ openModal }: MainActionListProps) {
         }
         break;
       }
-      case "check_mobile_data":
+      case "check_mobile_data": {
+        setLoading(true);
         await check_mobile_data();
         break;
+      }
       case "recharge_mobile_data":
         router.push("/mobile");
         break;
