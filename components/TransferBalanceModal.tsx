@@ -7,8 +7,8 @@ import { ThemedText } from "@/components/themed";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { toast } from "@/utils/mobile";
 import Button from "./Button";
-import { BottomSheetTextInput } from "@gorhom/bottom-sheet";
 import KeyIcon from "./icons/KeyIcon";
+import ModalTextInput from "./ModalTextInput";
 
 type TransferBalanceModalProps = {
   onAccept: (
@@ -89,7 +89,7 @@ export default function TransferBalanceModal({
 
       <View style={styles.inputContainerView}>
         <View style={styles.inputView}>
-          <BottomSheetTextInput
+          <ModalTextInput
             style={[styles.input, { backgroundColor, borderRadius: 4 }]}
             placeholder={t("home.transfer.write_phone_number")}
             placeholderTextColor={placeholderTextColor}
@@ -106,7 +106,7 @@ export default function TransferBalanceModal({
           <View style={[styles.inputLabel]}>
             <KeyIcon size={16} darkColor="black" />
           </View>
-          <BottomSheetTextInput
+          <ModalTextInput
             style={[styles.input, { backgroundColor }]}
             placeholder={t("home.transfer.write_pincode")}
             placeholderTextColor={placeholderTextColor}
@@ -118,7 +118,7 @@ export default function TransferBalanceModal({
         </View>
         <View style={styles.inputForm}>
           <Text style={styles.inputLabel}>SRD</Text>
-          <BottomSheetTextInput
+          <ModalTextInput
             style={[styles.input, { backgroundColor }]}
             placeholder={t("home.transfer.write_amount")}
             placeholderTextColor={placeholderTextColor}

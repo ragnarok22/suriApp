@@ -3,8 +3,8 @@ import { ThemedText } from "@/components/themed";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { useThemeColor } from "@/hooks/useThemeColor";
-import { BottomSheetTextInput } from "@gorhom/bottom-sheet";
 import Button from "./Button";
+import ModalTextInput from "./ModalTextInput";
 
 type SetPinModalProps = {
   onAccept: (pin: string) => void;
@@ -26,7 +26,7 @@ export default function SetPinModal({ onAccept }: SetPinModalProps) {
   return (
     <View style={{ flex: 1, width: "100%" }}>
       <ThemedText type="subtitle">{t("home.set_pin")}</ThemedText>
-      <BottomSheetTextInput
+      <ModalTextInput
         style={[styles.pin, { backgroundColor }]}
         placeholder={t("home.write_your_pin_here")}
         keyboardType="numeric"

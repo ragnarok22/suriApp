@@ -6,8 +6,8 @@ import { useThemeColor } from "@/hooks/useThemeColor";
 import CameraIcon from "./icons/CameraIcon";
 import ScanRechargeCard from "./ScanRechargeCard";
 import CloseIcon from "./icons/CloseIcon";
-import { BottomSheetTextInput } from "@gorhom/bottom-sheet";
 import Button from "./Button";
+import ModalTextInput from "./ModalTextInput";
 
 type RechargeBalanceModalProps = {
   onAccept: (pincode: string) => void;
@@ -85,7 +85,7 @@ export default function RechargeBalanceModal({
           <ThemedText type="subtitle">{t("home.recharge_balance")}</ThemedText>
 
           <View style={styles.inputForm}>
-            <BottomSheetTextInput
+            <ModalTextInput
               style={[styles.pincode, { backgroundColor }]}
               placeholder={t("home.write_your_pincode")}
               placeholderTextColor={placeholderTextColor}
