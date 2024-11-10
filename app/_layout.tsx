@@ -54,17 +54,17 @@ export default function RootLayout() {
           <Stack.Screen
             name="faq"
             options={{
-              headerShown: Platform.OS !== 'ios',
+              headerShown: Platform.OS !== "ios",
               title: "",
-              presentation: "modal"
+              presentation: "modal",
             }}
           />
           <Stack.Screen
             name="donate"
             options={{
-              headerShown: Platform.OS !== 'ios',
+              headerShown: Platform.OS !== "ios",
               title: "",
-              presentation: "modal"
+              presentation: "modal",
             }}
           />
           <Stack.Screen name="+not-found" />

@@ -5,7 +5,7 @@ import { CameraView, useCameraPermissions } from "expo-camera";
 import { ThemedText } from "./themed";
 
 type ScanRechargeCardProps = {
-  // onDone: (card: string) => void;
+  onDone: (card: string) => void;
 };
 
 export default function ScanRechargeCard(props: ScanRechargeCardProps) {

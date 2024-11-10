@@ -51,7 +51,7 @@ const Item = ({ item, onPress }: ItemProps) => (
 );
 
 const ActionItem = ({ item, onPress }: ActionItemsProps) => {
-  const emptyFunction = () => { };
+  const emptyFunction = () => {};
 
   const handlePress = () => {
     if (onPress) {
